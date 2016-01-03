@@ -1,0 +1,41 @@
+<nav class="navbar navbar-custom navbar-static-top" ng-controller="NavbarCtrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="margin-left:0px" ui-sref="{{loggedIn ? 'account' : 'home'}}">
+        BOILERMAKE
+      </a>
+    </div>
+
+    <div class="" id="bs-example-navbar-collapse-1">
+        <li ng-class="{ active: isActive('/admin')}" ng-show="hasRole('admin')" class="dropdown" dropdown>
+          <a href="" class="dropdown-toggle" dropdown-toggle>Admin</a>
+          <ul class="dropdown-menu" dropdown-menu>
+            <li><a ui-sref="admin">Dashboard</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Data</li>
+            <li><a ui-sref="admin-users">Users</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-class="{ active: isActive('/account')}" ng-show="loggedIn" class="dropdown" dropdown>
+           <a href="" class="dropdown-toggle" dropdown-toggle>{{ me.first_name }}</a>
+            <ul class="dropdown-menu" dropdown-menu style="margin-right:5px">
+              <li><a ng-click="logout()">Sign Out</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a ui-sref="account-edit">Preferences</a></li>
+              <li><a ui-sref="account">Home</a></li>
+            </ul>
+        </li>
+        <li ng-hide="loggedIn">
+           <a ui-sref="signup">Create Account</a>
+        </li>
+        <li ng-hide="loggedIn">
+           <a ui-sref="signin">Log In</a>
+        </li>
+     </ul>
+
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,700,300|Source+Sans+Pro:200,300,400;);
+/*colors*/
+$grey-color: #737170;
+$gold: #B1810B;
+$dark-grey: #555555;
+$off-white: #f2f2f2;
+
+.btn-primary
+{
+	background-color: $gold;
+	border-color: white;
+}
+
+/* custom navbar*/
+.navbar-custom {
+  background-color: white; }
+
+.navbar-custom .navbar-nav > li > a {
+  color: $dark-grey;
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus, .navbar-nav > .active > li.active {
+  color: white;
+  background-color: transparent; }
+
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: $dark-grey;
+  color:white;}
+
+.navbar-custom .navbar-brand {
+  color: $dark-grey; }
+
+.navbar-custom .navbar-toggle {
+  background-color: white; }
+
+.navbar-custom .icon-bar {
+  background-color: white; }
+
+.navbar-custom .navbar-nav > .active > a, .navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a:hover, .navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a:hover, .navbar-custom .navbar-nav > .open > a:focus {
+  background-color: $dark-grey;
+	color:white; }
+
+html, body {
+  height: 100%;
+	background-color:$off-white;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector
