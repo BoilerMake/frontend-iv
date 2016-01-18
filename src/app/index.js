@@ -40,6 +40,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
             controller: 'RestrictedController',
         data: {roles: 'hacker'}
       }).
+      state('application', {
+            url: '/application',
+            templateUrl: 'app/application.html',
+            controller: 'ApplicationController',
+        data: {roles: 'exec'}
+      }).
       state('account-edit', {
         url: '/account/edit',
         templateUrl: 'app/account/edit.html',

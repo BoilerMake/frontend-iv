@@ -8,22 +8,22 @@ angular.module('app')
     $rootScope.testStyle = '';
 
 		function successAuth(res) {
-			if ('error' in res.meta) {
-				ngToast.create({
-					className: 'danger',
-					content: '<span>Uh oh! ' + res.meta.error.message + '</span>'
-				});
+			// if error todo {
+				// ngToast.create({
+				// 	className: 'danger',
+				// 	content: '<span>Uh oh! ' + res.meta.error.message + '</span>'
+				// });
 
-				$scope.login_error = true;
-				return;
-			}
+				// $scope.login_error = true;
+				// return;
+			//}
 
 			console.log(res);
 			console.log("YAY");
 
-			$localStorage.token = res.data.token;
+			$localStorage.token = res.token;
 			Restangular.setBaseUrl(urls.BASE_API);
-			var auth_header = 'Bearer ' + res.data.token;
+			var auth_header = 'Bearer ' + res.token;
 			Restangular.setDefaultHeaders({
 				Authorization: auth_header
 			});
@@ -33,7 +33,7 @@ angular.module('app')
 
 			Restangular.one('users/me').get().then(function(data) {
 				console.log(data);
-				$localStorage.me = data.data;
+				$localStorage.me = data;
 				$location.path('account');
 			});
 

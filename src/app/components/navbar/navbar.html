@@ -7,7 +7,17 @@
     </div>
 
     <div class="" id="bs-example-navbar-collapse-1">
+      <ul>
         <li ng-class="{ active: isActive('/admin')}" ng-show="hasRole('admin')" class="dropdown" dropdown>
+          <a href="" class="dropdown-toggle" dropdown-toggle>Admin</a>
+          <ul class="dropdown-menu" dropdown-menu>
+            <li><a ui-sref="admin">Dashboard</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Data</li>
+            <li><a ui-sref="admin-users">Users</a></li>
+          </ul>
+        </li>
+        <li ng-class="{ active: isActive('/admin')}" ng-show="hasRole('hacker')" class="dropdown" dropdown>
           <a href="" class="dropdown-toggle" dropdown-toggle>Admin</a>
           <ul class="dropdown-menu" dropdown-menu>
             <li><a ui-sref="admin">Dashboard</a></li>

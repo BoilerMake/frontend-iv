@@ -6,11 +6,11 @@ angular.module('app')
     var auth_header = 'Bearer '+$localStorage.token;
     RestangularConfigurer.setDefaultHeaders({Authorization: auth_header});
 
-    RestangularConfigurer.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
-      var extractedData;
-      extractedData = data.data;
-      return extractedData;
-    });
+    // RestangularConfigurer.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+    //   var extractedData;
+    //   extractedData = data.data;
+    //   return extractedData;
+    // });
   });
 })
 
@@ -66,7 +66,7 @@ angular.module('app')
           signin: function (data, success, error) {
             $http({
               method: 'POST',
-              url: urls.BASE_API + '/tokens',
+              url: urls.BASE_API + '/auth',
               data: $.param(data),
               headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(success).error(error);
