@@ -42,9 +42,9 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
       }).
       state('application', {
             url: '/application',
-            templateUrl: 'app/application.html',
+            templateUrl: 'app/account/application.html',
             controller: 'ApplicationController',
-        data: {roles: 'exec'}
+        data: {roles: 'hacker'}
       }).
       state('account-edit', {
         url: '/account/edit',
