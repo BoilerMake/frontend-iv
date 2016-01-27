@@ -7,35 +7,32 @@
     </div>
 
     <div class="" id="bs-example-navbar-collapse-1">
-      <ul>
+    
+    <ul class="nav navbar-nav">
+        <li ng-class="{ active: isActive('/account')}" ng-show="hasRole('hacker')">
+          <a ui-sref="account">Home</a>
+        </li>
+        <li ng-class="{ active: isActive('/application')}" ng-show="hasRole('hacker')">
+          <a ui-sref="application">Application</a>
+        </li>
         <li ng-class="{ active: isActive('/admin')}" ng-show="hasRole('admin')" class="dropdown" dropdown>
           <a href="" class="dropdown-toggle" dropdown-toggle>Admin</a>
           <ul class="dropdown-menu" dropdown-menu>
             <li><a ui-sref="admin">Dashboard</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Data</li>
-            <li><a ui-sref="admin-users">Users</a></li>
-          </ul>
-        </li>
-        <li ng-class="{ active: isActive('/admin')}" ng-show="hasRole('hacker')" class="dropdown" dropdown>
-          <a href="" class="dropdown-toggle" dropdown-toggle>Admin</a>
-          <ul class="dropdown-menu" dropdown-menu>
-            <li><a ui-sref="admin">Dashboard</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Data</li>
-            <li><a ui-sref="admin-users">Users</a></li>
           </ul>
         </li>
       </ul>
 
+
+
       <ul class="nav navbar-nav navbar-right">
         <li ng-class="{ active: isActive('/account')}" ng-show="loggedIn" class="dropdown" dropdown>
-           <a href="" class="dropdown-toggle" dropdown-toggle>{{ me.first_name }}</a>
+           <a href="" class="dropdown-toggle" dropdown-toggle>Hello, {{ me.first_name }}!</a>
             <ul class="dropdown-menu" dropdown-menu style="margin-right:5px">
               <li><a ng-click="logout()">Sign Out</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a ui-sref="account-edit">Preferences</a></li>
-              <li><a ui-sref="account">Home</a></li>
+				<!--			<li role="separator" class="divider"></li>
+				 			<li><a ui-sref="account-edit">Preferences</a></li>
+              <li><a ui-sref="account">Home</a></li> -->
             </ul>
         </li>
         <li ng-hide="loggedIn">

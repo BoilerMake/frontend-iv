@@ -1,9 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500,700,300|Source+Sans+Pro:200,300,400;);
-/*colors*/
+/*
+ * colors
+ */
 $grey-color: #737170;
 $gold: #B1810B;
 $dark-grey: #555555;
 $off-white: #f2f2f2;
+
+html, body {
+  height: 100%;
+  background-color:$off-white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
 
 .btn-primary
 {
@@ -11,7 +20,9 @@ $off-white: #f2f2f2;
 	border-color: white;
 }
 
-/* custom navbar*/
+/**
+*  Overrides for the boostrap navbar
+*/
 .navbar-custom {
   background-color: white; }
 
@@ -42,16 +53,9 @@ $off-white: #f2f2f2;
   background-color: $dark-grey;
 	color:white; }
 
-html, body {
-  height: 100%;
-	background-color:$off-white;
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-
-
-
-/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
-   all your sass files automatically */
+/* Do not remove this comments below.
+ * It's the markers used by gulp-inject to inject all your sass 
+ * files automatically 
+ */
 // injector
 // endinjector
