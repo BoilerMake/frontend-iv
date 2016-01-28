@@ -15,10 +15,10 @@
                 <li ng-class="{ active: isActive('/application')}" ng-show="hasRole('hacker')">
                     <a ui-sref="application">Application</a>
                 </li>
-                <li ng-class="{ active: isActive('/admin')}" ng-show="hasRole('admin')" class="dropdown" dropdown>
-                    <a href="" class="dropdown-toggle" dropdown-toggle>Admin</a>
+                <li ng-class="{ active: isActive('/exec')}" ng-show="hasRole('exec')" class="dropdown" dropdown>
+                    <a href="" class="dropdown-toggle" dropdown-toggle>Exec</a>
                     <ul class="dropdown-menu" dropdown-menu>
-                        <li><a ui-sref="admin">Dashboard</a>
+                        <li><a ui-sref="exec">Dashboard</a>
                         </li>
                     </ul>
                 </li>

@@ -1,0 +1,18 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+<h1>Exec Dashboard</h1>
+
+<h2>Hackers</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+      <th>School</th>
+      <th>Application Complete?</th>
+    </tr>
+    <tr ng-repeat="each in hackers">
+      <td>{{each.first_name}} {{each.last_name}}</td>
+      <td>{{each.application.school.name}}</td>
+      <td>{{each.application.completed}}</td>
+    </tr>
+  </table>
+</div>

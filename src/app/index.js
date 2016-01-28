@@ -51,6 +51,15 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         templateUrl: 'app/account/edit.html',
         controller: 'AccountDetailController',
         data: {roles: 'hacker'}
+      }).
+    /**
+     * EXEC SECTION
+     */
+     state('exec', {
+        url: '/exec',
+        templateUrl: 'app/exec/exec-dash.html',
+        controller: 'ExecController',
+        data: {roles: 'exec'}
       });
 
     $locationProvider.html5Mode(true);
