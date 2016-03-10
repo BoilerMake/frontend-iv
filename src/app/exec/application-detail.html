@@ -1,0 +1,49 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container-fluid">
+    <h1>Exec Dashboard - Application Detail - #{{app_id}}</h1>
+    <button type="button" class="btn btn-primary" ng-click="skipApplication()">Skip</button>
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+          <!--panel 1-->
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Basic Info</h3>
+              </div>
+              <div class="panel-body">
+                <p>name: {{application.user.first_name}} {{application.user.last_name}}</p>
+                <p>school: {{application.school.name}}</p>
+              </div>
+          </div>
+          <!--panel 2-->
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Github Info</h3>
+              </div>
+              <div class="panel-body">
+                <p>TODO</p>
+              </div>
+          </div>
+          <pre>{{application | json}}</pre>
+        </div>
+        <div class="col-md-4">
+          <!--panel-->
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Rating</h3>
+              </div>
+              <div class="panel-body">
+                <p ng-if="application.myrating.rating">My rating: {{application.myrating.rating}}</p>
+                <button type="button" class="btn btn-primary" ng-click="rankApplication(1)">1</button>
+                <button type="button" class="btn btn-primary" ng-click="rankApplication(2)">2</button>
+                <button type="button" class="btn btn-primary" ng-click="rankApplication(3)">3</button>
+
+              </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+            <object data="http://nickysemenza.com/files/nickysemenza_resume.pdf" width="100%" height="800px">
+        </div>
+    </div>
+
+</div>

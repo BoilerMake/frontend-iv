@@ -55,6 +55,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
     /**
      * EXEC SECTION
      */
+     state('exec-application-detail', {
+        url: '/exec/applications/:id',
+        templateUrl: 'app/exec/application-detail.html',
+        controller: 'ExecApplicationDetailController',
+        data: {roles: 'exec'}
+      }).
      state('exec', {
         url: '/exec',
         templateUrl: 'app/exec/exec-dash.html',
