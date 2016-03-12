@@ -66,6 +66,24 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         templateUrl: 'app/exec/exec-dash.html',
         controller: 'ExecController',
         data: {roles: 'exec'}
+      }).
+     state('exec-users', {
+        url: '/exec/users',
+        templateUrl: 'app/exec/exec-users.html',
+        controller: 'ExecUsersController',
+        data: {roles: 'exec'}
+      }).
+     state('exec-hackers', {
+        url: '/exec/hackers',
+        templateUrl: 'app/exec/exec-hackers.html',
+        controller: 'ExecHackersController',
+        data: {roles: 'exec'}
+      }).
+     state('exec-teams', {
+        url: '/exec/teams',
+        templateUrl: 'app/exec/exec-teams.html',
+        controller: 'ExecTeamsController',
+        data: {roles: 'exec'}
       });
 
     $locationProvider.html5Mode(true);

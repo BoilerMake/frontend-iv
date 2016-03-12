@@ -1,0 +1,19 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+<h1>Exec Dashboard - Teams</h1>
+<h2>Hackers</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+      <th># of reviews</th>
+    </tr>
+    <tr ng-repeat="each in teams">
+      <td>
+        <li ng-repeat="u in each.hd">
+          {{u.first_name}} {{u.last_name}}
+        </li>
+      </td>
+      <td><pre>{{each.overall_ratings | json}}</pre></td>
+    </tr>
+  </table>
+</div>
