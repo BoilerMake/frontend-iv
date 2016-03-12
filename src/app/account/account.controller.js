@@ -25,8 +25,8 @@ angular.module('app')
       })
     }
   }])
-  .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout',
-   function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout) {
+  .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http',
+   function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http) {
     
     var fetchData = function()
     {
@@ -41,6 +41,15 @@ angular.module('app')
     $scope.isSaved = true;
     $scope.lastSaved = new Date();
     var timeout = null;
+
+     $scope.schoolSearch = function(name) {
+    return ApiRest.one('schools').get({filter: name}).then(function(data) {
+      console.log(data);
+      return data;
+    });
+  };
+
+
     var saveApplication = function(reload)
     {
       ApiRest.all('users/me').customPUT($scope.me).then(function(data)
@@ -73,6 +82,14 @@ angular.module('app')
     }
   };
   $scope.$watch('me', debounceSaveUpdates, true);
+  $scope.$watch('selectedSchool', function(newval,oldval) {
+    if($scope.me===undefined)
+      return;
+    if($scope.me.application===undefined)
+      return;
+    $scope.me.application.school_id=$scope.selectedSchool.id;
+    saveApplication(true);
+  }, true);
 
     $scope.updateApplication = function(reload)
     {
