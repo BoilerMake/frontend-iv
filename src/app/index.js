@@ -1,7 +1,7 @@
 'use strict';
 // create the module and name it app
 // also include ngRoute for all our routing needs
-var app = angular.module('app', ['ngStorage','ui.router','ngAnimate','restangular','ui.bootstrap','ngToast']);
+var app = angular.module('app', ['ngStorage','ui.router','ngAnimate','restangular','ui.bootstrap','ngToast','angularMoment']);
 
 // configure our routes
 app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProvider', function ($httpProvider,$locationProvider, $urlRouterProvider,$stateProvider) {
