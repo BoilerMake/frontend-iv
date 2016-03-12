@@ -78,15 +78,10 @@
             </div>
 
             <hr>
-            last saved <span am-time-ago="lastSaved"></span>
+            <p>Changes are automatically saved; last saved <span am-time-ago="lastSaved"></span>.</p>
+            <p ng-if="isSaved">No unsaved changes.</p>
+            
             <br>
-            are latest change saved? {{isSaved}}
-            <br>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-<!--                 <button ng-click="updateApplication()" class="btn btn-primary pull-right">Save</button>
- -->              </div>
-            </div>
           </form>
         </div>
       </div>
@@ -98,21 +93,25 @@
         </div>
         <div class="panel-body">
           <form class="form-horizontal">
-            <!-- <pre>{{me.application.team | json}}</pre> -->
              <b>Your team code is: {{me.application.team.code}}</b>
-             <p>Team members:</p>
-            <li ng-repeat="h in me.application.team.hackers">{{h.first_name}} {{h.last_name}} - {{h.email}}</li>
+            
             <div class="form-group">
-              <label class="col-sm-3 control-label">Change:</label>
-                <div class="col-sm-9">
+              <div class="col-md-6">
+                 <p>Team members:</p>
+                  <li ng-repeat="h in me.application.team.hackers">{{h.email}}</li>
+              </div>
+                <div class="col-md-6">
                   <input type="text" ng-model="me.application.team_code" class="form-control" placeholder="enter a code">
+                  <br>
+                  <button ng-click="leaveTeam()" class="btn btn-primary pull-right">Leave Current Team</button>
+                <button ng-click="updateApplication(true)" class="btn btn-primary pull-right">Join Team</button>
                 </div>
             </div>
             <hr>
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button ng-click="updateApplication()" class="btn btn-primary pull-right">Save</button>
+                
               </div>
             </div>
           </form>

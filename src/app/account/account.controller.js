@@ -46,10 +46,10 @@ angular.module('app')
       ApiRest.all('users/me').customPUT($scope.me).then(function(data)
       {
         $scope.lastSaved = new Date();
-        ngToast.create({
-          className: 'success',
-          content: '<a>Application Saved!</a>'
-        });
+        // ngToast.create({
+        //   className: 'success',
+        //   content: '<a>Application Saved!</a>'
+        // });
         if(reload)
           fetchData();
         $scope.isSaved=true;
@@ -65,9 +65,7 @@ angular.module('app')
       timeout = $timeout(function () {
         if(newVal.application.team_code!=undefined && oldVal.application.team_code!=undefined) 
         {
-          if(newVal.application.team_code != oldVal.application.team_code)
-            saveApplication(true);
-          else
+          if(!(newVal.application.team_code != oldVal.application.team_code))
             saveApplication(false);
         }
         saveApplication(false);
@@ -76,8 +74,16 @@ angular.module('app')
   };
   $scope.$watch('me', debounceSaveUpdates, true);
 
-    $scope.updateApplication = function()
+    $scope.updateApplication = function(reload)
     {
-      saveApplication();
+      saveApplication(reload);
+    }
+    $scope.leaveTeam = function()
+    {
+      ApiRest.all('users/me/leaveteam').customPUT().then(function(data)
+      {
+        console.log(data);
+        saveApplication(true);
+      });
     }
   }]);
