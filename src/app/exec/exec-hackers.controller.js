@@ -1,8 +1,10 @@
 'use strict';
 angular.module('app')
-.controller('ExecController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$state',
+.controller('ExecHackersController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$state',
  function ($rootScope, $scope,  ApiRest,ngToast, urls, $state) {
-
+  ApiRest.one('execs/hackers').get().then(function(data) {
+      $scope.hackers = data;
+    });
   $scope.rateApplications = function()
   {
   	ApiRest.one('execs/applications/next').get().then(function(data) {
@@ -12,4 +14,4 @@ angular.module('app')
         	$state.go('exec');
     });
   };
-}]);
+  }]);

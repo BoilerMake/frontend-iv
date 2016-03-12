@@ -2,19 +2,5 @@
 <div class="container">
 <h1>Exec Dashboard</h1>
 <button type="button" class="btn btn-primary" ng-click="rateApplications()">Start Rating</button>
-<h2>Hackers</h2>
-<table class="table table-bordered table-striped">
-    <tr>
-      <th>Name</th>
-      <th>School</th>
-      <th>Application Complete?</th>
-      <th># of reviews</th>
-    </tr>
-    <tr ng-repeat="each in hackers">
-      <td>{{each.first_name}} {{each.last_name}}</td>
-      <td>{{each.application.school.name}}</td>
-      <td><a ui-sref="exec-application-detail({id: each.application.id})">{{each.application.completed}}</a></td>
-      <td>{{each.application.reviews}}</td>
-    </tr>
-  </table>
+
 </div>

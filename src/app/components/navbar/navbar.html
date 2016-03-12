@@ -18,8 +18,10 @@
                 <li ng-class="{ active: isActive('/exec')}" ng-show="hasRole('exec')" class="dropdown" dropdown>
                     <a href="" class="dropdown-toggle" dropdown-toggle>Exec</a>
                     <ul class="dropdown-menu" dropdown-menu>
-                        <li><a ui-sref="exec">Dashboard</a>
-                        </li>
+                        <li><a ui-sref="exec">Dashboard</a></li>
+                        <li><a ui-sref="exec-users">Users</a></li>
+                        <li><a ui-sref="exec-hackers">Hackers</a></li>
+                        <li><a ui-sref="exec-teams">Teams</a></li>
                     </ul>
                 </li>
             </ul>
