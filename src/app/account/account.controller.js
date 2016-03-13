@@ -55,10 +55,6 @@ angular.module('app')
       ApiRest.all('users/me').customPUT($scope.me).then(function(data)
       {
         $scope.lastSaved = new Date();
-        // ngToast.create({
-        //   className: 'success',
-        //   content: '<a>Application Saved!</a>'
-        // });
         if(reload)
           fetchData();
         $scope.isSaved=true;
@@ -66,7 +62,11 @@ angular.module('app')
     }
 
     var debounceSaveUpdates = function(newVal, oldVal) {
-      $scope.isSaved=false;
+    if($scope.me===undefined)
+      return;
+    if($scope.me.application===undefined)
+      return;
+    $scope.isSaved=false;
     if (newVal != oldVal) {
       if (timeout) {
         $timeout.cancel(timeout)
@@ -77,19 +77,27 @@ angular.module('app')
           if(!(newVal.application.team_code != oldVal.application.team_code))
             saveApplication(false);
         }
+        $scope.me.application.fromzip = $scope.me.application.school.zip;
         saveApplication(false);
       }, 1000);  // 1000 = 1 second
     }
   };
   $scope.$watch('me', debounceSaveUpdates, true);
-  $scope.$watch('selectedSchool', function(newval,oldval) {
-    if($scope.me===undefined)
-      return;
-    if($scope.me.application===undefined)
-      return;
-    $scope.me.application.school_id=$scope.selectedSchool.id;
-    saveApplication(true);
-  }, true);
+  // $scope.$watch('selectedSchool', function(newval,oldval) {
+  //   if($scope.me===undefined)
+  //     return;
+  //   if($scope.me.application===undefined)
+  //     return;
+  //   $scope.me.application.school_id=$scope.selectedSchool.id;
+  //   saveApplication(true);
+  // });
+
+
+    $scope.travellingFrom =1;
+    $scope.changeTravellingFrom = function(mode)
+    {
+      $scope.travellingFrom = mode;
+    };
 
     $scope.updateApplication = function(reload)
     {
