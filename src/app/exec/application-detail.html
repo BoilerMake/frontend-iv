@@ -26,7 +26,7 @@
           </div>
           <pre>{{application | json}}</pre>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <!--panel-->
           <div class="panel panel-default">
               <div class="panel-heading">
@@ -41,8 +41,8 @@
               </div>
           </div>
         </div>
-        <div class="col-md-5">
-            <object data="http://nickysemenza.com/files/nickysemenza_resume.pdf" width="100%" height="800px">
+        <div class="col-md-6" > 
+            <object ng-if="application.resume_uploaded==1" ng-attr-data="{{application.resumeURL}}" width="100%" height="800px">
         </div>
     </div>
 
