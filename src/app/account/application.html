@@ -40,7 +40,7 @@
                  <input type="text" ng-model="me.application.school" typeahead="school as school.name for school in schoolSearch($viewValue)" class="form-control">
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-if="me.application.school.id">
               <label class="col-sm-8 control-label">Will you be travelling from {{me.application.school.name}}?</label>
               <div class="col-sm-4">
                  <div class="btn-group btn-toggle" data-toggle="buttons">
@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group" ng-if="travellingFrom==2">
+            <div class="form-group" ng-if="travellingFrom==2 && me.application.school.id">
               <label class="col-sm-4 control-label">What zip code will you be travelling from?</label>
               <div class="col-sm-8">
                 <input type="text" ng-model="me.application.fromzip" class="form-control">
@@ -61,8 +61,13 @@
             </div>
             <div class="form-group">
               <label class="col-sm-4 control-label">Résumé</label>
-              <div class="col-sm-8">
-                <p class="form-control-static">TODO</p>
+              <div class="col-sm-2">
+                <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'">Upload </div>
+              </div>
+              <div class="col-sm-6">
+               <progressbar ng-if="isUploading" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}}%</span></progressbar>
+               <br>
+               <p ng-if="me.application.resume_uploaded">succesfully uploaded: <b>{{me.application.resume_filename}}</b></p>
               </div>
             </div>
             <div class="form-group">
@@ -74,13 +79,13 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">Essay 1</label>
               <div class="col-sm-8">
-                <textarea ng-model="me.application.essay1" class="form-control"></textarea>
+                <textarea ng-model="me.application.essay1" class="form-control" rows="6"></textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-4 control-label">Essay 2</label>
               <div class="col-sm-8">
-                <textarea ng-model="me.application.essay2" class="form-control"></textarea>
+                <textarea ng-model="me.application.essay2" class="form-control" rows="6"></textarea>
               </div>
             </div>
             <div class="form-group">

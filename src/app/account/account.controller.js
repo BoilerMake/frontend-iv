@@ -25,8 +25,8 @@ angular.module('app')
       })
     }
   }])
-  .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http',
-   function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http) {
+  .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http','Upload',
+   function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http, Upload) {
     
     var fetchData = function()
     {
@@ -83,15 +83,6 @@ angular.module('app')
     }
   };
   $scope.$watch('me', debounceSaveUpdates, true);
-  // $scope.$watch('selectedSchool', function(newval,oldval) {
-  //   if($scope.me===undefined)
-  //     return;
-  //   if($scope.me.application===undefined)
-  //     return;
-  //   $scope.me.application.school_id=$scope.selectedSchool.id;
-  //   saveApplication(true);
-  // });
-
 
     $scope.travellingFrom =1;
     $scope.changeTravellingFrom = function(mode)
@@ -111,4 +102,38 @@ angular.module('app')
         saveApplication(true);
       });
     }
+
+    ApiRest.one('users/me/resumePUT').get().then(function(data) {
+      $scope.resume_PUT=data;
+    });
+    $scope.dynamic=0;
+    $scope.isUploading=false;
+    $scope.upload = function (file) {
+      if(file==null)
+        {
+          ngToast.create({
+          className: 'warning',
+          content: 'Error with file upload! Make sure it is a pdf!'
+          });
+          return;
+        }
+       $scope.isUploading=true; 
+      Upload.upload({
+          url: $scope.resume_PUT,
+          data: {file: file},
+          method: 'PUT'
+      }).then(function (resp) {
+          console.log('Success');
+          $scope.me.application.resume_uploaded=true;
+          $scope.me.application.resume_filename=file.name;
+          $scope.isUploading=false;
+          saveApplication(false);
+      }, function (resp) {
+          console.log('Error status: ' + resp.status);
+      }, function (evt) {
+          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          $scope.dynamic=progressPercentage;
+          console.log('progress: ' + progressPercentage + '% ');
+      });
+    };
   }]);
