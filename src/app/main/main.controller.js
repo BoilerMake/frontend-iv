@@ -4,22 +4,16 @@ angular.module('app')
 
 .controller('HomeController', ['$rootScope', '$scope', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
 	function($rootScope, $scope, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
-    $rootScope.fbURL = urls.BASE_API+"/fb/login";
-    $rootScope.testStyle = '';
 
 		function successAuth(res) {
-			// if error todo {
-				// ngToast.create({
-				// 	className: 'danger',
-				// 	content: '<span>Uh oh! ' + res.meta.error.message + '</span>'
-				// });
-
-				// $scope.login_error = true;
-				// return;
-			//}
-
 			console.log(res);
-			console.log("YAY");
+			if(!res.token) {
+				ngToast.create({
+					className: 'danger',
+					content: '<span>Uh oh!</span>'
+				});
+				return;
+			}
 
 			$localStorage.token = res.token;
 			Restangular.setBaseUrl(urls.BASE_API);
@@ -46,6 +40,10 @@ angular.module('app')
 			};
 
 			Auth.signin(formData, successAuth, function() {
+				ngToast.create({
+					className: 'danger',
+					content: '<span>Uh oh! Check your credentials!</span>'
+				});
 			});
 		};
 
