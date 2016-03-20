@@ -27,13 +27,16 @@ angular.module('app')
   }])
   .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http','Upload',
    function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http, Upload) {
-    
+    $scope.pageLoaded = false;
     var fetchData = function()
     {
       ApiRest.one('users/me').get().then(function(data) {
       $scope.me = data;
       ApiRest.one('users/me/application').get().then(function(data) {
-        $scope.me.application = data;
+        $scope.pageLoaded = true;
+        $scope.me.application = data.application;
+        $scope.phase= data.phase;
+        $scope.validation = data.validation;
       });
     });
     }
@@ -54,6 +57,7 @@ angular.module('app')
     {
       ApiRest.all('users/me').customPUT($scope.me).then(function(data)
       {
+        $scope.validation = data.validation;
         $scope.lastSaved = new Date();
         if(reload)
           fetchData();

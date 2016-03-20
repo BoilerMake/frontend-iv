@@ -33,6 +33,7 @@
                 <input type="text" ng-model="me.phone" class="form-control">
               </div>
             </div>
+            <div id="phase2" ng-show="phase >= 2">
             <hr />
             <div class="form-group">
               <label class="col-sm-4 control-label">School</label>
@@ -122,6 +123,8 @@
                 <input type="text" ng-model="me.application.major" class="form-control">
               </div>
             </div>
+          </div><!--end phase 2 div-->
+          <div id="phase3" ng-show="phase >= 3">
             <hr>
             [we should ask the following after we accept hackers]
             <div class="form-group">
@@ -152,18 +155,24 @@
                 </select>
               </div>
             </div>
-
+          </div><!--end phase 3 div-->
             <hr>
+
+            <div class="alert alert-danger" ng-hide="validation.valid || !pageLoaded" role="alert">
+              <p>Your application is not complete! :(</p>
+              <li ng-repeat="reason in validation.reasons">{{reason}}</li>
+            </div>
+            <p ng-show="validation.valid">Your application is complete! yay!</p>
+
             <p>Changes are automatically saved; last saved <span am-time-ago="lastSaved"></span>.</p>
-            <p ng-if="isSaved">No unsaved changes.</p>
-            
+            <p ng-if="isSaved">No unsaved changes.</p>        
             <br>
           </form>
         </div>
       </div>
 
 
-      <div class="panel panel-default">
+      <div class="panel panel-default" ng-show="phase >= 2">
         <div class="panel-heading">
           <h3 class="panel-title">My Team</h3>
         </div>
