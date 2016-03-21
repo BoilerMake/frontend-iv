@@ -14,8 +14,8 @@ angular.module('app')
   });
 })
 
-.factory('Bulk', ['$http', '$localStorage', 'urls',
- function ($http, $localStorage, urls) {
+.factory('Bulk', ['$http', '$localStorage', 'urls','ApiRest',
+ function ($http, $localStorage, urls, ApiRest) {
     
   function clear() {
     $localStorage.bulk = [];
@@ -29,7 +29,8 @@ angular.module('app')
   }
   function add(h)
   {
-    $localStorage.bulk.push(h);
+    if($localStorage.bulk.indexOf(h) == -1)
+      $localStorage.bulk.push(h);
     return $localStorage.bulk;
   }
   function remove(h)
@@ -38,8 +39,17 @@ angular.module('app')
     $localStorage.bulk.splice(index,1);
     return $localStorage.bulk;
   }
+  function refresh()
+  {
+    var ids = $localStorage.bulk.map(function(a) {return a.id;});
+    ApiRest.all('execs/hackers/bulk').customPOST(ids).then(function(data) {
+      $localStorage.bulk = data;
+    });
+    return $localStorage.bulk;
+  }
   return {
     clear: clear,
+    refresh: refresh,
     get: get,
     add: add,
     remove: remove

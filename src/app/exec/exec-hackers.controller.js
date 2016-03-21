@@ -16,7 +16,7 @@ angular.module('app')
     });
   };
 
-  $scope.bulk = Bulk.get();
+  $scope.bulk = Bulk.refresh();
   $scope.addToBulk = function(h)
   {
     $scope.bulk = Bulk.add(h);
@@ -28,5 +28,9 @@ angular.module('app')
   $scope.clearBulk = function()
   {
     $scope.bulk = Bulk.clear();
+  };
+  $scope.refreshBulk = function()
+  {
+    $scope.bulk = Bulk.refresh();
   };
   }]);
