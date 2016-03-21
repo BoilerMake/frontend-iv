@@ -14,6 +14,40 @@ angular.module('app')
   });
 })
 
+.factory('Bulk', ['$http', '$localStorage', 'urls',
+ function ($http, $localStorage, urls) {
+    
+  function clear() {
+    $localStorage.bulk = [];
+    return [];
+  }
+  function get()
+  {
+    if($localStorage.bulk === undefined)
+      $localStorage.bulk = [];
+    return $localStorage.bulk;
+  }
+  function add(h)
+  {
+    $localStorage.bulk.push(h);
+    return $localStorage.bulk;
+  }
+  function remove(h)
+  {
+    var index = $localStorage.bulk.indexOf(h);
+    $localStorage.bulk.splice(index,1);
+    return $localStorage.bulk;
+  }
+  return {
+    clear: clear,
+    get: get,
+    add: add,
+    remove: remove
+  };
+
+ }])
+
+
 .factory('Auth', ['$http', '$localStorage', 'urls', function ($http, $localStorage, urls) {
       function urlBase64Decode(str) {
           var output = str.replace('-', '+').replace('_', '/');
@@ -138,6 +172,23 @@ angular.module('app')
       return JSON.parse(jsonstring);
     };
   })
+  .filter('decision', function ()
+  {
+    return function (d)
+    {
+      d = parseInt(d);
+      switch(d) {
+      case 1:
+          return "reject";
+      case 2:
+          return "waitlist";
+      case 3:
+          return "accept";
+      default:
+        return d;
+    }
+    };
+  })
 /**
  * Configures ngToast
  */
@@ -172,7 +223,6 @@ angular.module('app')
  * Access Control for routes
  */
 .run(['$rootScope', '$window','Auth','$state','$location', '$localStorage', function($rootScope, $window, Auth,$state,$location, $localStorage) {
-  $rootScope.cameFromCL=($location.search().ref=="cl");
   $rootScope.$on('$stateChangeStart', function(e, toState) {
     //toParams, fromState, fromParams are useable
     var permissions;

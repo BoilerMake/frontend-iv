@@ -1,20 +1,60 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
-<div class="container">
+<div class="container-fluid">
 <h1>Exec Dashboard - Hackers</h1>
 <button type="button" class="btn btn-primary" ng-click="rateApplications()">Start Rating</button>
 <h2>Hackers</h2>
+
+
+<div class="row">
+        <div class="col-md-7">
 <table class="table table-bordered table-striped">
     <tr>
+      <th></th>
       <th>Name</th>
       <th>School</th>
       <th>Application Complete?</th>
-      <th># of reviews</th>
+      <th>ratings</th>
+      <th>decision</th>
     </tr>
     <tr ng-repeat="each in hackers">
+      <td>
+        <button type="button" class="btn btn-primary" ng-click="addToBulk(each)">Add to bulk</button>
+      </td>
       <td>{{each.first_name}} {{each.last_name}}</td>
       <td>{{each.application.school.name}}</td>
       <td><a ui-sref="exec-application-detail({id: each.application.id})">{{each.application.completed}}</a></td>
       <td><pre>{{each.application.rating_info | json}}</pre></td>
+      <td>{{each.application.decision | decision}}</td>
     </tr>
   </table>
+
+</div>
+<div class="col-md-5">
+
+  <h3>bulk selection</h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>School</th>
+      <th>Application Complete?</th>
+      <th>avg review</th>
+      <th>decision</th>
+    </tr>
+    <tr ng-repeat="each in bulk">
+      <td>
+        <button type="button" class="btn btn-primary" ng-click="removeFromBulk(each)">Remove</button>
+      </td>
+     <td>{{each.first_name}} {{each.last_name}}</td>
+      <td>{{each.application.school.name}}</td>
+      <td><a ui-sref="exec-application-detail({id: each.application.id})">{{each.application.completed}}</a></td>
+      <td>{{each.application.rating_info.average}}</td>
+      <td>{{each.application.decision | decision}}</td>
+    </tr>
+  </table>
+  <button type="button" class="btn btn-primary" ng-click="clearBulk()">Clear</button>
+
+</div>
+{{test1}}
+{{test2}}
 </div>
