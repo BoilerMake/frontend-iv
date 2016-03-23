@@ -36,6 +36,7 @@ angular.module('app')
         $scope.pageLoaded = true;
         $scope.me.application = data.application;
         $scope.phase= data.phase;
+        $scope.teamsEnabled= data.teamsEnabled;
         $scope.validation = data.validation;
       });
     });
