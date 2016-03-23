@@ -33,4 +33,16 @@ angular.module('app')
   {
     $scope.bulk = Bulk.refresh();
   };
+  $scope.acceptBulk = function()
+  {
+    $scope.bulk = Bulk.updateHackers(3);
+  };
+  $scope.waitlistBulk = function()
+  {
+    $scope.bulk = Bulk.updateHackers(2);
+  };
+  $scope.denyBulk = function()
+  {
+    $scope.bulk = Bulk.updateHackers(1);
+  };
   }]);
