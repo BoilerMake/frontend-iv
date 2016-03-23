@@ -20,6 +20,17 @@ html, body {
 	border-color: white;
 }
 
+.landing-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
 /**
 *  Overrides for the boostrap navbar
 */

@@ -15,6 +15,11 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
             templateUrl: 'app/main/landing.html',
             controller: 'HomeController'
         }).
+        state('about', {
+            url: '/about',
+            templateUrl: 'app/main/about.html',
+            controller: 'HomeController'
+        }).
         state('signin', {
             url: '/signin',
             templateUrl: 'app/main/signin.html',
