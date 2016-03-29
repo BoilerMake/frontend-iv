@@ -9,8 +9,8 @@
     </tr>
     <tr ng-repeat="each in teams">
       <td>
-        <li ng-repeat="u in each.hd">
-          {{u.first_name}} {{u.last_name}}
+        <li ng-repeat="u in each.hackers_detail">
+          {{u.first_name}} {{u.last_name}} - {{u.application.school.name}} - {{u.application.decision | decision}}
         </li>
       </td>
       <td><pre>{{each.overall_ratings | json}}</pre></td>
