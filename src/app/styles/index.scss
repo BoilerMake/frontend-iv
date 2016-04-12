@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,700,300|Source+Sans+Pro:200,300,400;);
+/*
+ * colors
+ */
+$grey-color: #737170;
+$gold: #B1810B;
+$dark-grey: #555555;
+$off-white: #f2f2f2;
+
+html, body {
+  height: 100%;
+  background-color:$off-white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+.btn-primary
+{
+	background-color: $gold;
+	border-color: white;
+}
+
+.landing-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+/* Do not remove this comments below.
+ * It's the markers used by gulp-inject to inject all your sass 
+ * files automatically 
+ */
+// injector
+// endinjector

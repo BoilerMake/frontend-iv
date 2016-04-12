@@ -21,10 +21,13 @@ angular.module('app')
     $localStorage.bulk = [];
     return [];
   }
-  function get()
-  {
+  function init() {
     if($localStorage.bulk === undefined)
       $localStorage.bulk = [];
+  }
+  function get()
+  {
+    init();
     return $localStorage.bulk;
   }
   function add(h)
@@ -41,6 +44,7 @@ angular.module('app')
   }
   function refreshHackers()
   {
+    init();
     var ids = $localStorage.bulk.map(function(a) {return a.id;});
     ApiRest.all('execs/hackers/bulk').customPOST(ids).then(function(data) {
       $localStorage.bulk = data;
@@ -49,6 +53,7 @@ angular.module('app')
   }
   function updateHackers(newDecision)
   {
+    init();
     var ids = $localStorage.bulk.map(function(a) {return a.id;});
     ApiRest.all('execs/hackers/bulk').customPUT({hackers: ids, decision: newDecision})
     .then(function(data) {

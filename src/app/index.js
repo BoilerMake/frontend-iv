@@ -13,7 +13,7 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         .state('home', {
             url: '/',
             templateUrl: 'app/main/landing.html',
-            controller: 'HomeController'
+            controller: 'LandingController'
         }).
         state('about', {
             url: '/about',
