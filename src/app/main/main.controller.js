@@ -10,7 +10,7 @@ angular.module('app')
 			if(!res.token) {
 				ngToast.create({
 					className: 'danger',
-					content: '<span>Uh oh!</span>'
+					content: '<span>Uh oh! '+res.error+'</span>'
 				});
 				return;
 			}
