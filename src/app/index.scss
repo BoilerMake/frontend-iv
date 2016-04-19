@@ -2,6 +2,8 @@
 /*
  * colors
  */
+$white: #FFFFFF;
+$pink: #D6A4A4;
 $grey-color: #737170;
 $gold: #B1810B;
 $dark-grey: #555555;
@@ -9,26 +11,96 @@ $off-white: #f2f2f2;
 
 html, body {
   height: 100%;
-  background-color:$off-white;
-  font-family: 'Lato', sans-serif;
+  font-family: 'futura-pt', sans-serif;
   font-weight: 400;
+  color: white;
+  background-image: url('/assets/images/background.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.btn-primary
-{
-	background-color: $gold;
-	border-color: white;
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .landing-container {
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: center;
+  height: 100vh;
   justify-content: center;
-  -webkit-align-items: center;
   align-items: center;
   flex-direction: column;
-  -webkit-flex-direction: column;
+  animation: fadeUp 1s ease;
+
+  img {
+    width: 154px;
+    height: 123px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 60px;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  label {
+    margin-top: 24px;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .input-button {
+    width: 360px;
+    height: 40px;
+    padding: 5px 5px 5px 12px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba($white, 0.5);
+    border-radius: 8px;
+
+    input {
+      display: flex;
+      flex-grow: 1;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      background: none;
+      color: black;
+      margin-right: 5px;
+
+      &::placeholder {
+        color: $white;
+      }
+    }
+
+    button {
+      display: flex;
+      flex-grow: 0;
+      background-color: $pink;
+      color: white;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      font-size: 16px;
+      transition: all 0.25s ease;
+      padding: 0 5px;
+
+      &:hover {
+        background-color: darken($pink, 10%);
+      }
+    }
+  }
 }
 
 /* Do not remove this comments below.

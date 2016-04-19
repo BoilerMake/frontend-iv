@@ -1,10 +1,14 @@
 <!-- <div ng-include="'app/components/navbar/navbar.html'"></div> -->
 <div class="container">
 	<div class="landing-container">
-		<h3>COMING SOON :)</h3>
-		<img width="300px" src="/assets/images/bm_logo-03.png">
-		<a ui-sref="about">about</a>
-		<input type="text" class="form-control" ng-model="email" placeholder="enter your email for updates">
-		<button type="submit" class="btn btn-primary btn-block" ng-click="subscribe()">Subscribe</button>
+    <img src="/assets/images/hammers.png" alt="BoilerMake Logo">
+		<h1>BOILERMAKE</h1>
+    <p>FALL 2016</p>
+
+    <label for="emailSignup">Sign up for updates, we’ll keep you posted.</label>
+    <div class="input-button">
+  		<input type="text" ng-model="email" id="emailSignup" placeholder="Email Address">
+  		<button type="submit" ng-click="subscribe()">Subscribe</button>
+    </div>
 	</div>
 </div>
