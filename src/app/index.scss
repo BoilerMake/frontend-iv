@@ -38,6 +38,16 @@ html, body {
   align-items: center;
   flex-direction: column;
   animation: fadeUp 1s ease;
+  
+  a {
+    padding-top: 10px;
+    color: white;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: $off-white;
+  }
 
   img {
     width: 154px;
