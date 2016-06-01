@@ -103,10 +103,23 @@ html, body {
   }
 }
 
-
 .application-view-container {
   color: black;
   font-weight: 300;
+}
+
+.contact-links {
+
+  padding-top: 10px;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: $off-white;
+  }
 }
 
 /* Do not remove this comments below.
