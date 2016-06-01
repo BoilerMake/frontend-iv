@@ -57,6 +57,16 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller: 'AccountDetailController',
         data: {roles: 'hacker'}
       }).
+      state('forgot-password', {
+        url:'/forgot-password',
+        templateUrl:'app/main/forgot-password.html',
+        controller:'ForgotPasswordController'
+      }).
+      state('password-reset', {
+        url:'/pwr',
+        templateUrl:'app/main/password-reset.html',
+        controller:'PasswordResetController'
+      }).
     /**
      * EXEC SECTION
      */
