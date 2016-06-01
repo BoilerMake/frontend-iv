@@ -8,7 +8,7 @@ angular.module('app')
   .controller('AccountDetailController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls', function ($rootScope, $scope,  ApiRest,ngToast, urls) {
 
 
-  
+
     ApiRest.one('users/me').get().then(function(data) {
       $scope.me = data;
     });
@@ -66,7 +66,7 @@ angular.module('app')
       });
     }
 
-    var debounceSaveUpdates = function(newVal, oldVal) {
+  var debounceSaveUpdates = function(newVal, oldVal) {
     if($scope.me===undefined)
       return;
     if($scope.me.application===undefined)
@@ -77,22 +77,21 @@ angular.module('app')
         $timeout.cancel(timeout)
       }
       timeout = $timeout(function () {
-        if(newVal.application.team_code!=undefined && oldVal.application.team_code!=undefined) 
+        if(newVal.application.team_code!=undefined && oldVal.application.team_code!=undefined)
         {
           if(!(newVal.application.team_code != oldVal.application.team_code))
             saveApplication(false);
         }
-        $scope.me.application.fromzip = $scope.me.application.school.zip;
         saveApplication(false);
       }, 1000);  // 1000 = 1 second
     }
   };
   $scope.$watch('me', debounceSaveUpdates, true);
 
-    $scope.travellingFrom =1;
+    //$scope.me.application.isTravellingFromSchool =1;
     $scope.changeTravellingFrom = function(mode)
     {
-      $scope.travellingFrom = mode;
+      $scope.me.application.isTravellingFromSchool = mode;
     };
 
     $scope.updateApplication = function(reload)
@@ -122,7 +121,7 @@ angular.module('app')
           });
           return;
         }
-       $scope.isUploading=true; 
+       $scope.isUploading=true;
       Upload.upload({
           url: $scope.resume_PUT,
           data: {file: file},
