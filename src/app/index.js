@@ -70,6 +70,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
     /**
      * EXEC SECTION
      */
+    state('pod-list', {
+      url: '/exec/pods',
+      templateUrl: 'app/exec/pods.html',
+      controller: 'PodsController',
+      data: {roles: 'exec'}
+    }).
      state('exec-application-detail', {
         url: '/exec/applications/:id',
         templateUrl: 'app/exec/application-detail.html',

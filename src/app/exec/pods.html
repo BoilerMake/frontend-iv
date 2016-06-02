@@ -1,0 +1,54 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+  <h1>Exec Dashboard - Pod Control</h1>
+  <h2>Pods</h2>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Event</th>
+      <th>Scans</th>
+    </tr>
+    <tr ng-repeat="each in pods">
+      <td>{{each.id}}</td>
+      <td>{{each.name}}</td>
+      <td>{{each.event.event_name || "no event"}} <hr> active? {{each.event.active}}</td>
+      <td>{{each.scans.length}}</td>
+    </tr>
+  </table>
+  <hr>
+  <h2>Events</h2>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Active at pods</th>
+      <th>Scans</th>
+    </tr>
+    <tr ng-repeat="event in events">
+      <td>{{event.id}}</td>
+      <td>{{event.event_name}}</td>
+      <td><ul><li ng-repeat="pod in event.active_pods">{{pod.name}}</li></ul></td>
+      <td>{{event.scans.length}}</td>
+    </tr>
+  </table>
+  <hr>
+  <h2>Scans</h2>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>ID</th>
+      <th>success</th>
+      <th>message</th>
+      <th>User</th>
+      <th>Pod</th>
+    </tr>
+    <tr ng-repeat="scan in scans">
+      <td>{{scan.id}}</td>
+      <td>{{scan.success}}</td>
+      <td>{{scan.message}}</td>
+      <td>{{scan.user | userSlug}}</td>
+      <td>{{scan.pod.name}} ({{scan.pod.id}})</td>
+    </tr>
+  </table>
+
+</div>
