@@ -12,4 +12,8 @@ angular.module('app')
         	$state.go('exec');
     });
   };
+
+   ApiRest.one('interest').get().then(function(data) {
+     $scope.interest = data;
+   });
 }]);
