@@ -43,7 +43,7 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
             url: '/account',
             templateUrl: 'app/account/account.html',
             controller: 'RestrictedController',
-        data: {roles: 'hacker'}
+        data: {roles: 'users'}
       }).
       state('application', {
             url: '/application',

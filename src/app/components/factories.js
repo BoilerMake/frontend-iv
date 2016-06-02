@@ -270,10 +270,12 @@ angular.module('app')
     else
     {
       canAccess=Auth.hasRole(permissions);
-      if(Auth.hasRole('admin'))
+      if(Auth.hasRole('exec'))
       {
         canAccess=true;
       }
+      if(permissions=="users" && Auth.getRoles() != undefined)//allow logged in users if permission is 'users'
+        canAccess=true;
     }
     if(!canAccess)
     {
