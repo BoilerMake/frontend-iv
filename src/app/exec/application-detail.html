@@ -24,7 +24,7 @@
                 <p ng-if="application.github_summary.success">
                 <ul>
                   <li ng-repeat="s in application.github_summary.summary">
-                    <a href="{{s.url}}>">{{s.full_name}}</a> | <span style="text-transform: uppercase">{{s.language}}</span> <ul><li>{{s.description}}</li></ul>
+                    <a href="{{s.url}}" target="_blank">{{s.full_name}}</a> | <span style="text-transform: uppercase">{{s.language}}</span> <ul><li>{{s.description}}</li></ul>
                   </li>
               </ul>
                 </p>
