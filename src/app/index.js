@@ -57,9 +57,25 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller: 'AccountDetailController',
         data: {roles: 'hacker'}
       }).
+      state('forgot-password', {
+        url:'/forgot-password',
+        templateUrl:'app/main/forgot-password.html',
+        controller:'ForgotPasswordController'
+      }).
+      state('password-reset', {
+        url:'/pwr',
+        templateUrl:'app/main/password-reset.html',
+        controller:'PasswordResetController'
+      }).
     /**
      * EXEC SECTION
      */
+    state('pod-list', {
+      url: '/exec/pods',
+      templateUrl: 'app/exec/pods.html',
+      controller: 'PodsController',
+      data: {roles: 'exec'}
+    }).
      state('exec-application-detail', {
         url: '/exec/applications/:id',
         templateUrl: 'app/exec/application-detail.html',

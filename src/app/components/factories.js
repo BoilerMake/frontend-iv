@@ -16,7 +16,7 @@ angular.module('app')
 
 .factory('Bulk', ['$http', '$localStorage', 'urls','ApiRest',
  function ($http, $localStorage, urls, ApiRest) {
-    
+
   function clear() {
     $localStorage.bulk = [];
     return [];
@@ -111,7 +111,7 @@ angular.module('app')
       return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
     }
-  
+
       return {
           signup: function (data, success, error) {
             //#todo: test
@@ -195,6 +195,15 @@ angular.module('app')
     return function (jsonstring)
     {
       return JSON.parse(jsonstring);
+    };
+  })
+  .filter('userSlug', function ()
+  {
+    return function (userModel)
+    {
+      if(userModel==null)
+        return "no user";
+      return userModel.first_name+" "+userModel.last_name+" (#"+userModel.id+")";
     };
   })
   .filter('decision', function ()

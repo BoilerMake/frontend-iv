@@ -1,6 +1,19 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
 <div class="container">
-<h1>Exec Dashboard</h1>
-<button type="button" class="btn btn-primary" ng-click="rateApplications()">Start Rating</button>
-
+  <h1>Exec Dashboard</h1>
+  <h2>Interest signups</h2>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>ID</th>
+      <th>email</th>
+      <th>Timestamp</th>
+    </tr>
+    <tr ng-repeat="each in interest">
+      <td>{{each.id}}</td>
+      <td>{{each.email}}</td>
+      <td>{{each.created_at | prettyDateFull}}</td>
+    </tr>
+  </table>
+  <hr>
+  <button type="button" class="btn btn-primary" ng-click="rateApplications()">Start Rating</button>
 </div>

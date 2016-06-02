@@ -3,9 +3,13 @@ angular.module('app')
 .controller('ExecApplicationDetailController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$stateParams','$state',
  function ($rootScope, $scope,  ApiRest,ngToast, urls, $stateParams, $state) {
  	$scope.app_id=$stateParams.id;
-  	ApiRest.one('execs/applications/'+$stateParams.id+'/view').get().then(function(data) {
-      $scope.application = data;
-    });
+  	var loadData = function()
+    {
+      ApiRest.one('execs/applications/'+$stateParams.id+'/view').get().then(function(data) {
+        $scope.application = data;
+      });
+    }
+   loadData();
   $scope.rankApplication = function(rating_num)
   {
   	ApiRest.all('execs/applications/'+$stateParams.id+'/rate').customPUT({rating: rating_num}).then(function(data)
@@ -30,4 +34,12 @@ angular.module('app')
         	$state.go('exec');
     });
   };
+   $scope.addNote = function()
+   {
+     ApiRest.all('execs/applications/'+$stateParams.id+'/notes').post({message: $scope.noteMessage}).then(function()
+     {
+       $scope.noteMessage="";
+       loadData();
+     });
+   };
   }]);

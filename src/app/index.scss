@@ -13,7 +13,6 @@ html, body {
   height: 100%;
   font-family: 'futura-pt', sans-serif;
   font-weight: 400;
-  color: white;
   background-image: url('/assets/images/background.jpg');
   background-size: cover;
   background-position: center;
@@ -38,6 +37,7 @@ html, body {
   align-items: center;
   flex-direction: column;
   animation: fadeUp 1s ease;
+  color: white;
 
   img {
     width: 154px;
@@ -103,6 +103,11 @@ html, body {
   }
 }
 
+.application-view-container {
+  color: black;
+  font-weight: 300;
+}
+
 .contact-links {
 
   padding-top: 10px;
@@ -116,9 +121,14 @@ html, body {
     color: $off-white;
   }
 }
+
+.exec-application-note-footer {
+  font-style: italic;
+}
+
 /* Do not remove this comments below.
- * It's the markers used by gulp-inject to inject all your sass 
- * files automatically 
+ * It's the markers used by gulp-inject to inject all your sass
+ * files automatically
  */
 // injector
 // endinjector
