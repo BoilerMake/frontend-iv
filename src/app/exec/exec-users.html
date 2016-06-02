@@ -8,7 +8,7 @@
       <th>Roles</th>
     </tr>
     <tr ng-repeat="each in users">
-      <td>{{each.first_name}} {{each.last_name}}</td>
+      <td>{{each | userSlug}}</td>
       <td>{{each.roles.join(', ')}}</td>
     </tr>
   </table>
