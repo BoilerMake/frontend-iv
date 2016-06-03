@@ -18,6 +18,9 @@ html, body {
   background-position: center;
 }
 
+/*
+*  HOMEPAGE
+*/
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -102,12 +105,6 @@ html, body {
     }
   }
 }
-
-.application-view-container {
-  color: black;
-  font-weight: 300;
-}
-
 .contact-links {
 
   padding-top: 10px;
@@ -121,7 +118,16 @@ html, body {
     color: $off-white;
   }
 }
-
+/**
+* USER
+*/
+.application-view-container {
+  color: black;
+  font-weight: 300;
+}
+/**
+ * EXEC
+ */
 .exec-application-note-footer {
   font-style: italic;
 }
