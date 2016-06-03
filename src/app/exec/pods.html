@@ -12,7 +12,7 @@
     <tr ng-repeat="each in pods">
       <td>{{each.id}}</td>
       <td>{{each.name}}</td>
-      <td>{{each.event.event_name || "no event"}} <hr> active? {{each.event.active}}</td>
+      <td>{{each.event.name || "no event"}} <hr> active? {{each.event.active}}</td>
       <td>{{each.scans.length}}</td>
     </tr>
   </table>
@@ -27,7 +27,7 @@
     </tr>
     <tr ng-repeat="event in events">
       <td>{{event.id}}</td>
-      <td>{{event.event_name}}</td>
+      <td>{{event.name}}</td>
       <td><ul><li ng-repeat="pod in event.active_pods">{{pod.name}}</li></ul></td>
       <td>{{event.scans.length}}</td>
     </tr>
