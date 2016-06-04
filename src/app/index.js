@@ -105,8 +105,13 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         templateUrl: 'app/exec/exec-teams.html',
         controller: 'ExecTeamsController',
         data: {roles: 'exec'}
+      }).
+     state('exec-events', {
+        url: '/exec/events',
+        templateUrl: 'app/exec/exec-events.html',
+        controller: 'ExecEventsController',
+        data: {roles: 'exec'}
       });
-
     $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise(function ($injector) {
