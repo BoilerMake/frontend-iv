@@ -11,7 +11,7 @@
     </tr>
     <tr ng-repeat="each in pods">
       <td>{{each.id}}</td>
-      <td>{{each.name}}</td>
+      <td>{{each.name}} <span class="label {{each.status ? 'label-success' : 'label-danger'}}">{{each.status ? 'Active' : 'Inactive'}}</span></td>
       <td>{{each.event.name || "no event"}} <hr> active? {{each.event.active}}</td>
       <td>{{each.scans.length}}</td>
     </tr>
