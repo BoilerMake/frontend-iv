@@ -13,7 +13,8 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         .state('home', {
             url: '/',
             templateUrl: 'app/main/landing.html',
-            controller: 'LandingController'
+            controller: 'LandingController',
+            bodyClass: 'body-splash'
         }).
         state('about', {
             url: '/about',

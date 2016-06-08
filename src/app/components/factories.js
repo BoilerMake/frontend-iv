@@ -282,6 +282,6 @@ angular.module('app')
       e.preventDefault();
       $state.go('unauthorized');
     }
-
+    $rootScope.bodyClass = toState.bodyClass || "body-default";
   });
 }]);

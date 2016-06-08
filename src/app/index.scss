@@ -13,9 +13,18 @@ html, body {
   height: 100%;
   font-family: 'futura-pt', sans-serif;
   font-weight: 400;
+}
+
+/*
+* body classes, applied on a per-route basis in index.js
+*/
+.body-splash {
   background-image: url('/assets/images/background.jpg');
   background-size: cover;
   background-position: center;
+}
+.body-default {
+  background-color: $off-white;
 }
 
 /*
