@@ -69,6 +69,15 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller:'PasswordResetController'
       }).
     /**
+     * SPONSOR SECTION
+     */
+    state('sponsor-dashboard', {
+      url: '/sponsor',
+      templateUrl: 'app/sponsor/dashboard.html',
+      controller: 'SponsorController',
+      data: {roles: 'sponsor'}
+    }).
+    /**
      * EXEC SECTION
      */
     state('exec-pods', {
