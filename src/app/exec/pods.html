@@ -1,6 +1,26 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
 <div class="container">
   <h1>Exec Dashboard - Pod Control</h1>
+
+  <div class="well">
+  <form class="form-inline" ng-submit="processScan()">
+    <div class="form-group">
+      <label for="repeatSelect"> Pod: </label>
+      <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="scanning_pod">
+        <option ng-repeat="option in pods_static" value="{{option.id}}">{{option.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputName2">Barcode: </label>
+      <input type="text" class="form-control" id="exampleInputName2" ng-model="scanning_code">
+    </div>
+  </form>
+  <hr>
+    <p>Result: {{scanning_result.message}}</p>
+  </div>
+
+  <hr>
   <h2>Pods</h2>
   <table class="table table-bordered table-striped">
     <tr>
@@ -40,14 +60,18 @@
       <th>success</th>
       <th>message</th>
       <th>User</th>
+      <th>Event</th>
       <th>Pod</th>
+      <th>Time</th>
     </tr>
-    <tr ng-repeat="scan in scans">
+    <tr ng-repeat="scan in scans | orderBy:'-id'">
       <td>{{scan.id}}</td>
-      <td>{{scan.success}}</td>
+      <td><span class="label {{scan.success == '1' ? 'label-success' : 'label-danger'}}">{{scan.success == '1' ? 'yes' : 'NO'}}</span></td>
       <td>{{scan.message}}</td>
       <td>{{scan.user | userSlug}}</td>
+      <td>{{scan.event.name}}</td>
       <td>{{scan.pod.name}} ({{scan.pod.id}})</td>
+      <td>{{scan.created_at | prettyDate}}</td>
     </tr>
   </table>
 
