@@ -1,23 +1,32 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
 <div class="container">
   <h1>Exec Dashboard - Pod Control</h1>
-
-  <div class="well">
-  <form class="form-inline" ng-submit="processScan()">
-    <div class="form-group">
-      <label for="repeatSelect"> Pod: </label>
-      <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="scanning_pod">
-        <option ng-repeat="option in pods_static" value="{{option.id}}">{{option.name}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleInputName2">Barcode: </label>
-      <input type="text" class="form-control" id="exampleInputName2" ng-model="scanning_code">
-    </div>
-  </form>
   <hr>
-    <p>Result: {{scanning_result.message}}</p>
+
+  <h2>Manual Scan</h2>
+  <div class="well">
+   <div class="row">
+    <form ng-submit="processScan()">
+      <div class="col-xs-2">
+        <div class="form-group">
+          <label for="repeatSelect">Pod:</label>
+          <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="scanning_pod">
+            <option ng-repeat="option in pods_static" value="{{option.id}}">{{option.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label for="barcodeInput">Barcode: </label>
+          <input type="text" class="form-control" id="barcodeInput" ng-model="scanning_code">
+        </div>
+      </div>
+    </form>
+      <div class="col-xs-4">
+        <b>Result:</b>
+        <div class="alert-{{scanning_result.success ? 'success' : 'danger'}}">{{scanning_result.message}}</div>
+      </div>
+    </div>
   </div>
 
   <hr>
