@@ -280,8 +280,7 @@ angular.module('app')
       meta['client']=Auth.getClientID();
       ApiRest.all('analytics/event').customPUT({name: name, params: params, meta: meta}).then(function(data)
       {
-        console.log("sending analytics",{name: name, params: params, meta: meta});
-        console.log(data);
+        // console.log("sending analytics",{name: name, params: params, meta: meta});
       });
     }
   }

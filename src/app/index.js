@@ -43,19 +43,13 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
       state('account', {
             url: '/account',
             templateUrl: 'app/account/account.html',
-            controller: 'RestrictedController',
+            controller: 'AccountDetailController',
         data: {roles: 'users'}
       }).
       state('application', {
             url: '/application',
             templateUrl: 'app/account/application.html',
             controller: 'ApplicationController',
-        data: {roles: 'hacker'}
-      }).
-      state('account-edit', {
-        url: '/account/edit',
-        templateUrl: 'app/account/edit.html',
-        controller: 'AccountDetailController',
         data: {roles: 'hacker'}
       }).
       state('forgot-password', {
