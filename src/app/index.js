@@ -98,6 +98,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller: 'ExecUsersController',
         data: {roles: 'exec'}
       }).
+     state('exec-user-detail', {
+       url: '/exec/users/:id',
+       templateUrl: 'app/exec/exec-user-detail.html',
+       controller: 'ExecUserDetailController',
+       data: {roles: 'exec'}
+     }).
      state('exec-hackers', {
         url: '/exec/hackers',
         templateUrl: 'app/exec/exec-hackers.html',
