@@ -1,0 +1,79 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+<h1>Exec Dashboard - Messaging</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <!--panel 1-->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">New SMS</h3>
+        </div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="messageRecipient" value="hackers" ng-model="messageGroup">
+                  checked in hackers
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="messageRecipient" value="sponsors" ng-model="messageGroup">
+                  sponsors
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="messageRecipient" value="all" ng-model="messageGroup">
+                  checked in hacker + sponsors
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="messageRecipient" value="exec" ng-model="messageGroup">
+                  only execs
+                </label>
+              </div>
+            </div>
+          </form>
+          <div>
+            <label>Message:</label><input type="text" class="form-control" ng-model="messageBody">
+          </div>
+          <br>
+          <div>
+            <button  ng-disabled = "!messageGroup" ng-click="sendGroupMessage()" class="btn btn-primary">Send to {{messageGroup}}</button>
+          </div>
+          <hr>
+          Note: all execs will receive all messages
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <!--panel 2-->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Sent messages</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th></th>
+              <th>group</th>
+              <th>message</th>
+              <th>aount</th>
+              <th>time</th>
+            </tr>
+            <tr ng-repeat="each in messages | orderBy:'-created_at'" >
+              <td>{{each.id}}
+              <td>{{each.group}}</td>
+              <td>{{each.message}}</td>
+              <td>{{each.num_recipients}}</td>
+              <td>{{each.created_at | prettyDate}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>

@@ -116,6 +116,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller: 'ExecTeamsController',
         data: {roles: 'exec'}
       }).
+     state('exec-messaging', {
+       url: '/exec/messaging',
+       templateUrl: 'app/exec/exec-messaging.html',
+       controller: 'ExecMessagingController',
+       data: {roles: 'exec'}
+     }).
      state('exec-events', {
         url: '/exec/events',
         templateUrl: 'app/exec/exec-events.html',
