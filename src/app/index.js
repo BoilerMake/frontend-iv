@@ -21,6 +21,16 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
             templateUrl: 'app/main/about.html',
             controller: 'HomeController'
         }).
+        state('media', {
+          url: '/media',
+          templateUrl: 'app/main/photos.html',
+          controller: 'HomeController'
+        }).
+        state('photos', {
+          url: '/photos',
+          templateUrl: 'app/main/photos.html',
+          controller: 'HomeController'
+        }).
         state('signin', {
             url: '/signin',
             templateUrl: 'app/main/signin.html',
