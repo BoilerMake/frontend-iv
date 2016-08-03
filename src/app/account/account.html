@@ -2,8 +2,55 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
 <div class="container">
 	<div class="container" style="text-align: center">
-            <div class="content">
-                <h1>Hello, {{me.first_name}}</h1>
-            </div>
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Hello {{me.first_name}}</h3>
         </div>
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">First Name</label>
+              <div class="col-sm-8">
+                <input type="text" ng-model="me.first_name" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Last Name</label>
+              <div class="col-sm-8">
+                <input type="text" ng-model="me.last_name" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Email</label>
+              <div class="col-sm-8">
+                <input type="text" ng-model="me.email" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Phone</label>
+              <div class="col-sm-8">
+                <input type="text" ng-model="me.phone" class="form-control">
+              </div>
+            </div>
+            <p>Your phone number, if provided, will be used for event updates during BoilerMake.</p>
+            <button ng-click="updateMe()" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div ng-if="roles.indexOf('sponsor') != -1">
+    <h2>Sponsor</h2>
+    <a ui-sref="sponsor-dashboard">Go to the sponsor dashboard here!</a>
+  </div>
+  <div ng-if="roles.indexOf('hacker') != -1">
+    <h2>Hacker</h2>
+    <a ui-sref="application">Go to your application here!</a>
+  </div>
+  <div ng-if="roles.indexOf('exec') != -1">
+    <h2>Exec</h2>
+    <a ui-sref="exec">Go to the exec dash here!</a>
+  </div>
 </div>

@@ -1,0 +1,75 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">User Profile</h3>
+        </div>
+        <div class="panel-body">
+          <p><strong>Name</strong>: {{user.user.first_name}} {{user.user.last_name}}</p>
+          <p><strong>Phone</strong>: {{user.user.phone}}</p>
+          <p><strong>Email</strong>: {{user.user.email}}</p>
+          <p><strong>User Last Changed</strong>: {{user.user.updated_at | prettyDate}}</p>
+          <p><strong>Roles</strong>: {{user.roles.join(', ')}}
+          <hr>
+          <p ng-if="user.isHacker"><strong>Application Last Changed</strong>: {{user.application.updated_at | prettyDate}}</p>
+          <p ng-if="user.isHacker"><strong>Application Decision</strong>: {{user.application.decision  | decision}}</p>
+          <p ng-if="user.isHacker"><strong>School</strong>: {{user.application.school.name || "not set"}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Actions</h3>
+        </div>
+        <div class="panel-body">
+          <div class="alert alert-danger" role="alert">
+            <strong>Watch out!</strong> Only do these if you know what you are doing... <br> Your actions will be logged ;)
+          </div>
+          <p><button type="button" class="btn btn-info" ng-click="doAction('password-reset')">check in</button></p>
+          <p><button type="button" class="btn btn-danger" ng-click="doAction('password-reset')">Send passowrd reset</button></p>
+          <p><button type="button" class="btn btn-danger" ng-click="doAction('password-reset')">accept</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--<pre>{{user | json}}</pre>-->
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Analytics Events</h3>
+        </div>
+
+        <table class="table table-bordered" style="background-color:white;">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Metadata</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Referrer</th>
+            <th>IP</th>
+          </tr>
+          <tr ng-repeat="each in analytics | orderBy:'-created_at'">
+            <td>{{each['id']}}</td>
+            <td>{{each.name}}</td>
+            <td><pre style="width: 600px">{{each.params | jsonParse | json}}</pre></td>
+            <td>{{each.created_at | prettyDate}}</td>
+            <td>{{each.client}}</td>
+            <td>{{each.referrer}}</td>
+            <td>{{each.ip}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</div>

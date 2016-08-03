@@ -1,0 +1,16 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+calendar here
+<hr/>
+list here
+<hr/>
+<div ng-repeat="each in events">
+  Title: {{each.title}}<br/>
+  Description: {{each.description}}<br/>
+  Begin: {{each.begin}}<br/>
+  End: {{each.end}}<br/>
+  <b>Edit</b> &raquo; | 
+  <b>Delete</b> &raquo;<br/>
+  <hr/>
+</div>
+</div>

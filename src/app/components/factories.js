@@ -111,6 +111,19 @@ angular.module('app')
       return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
     }
+  function client_id()
+  {
+    var client = $localStorage.client_id;
+    if (typeof client !== 'undefined') {
+      return client;
+    }
+    else
+    {
+      var client = "a-"+guid();
+      $localStorage.client_id = client;
+      return client;
+    }
+  }
 
       return {
           signup: function (data, success, error) {
@@ -139,6 +152,9 @@ angular.module('app')
           getTokenClaims: function () {
               return tokenClaims;
           },
+        getClientID: function() {
+          return client_id();
+        },
         getRoles: function () {
           return tokenClaims.roles;
         },
@@ -210,8 +226,10 @@ angular.module('app')
   {
     return function (d)
     {
-      d = parseInt(d);
+      d = parseInt(d) || 0;
       switch(d) {
+      case 0:
+          return "undecided";
       case 1:
           return "reject";
       case 2:
@@ -252,11 +270,26 @@ angular.module('app')
      }
    };
 })
+  .factory('Analytics', function(ApiRest,urls,$localStorage,Auth) {
+  return {
+    event: function(name, params, meta)
+    {
+      params = params || {};
+      meta = meta || {};
+      meta['referrer']= document.referrer;
+      meta['client']=Auth.getClientID();
+      ApiRest.all('analytics/event').customPUT({name: name, params: params, meta: meta}).then(function(data)
+      {
+        // console.log("sending analytics",{name: name, params: params, meta: meta});
+      });
+    }
+  }
+})
 
 /**
  * Access Control for routes
  */
-.run(['$rootScope', '$window','Auth','$state','$location', '$localStorage', function($rootScope, $window, Auth,$state,$location, $localStorage) {
+.run(['$rootScope', '$window','Auth','$state','$location', '$localStorage','Analytics', function($rootScope, $window, Auth,$state,$location, $localStorage, Analytics) {
   $rootScope.$on('$stateChangeStart', function(e, toState) {
     //toParams, fromState, fromParams are useable
     var permissions;
@@ -270,16 +303,19 @@ angular.module('app')
     else
     {
       canAccess=Auth.hasRole(permissions);
-      if(Auth.hasRole('admin'))
+      if(Auth.hasRole('exec'))
       {
         canAccess=true;
       }
+      if(permissions=="users" && Auth.getRoles() != undefined)//allow logged in users if permission is 'users'
+        canAccess=true;
     }
     if(!canAccess)
     {
       e.preventDefault();
       $state.go('unauthorized');
     }
-
+    $rootScope.bodyClass = toState.bodyClass || "body-default";
+    Analytics.event('state-go',{name: toState.name});
   });
 }]);

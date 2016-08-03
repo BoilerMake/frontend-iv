@@ -13,12 +13,28 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         .state('home', {
             url: '/',
             templateUrl: 'app/main/landing.html',
-            controller: 'LandingController'
+            controller: 'LandingController',
+            bodyClass: 'body-splash'
+        }).
+        state('site', {
+          url: '/site',
+          templateUrl: 'app/main/site.html',
+          controller: 'HomeController'
         }).
         state('about', {
             url: '/about',
             templateUrl: 'app/main/about.html',
             controller: 'HomeController'
+        }).
+        state('media', {
+          url: '/media',
+          templateUrl: 'app/main/photos.html',
+          controller: 'HomeController'
+        }).
+        state('photos', {
+          url: '/photos',
+          templateUrl: 'app/main/photos.html',
+          controller: 'HomeController'
         }).
         state('signin', {
             url: '/signin',
@@ -42,19 +58,13 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
       state('account', {
             url: '/account',
             templateUrl: 'app/account/account.html',
-            controller: 'RestrictedController',
-        data: {roles: 'hacker'}
+            controller: 'AccountDetailController',
+        data: {roles: 'users'}
       }).
       state('application', {
             url: '/application',
             templateUrl: 'app/account/application.html',
             controller: 'ApplicationController',
-        data: {roles: 'hacker'}
-      }).
-      state('account-edit', {
-        url: '/account/edit',
-        templateUrl: 'app/account/edit.html',
-        controller: 'AccountDetailController',
         data: {roles: 'hacker'}
       }).
       state('forgot-password', {
@@ -68,9 +78,18 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller:'PasswordResetController'
       }).
     /**
+     * SPONSOR SECTION
+     */
+    state('sponsor-dashboard', {
+      url: '/sponsor',
+      templateUrl: 'app/sponsor/dashboard.html',
+      controller: 'SponsorController',
+      data: {roles: 'sponsor'}
+    }).
+    /**
      * EXEC SECTION
      */
-    state('pod-list', {
+    state('exec-pods', {
       url: '/exec/pods',
       templateUrl: 'app/exec/pods.html',
       controller: 'PodsController',
@@ -94,6 +113,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         controller: 'ExecUsersController',
         data: {roles: 'exec'}
       }).
+     state('exec-user-detail', {
+       url: '/exec/users/:id',
+       templateUrl: 'app/exec/exec-user-detail.html',
+       controller: 'ExecUserDetailController',
+       data: {roles: 'exec'}
+     }).
      state('exec-hackers', {
         url: '/exec/hackers',
         templateUrl: 'app/exec/exec-hackers.html',
@@ -105,8 +130,19 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         templateUrl: 'app/exec/exec-teams.html',
         controller: 'ExecTeamsController',
         data: {roles: 'exec'}
+      }).
+     state('exec-messaging', {
+       url: '/exec/messaging',
+       templateUrl: 'app/exec/exec-messaging.html',
+       controller: 'ExecMessagingController',
+       data: {roles: 'exec'}
+     }).
+     state('exec-events', {
+        url: '/exec/events',
+        templateUrl: 'app/exec/exec-events.html',
+        controller: 'ExecEventsController',
+        data: {roles: 'exec'}
       });
-
     $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise(function ($injector) {

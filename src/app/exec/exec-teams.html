@@ -6,6 +6,7 @@
     <tr>
       <th>Name</th>
       <th># of reviews</th>
+      <th>code</th>
     </tr>
     <tr ng-repeat="each in teams">
       <td>
@@ -14,6 +15,7 @@
         </li>
       </td>
       <td><pre>{{each.overall_ratings | json}}</pre></td>
+      <td>{{each.code}}</td>
     </tr>
   </table>
 </div>

@@ -4,11 +4,13 @@
 
 <table class="table table-bordered table-striped">
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Roles</th>
     </tr>
     <tr ng-repeat="each in users">
-      <td>{{each.first_name}} {{each.last_name}}</td>
+      <td><a ui-sref="exec-user-detail({id: each.id})">{{each.id}}</a></td>
+      <td>{{each | userSlug}}</td>
       <td>{{each.roles.join(', ')}}</td>
     </tr>
   </table>

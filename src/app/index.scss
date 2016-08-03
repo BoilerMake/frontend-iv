@@ -13,11 +13,23 @@ html, body {
   height: 100%;
   font-family: 'futura-pt', sans-serif;
   font-weight: 400;
+}
+
+/*
+* body classes, applied on a per-route basis in index.js
+*/
+.body-splash {
   background-image: url('/assets/images/background.jpg');
   background-size: cover;
   background-position: center;
 }
+.body-default {
+  background-color: $off-white;
+}
 
+/*
+*  HOMEPAGE
+*/
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -102,12 +114,6 @@ html, body {
     }
   }
 }
-
-.application-view-container {
-  color: black;
-  font-weight: 300;
-}
-
 .contact-links {
 
   padding-top: 10px;
@@ -121,7 +127,16 @@ html, body {
     color: $off-white;
   }
 }
-
+/**
+* USER
+*/
+.application-view-container {
+  color: black;
+  font-weight: 300;
+}
+/**
+ * EXEC
+ */
 .exec-application-note-footer {
   font-style: italic;
 }

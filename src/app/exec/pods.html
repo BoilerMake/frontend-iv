@@ -1,6 +1,35 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
 <div class="container">
   <h1>Exec Dashboard - Pod Control</h1>
+  <hr>
+
+  <h2>Manual Scan</h2>
+  <div class="well">
+   <div class="row">
+    <form ng-submit="processScan()">
+      <div class="col-xs-2">
+        <div class="form-group">
+          <label for="repeatSelect">Pod:</label>
+          <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="scanning_pod">
+            <option ng-repeat="option in pods_static" value="{{option.id}}">{{option.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label for="barcodeInput">Barcode: </label>
+          <input type="text" class="form-control" id="barcodeInput" ng-model="scanning_code">
+        </div>
+      </div>
+    </form>
+      <div class="col-xs-4">
+        <b>Result:</b>
+        <div class="alert-{{scanning_result.success ? 'success' : 'danger'}}">{{scanning_result.message}}</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
   <h2>Pods</h2>
   <table class="table table-bordered table-striped">
     <tr>
@@ -11,8 +40,8 @@
     </tr>
     <tr ng-repeat="each in pods">
       <td>{{each.id}}</td>
-      <td>{{each.name}}</td>
-      <td>{{each.event.event_name || "no event"}} <hr> active? {{each.event.active}}</td>
+      <td>{{each.name}} <span class="label {{each.status ? 'label-success' : 'label-danger'}}">{{each.status ? 'Active' : 'Inactive'}}</span></td>
+      <td>{{each.event.name || "no event"}} <hr> active? {{each.event.active}}</td>
       <td>{{each.scans.length}}</td>
     </tr>
   </table>
@@ -27,7 +56,7 @@
     </tr>
     <tr ng-repeat="event in events">
       <td>{{event.id}}</td>
-      <td>{{event.event_name}}</td>
+      <td>{{event.name}}</td>
       <td><ul><li ng-repeat="pod in event.active_pods">{{pod.name}}</li></ul></td>
       <td>{{event.scans.length}}</td>
     </tr>
@@ -40,14 +69,18 @@
       <th>success</th>
       <th>message</th>
       <th>User</th>
+      <th>Event</th>
       <th>Pod</th>
+      <th>Time</th>
     </tr>
-    <tr ng-repeat="scan in scans">
+    <tr ng-repeat="scan in scans | orderBy:'-id'">
       <td>{{scan.id}}</td>
-      <td>{{scan.success}}</td>
+      <td><span class="label {{scan.success == '1' ? 'label-success' : 'label-danger'}}">{{scan.success == '1' ? 'yes' : 'NO'}}</span></td>
       <td>{{scan.message}}</td>
       <td>{{scan.user | userSlug}}</td>
+      <td>{{scan.event.name}}</td>
       <td>{{scan.pod.name}} ({{scan.pod.id}})</td>
+      <td>{{scan.created_at | prettyDate}}</td>
     </tr>
   </table>
 
