@@ -74,7 +74,7 @@ html, body {
 
   .input-button {
     width: 360px;
-    height: 40px;
+    min-height: 40px;
     padding: 5px 5px 5px 12px;
     display: flex;
     flex-direction: row;
