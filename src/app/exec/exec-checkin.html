@@ -1,0 +1,28 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well" style="background: #fff">
+        <form>
+          <div class="input-group">
+            <div class="input-group-btn search-panel" dropdown>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" dropdown-toggle style="height: 34px;">
+                <span id="search_concept">Search By</span> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li id="name"><a href="#">Name</a></li>
+                <li id="school"><a href="#">School</a></li>
+                <li id="email"><a href="#">Email</a></li>
+              </ul>
+            </div>
+            <input type="hidden" name="search_param" value="all" id="search_param">         
+            <input type="text" class="form-control" name="x" placeholder="Search term...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" style="height: 34px;"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
