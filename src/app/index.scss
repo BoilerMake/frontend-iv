@@ -19,9 +19,9 @@ html, body {
 * body classes, applied on a per-route basis in index.js
 */
 .body-splash {
-  background-image: url('/assets/images/background.jpg');
-  background-size: cover;
-  background-position: center;
+  //background-image: url('/assets/images/background.jpg');
+  //background-size: cover;
+  //background-position: center;
 }
 .body-default {
   background-color: $off-white;
@@ -30,102 +30,197 @@ html, body {
 /*
 *  HOMEPAGE
 */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
 
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+html, body {
+  width: 100vw;
+  font-family: "Avenir";
+  margin: 0;
+  font-size: 16px;
 }
 
-.landing-container {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  animation: fadeUp 1s ease;
+.non-selectable {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+h1 {
+  color: #383051;
+  font-weight: 600;
+  font-size: 5rem;
+  line-height: 5rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  color: #4b3d6b;
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.info {
+  color: #4b3d6b;
+  font-size: 1.5rem;
+}
+
+::selection {
   color: white;
+  background-color: #4b3d6b;
+}
 
-  img {
-    width: 154px;
-    height: 123px;
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.highlight {
+  color: #3cbfd0;
+}
+
+.input-button {
+  position: relative;
+  height: 3.75rem;
+}
+
+.input-button input {
+  float: left;
+  background-color: #e9e8e8;
+  width: 18rem;
+  height: 3.75rem;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+  color: #4b3d6b;
+  font-size: 1.5rem;
+  font-family: inherit;
+  padding: 0 1.125rem;
+  box-sizing: border-box;
+}
+
+.input-button button {
+  float: left;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 1.5rem;
+  background-color: #3cbfd0;
+  margin-left: 0.75rem;
+  color: white;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  cursor: hand;
+  box-shadow: inset 0 0 0 0 #4b3d6b;
+  -webkit-transition: box-shadow ease 0.4s;
+  -moz-transition: box-shadow ease 0.4s;
+  transition: box-shadow ease 0.4s;
+}
+
+.input-button button:hover {
+  box-shadow: inset 4rem 0 0 0 #4b3d6b;
+}
+
+.input-button input::selection {
+  color: #4b3d6b;
+  background: white;
+}
+
+
+
+@media (min-width: 960px) {
+
+  .column-container {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    height: 100vh;
   }
 
-  h1 {
-    font-weight: 700;
-    font-size: 60px;
+  .column {
+    float: left;
+    width: 45%;
+    margin: 0 2.5% 0 2.5%;
+    height: 100%;
   }
 
-  p {
-    font-weight: 400;
-    font-size: 24px;
+  #spaceblob {
+    width: 425px;
+    height: 428px;
   }
 
-  label {
-    margin-top: 24px;
-    font-weight: 400;
-    font-size: 16px;
+  .v-center {
+    position: relative;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .a-right {
+    text-align: right;
+  }
+
+  .logomark {
+    position: absolute;
+    top: 1.875rem;
+    left: 1.875rem;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .logomark img {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+}
+
+@media (max-width: 959px) {
+
+  body, html {
+    font-size: 10px;
+  }
+
+  .column-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .col-1 {
+    position: relative;
+    width: 60%;
+    margin: 20% auto 10% auto;
+  }
+
+  .col-2 {
+    width: 100%;
+    padding: 0 10%;
+    box-sizing: border-box;
+    text-align: center;
   }
 
   .input-button {
-    width: 360px;
-    min-height: 40px;
-    padding: 5px 5px 5px 12px;
-    display: flex;
-    flex-direction: row;
-    background-color: rgba($white, 0.5);
-    border-radius: 8px;
-
-    input {
-      display: flex;
-      flex-grow: 1;
-      font-size: 20px;
-      border: none;
-      outline: none;
-      background: none;
-      color: black;
-      margin-right: 5px;
-
-      &::placeholder {
-        color: $white;
-      }
-    }
-
-    button {
-      display: flex;
-      flex-grow: 0;
-      background-color: $pink;
-      color: white;
-      border: none;
-      outline: none;
-      border-radius: 3px;
-      font-size: 16px;
-      transition: all 0.25s ease;
-      padding: 0 5px;
-
-      &:hover {
-        background-color: darken($pink, 10%);
-      }
-    }
-  }
-}
-.contact-links {
-
-  padding-top: 10px;
-
-  a {
-    color: white;
-    text-decoration: underline;
+    margin: 0 auto;
+    width: 22.75rem;
   }
 
-  a:hover {
-    color: $off-white;
+  .logomark {
+    position: absolute;
+    top: 1.875rem;
+    left: 1.875rem;
+    width: 3.75rem;
+    height: 3.75rem;
   }
+
+  .logomark img {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
 }
 /**
 * USER
