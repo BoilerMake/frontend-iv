@@ -9,9 +9,12 @@
  */
 $white: #F9F9F9;
 $grey: #EEEEEE;
-$pink: #D6A4A4;
-$gold: #B1810B;
-$dark-grey: #555555;
+$purple: #594269;
+$dark-purple: #2C232B;
+$black: #171519;
+$red: #FA3E2F;
+$dark-red: #FA3E2F;
+$dark-grey: #333;
 
 /*
  * Font definitions
@@ -38,19 +41,39 @@ html, body {
   right: 0;
   z-index: 50;
   top: 0;
+  background-color: $dark-purple;
 }
 
 h1 {
   font-family: $family-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 }
 
 .intro {
+  background: $purple; 
+  background: -webkit-linear-gradient(top, $dark-purple 0%, $purple 51%); 
+  background: -moz-linear-gradient(top, $dark-purple 0%, $purple 51%); 
+  background: linear-gradient(to bottom, $dark-purple 0%, $purple 51%); 
+  color: $white;
   .about {
-    width: 60%;
+    border-radius: 3px;
+    width: 40%;
     float: right;
+    background-color: $purple;
+    padding: 40px;
+    line-height: 1.6rem;
+    .control {
+      padding: 2rem 0;
+    }
+    .input, a.register {
+      border: 0;
+    }
+    a.register {
+      background-color: $red;
+    }
+
   }
 }
 
