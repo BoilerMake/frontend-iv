@@ -1,67 +1,38 @@
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item is-brand" href="#">
-      <img src="hammers.png">
-    </a>
-  </div>
+<div ng-include="'app/components/navbar/navbar.html'"></div>
 
-  <div class="nav-center">
-    <a class="nav-item" href="https://github.com/BoilerMake">
-      <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="https://www.facebook.com/BoilerMake/">
-      <span class="icon">
-        <i class="fa fa-facebook"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="https://twitter.com/boilermake1">
-      <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <h3 class="panel-title pull-left">Reset Password</h3>
+        </div>
 
-  <div class="nav-right nav-menu">
-    <span class="nav-item">
-      <a class="button" href="#">
-        <span>Learn More</span>
-      </a>
-      <a class="button" href="#">
-        <span>Login</span>
-      </a>
-      <a class="button" href="#">
-        <span>Register</span>
-      </a>
-    </span>
-  </div>
-</nav>
-
-<section class="intro hero is-fullheight">
-  <div class="hero-body">
-    <div class="container">
-      <div class="about">
-        <h1>What is BoilerMake?</h1>
-        <span class="subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-        <p class="control has-addons">
-          <input class="input" type="text" placeholder="Email address">
-          <a class="button register is-info">Join Mission</a>
-        </p>
+        <div class="panel-body" style="padding-left:25px;padding-right:25px;padding-bottom:0px;padding-top:12px">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <input type="password"
+                    class="form-control"
+                 ng-model="state.newPassword"
+              placeholder="New Password">
+            </div>
+            <div class="form-group">
+              <input type="password"
+                    class="form-control"
+                 ng-model="state.newPasswordRepeat"
+              placeholder="Repeat New Password">
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="padding-left:0px;padding-right:0px;margin-bottom:-2px">
+                <button type="submit" class="btn btn-primary btn-block" ng-click="setNewPassword()" ng-disabled="!setNewPasswordEnabled()">
+                  Reset Password
+                </button>
+              </div>
+            </div>
+        </form>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="hero is-fullheight">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Full Height title
-      </h1>
-      <h2 class="subtitle">
-        Full Height subtitle
-      </h2>
-    </div>
-  </div>
-</section>
+</div>

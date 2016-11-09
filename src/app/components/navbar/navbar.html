@@ -1,21 +1,32 @@
-<nav class="navbar navbar-custom navbar-static-top" ng-controller="NavbarCtrl">
+<nav class="navbar navbar-custom navbar-fixed-top" ng-controller="NavbarCtrl">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" style="margin-left:0px" ui-sref="{{loggedIn ? 'account' : 'home'}}">
-        BOILERMAKE
-      </a>
+            <a class="navbar-left" ui-sref="{{loggedIn ? 'account' : 'home'}}">
+                <img class="logo" src="assets/images/hammers.png"/>
+            </a>
         </div>
 
-        <div class="" id="bs-example-navbar-collapse-1">
-
+        <div id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ng-class="{ active: isActive('/account')}" ng-show="hasRole('hacker')">
+                <li class="dropdown" dropdown>
+                    <a href="" class="dropdown-toggle nav-element" dropdown-toggle>Exec</a>
+                    <ul class="dropdown-menu" dropdown-menu>
+                        <li><a ui-sref="exec">Dashboard</a></li>
+                        <li><a ui-sref="exec-users">Users</a></li>
+                        <li><a ui-sref="exec-hackers">Hackers</a></li>
+                        <li><a ui-sref="exec-teams">Teams</a></li>
+                        <li><a ui-sref="exec-pods">Pods</a></li>
+                        <li><a ui-sref="exec-events">Events</a></li>
+                        <li><a ui-sref="exec-messaging">Messaging</a></li>
+                    </ul>
+                </li>
+                <li ng-class="{ active: isActive('/account')}" class="nav-element" ng-show="hasRole('hacker')">
                     <a ui-sref="account">Home</a>
                 </li>
-                <li ng-class="{ active: isActive('/application')}" ng-show="hasRole('hacker')">
+                <li ng-class="{ active: isActive('/application')}" class="nav-element" ng-show="hasRole('hacker')">
                     <a ui-sref="application">Application</a>
                 </li>
-                <li ng-class="{ active: isActive('/exec')}" ng-show="hasRole('exec')" class="dropdown" dropdown>
+                <li ng-class="{ active: isActive('/exec')}" ng-show="hasRole('exec')" class="nav-element dropdown" dropdown>
                     <a href="" class="dropdown-toggle" dropdown-toggle>Exec</a>
                     <ul class="dropdown-menu" dropdown-menu>
                         <li><a ui-sref="exec">Dashboard</a></li>
@@ -29,7 +40,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{ active: isActive('/account')}" ng-show="loggedIn" class="dropdown" dropdown>
+                <li ng-class="{ active: isActive('/account')}" ng-show="loggedIn" class="dropdown nav-element" dropdown>
                     <a href="" class="dropdown-toggle" dropdown-toggle>Hello, {{ me.first_name }}!</a>
                     <ul class="dropdown-menu" dropdown-menu style="margin-right:5px">
                         <li><a ng-click="logout()">Sign Out</a>
@@ -37,16 +48,16 @@
                         <!--      <li role="separator" class="divider"></li>
               <li><a ui-sref="account-edit">Preferences</a></li>
               <li><a ui-sref="account">Home</a></li> -->
-                    </ul>
-                </li>
-                <li ng-hide="loggedIn">
-                    <a ui-sref="signup">Create Account</a>
-                </li>
-                <li ng-hide="loggedIn">
-                    <a ui-sref="signin">Log In</a>
-                </li>
-            </ul>
+          </ul>
+      </li>
+      <li ng-hide="loggedIn">
+        <a ui-sref="signup" class="nav-element">Create Account</a>
+    </li>
+    <li ng-hide="loggedIn">
+        <a ui-sref="signin" class="nav-element">Log In</a>
+    </li>
+</ul>
 
-        </div>
-    </div>
+</div>
+</div>
 </nav>

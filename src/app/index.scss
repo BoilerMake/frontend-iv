@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:400,400i,500,600,700|Open+Sans:300,400,400i,600');
 
+//@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+//@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
 
 //font-family: 'Exo 2', sans-serif;
 //font-family: 'Open Sans', sans-serif;
@@ -16,13 +18,6 @@ $red: #FA3E2F;
 $dark-red: #FA3E2F;
 $dark-grey: #333;
 
-/*
- * Font definitions
- */
-$family-serif: 'Exo 2', serif;
-$family-sans-serif: 'Open Sans', sans-serif;
-
-@import url('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css');
 
 /*
 *  Landing page
@@ -30,57 +25,42 @@ $family-sans-serif: 'Open Sans', sans-serif;
 
 html, body {
   width: 100vw;
-  font-family: $family-sans-serif;
   margin: 0;
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  top: 0;
+.navbar-custom {
   background-color: $dark-purple;
+  margin: 0;
+  padding: 0 20px;
+  a {
+    color: $white;
+    background: transparent !important;
+    border-bottom: 3px transparent solid;
+    &.nav-element {
+      &:hover, &:active {
+      color: $red !important;
+      border-bottom: 3px $red solid;
+    }
+    }
+    
+  }
+  .logo {
+    max-width: 50px;
+    margin: 5px 50px 0 0;
+  }
 }
 
-h1 {
-  font-family: $family-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  padding-bottom: 1rem;
-}
-
-.intro {
+.container {
+  background-color: $black;
+  height: 100vh;
+  width: 100vw;
   background: $purple; 
   background: -webkit-linear-gradient(top, $dark-purple 0%, $purple 51%); 
   background: -moz-linear-gradient(top, $dark-purple 0%, $purple 51%); 
   background: linear-gradient(to bottom, $dark-purple 0%, $purple 51%); 
   color: $white;
-  .about {
-    border-radius: 3px;
-    width: 40%;
-    float: right;
-    background-color: $purple;
-    padding: 40px;
-    line-height: 1.6rem;
-    .control {
-      padding: 2rem 0;
-    }
-    .input, a.register {
-      border: 0;
-    }
-    a.register {
-      background-color: $red;
-    }
-
-  }
-
-  @media (max-width: 768px) {
-    .about{
-      width: 100%;
-    }
-  }
 }
 
 /**
