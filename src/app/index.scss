@@ -52,6 +52,17 @@ html, body {
   }
 }
 
+.intro {
+  //padding-top: 100px;
+  .intro-box {
+    margin-top: 350px;
+    background-color: $purple;
+    min-height: 150px;
+    padding: 10px;
+    border-radius: 3px;
+  }
+}
+
 .container {
   background-color: $black;
   height: 100vh;
