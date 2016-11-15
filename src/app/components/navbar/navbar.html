@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-left" ui-sref="{{loggedIn ? 'account' : 'home'}}">
-                <img class="logo" src="assets/images/hammers.png"/>
+                <img class="logo" src="assets/images/hammers-white.svg"/>
             </a>
         </div>
 
         <div id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="dropdown" dropdown>
+                <!-- <li class="dropdown" dropdown>
                     <a href="" class="dropdown-toggle nav-element" dropdown-toggle>Exec</a>
                     <ul class="dropdown-menu" dropdown-menu>
                         <li><a ui-sref="exec">Dashboard</a></li>
@@ -19,6 +19,9 @@
                         <li><a ui-sref="exec-events">Events</a></li>
                         <li><a ui-sref="exec-messaging">Messaging</a></li>
                     </ul>
+                </li> -->
+                <li ng-class="{ active: isActive('/about')}" class="nav-element">
+                    <a ui-sref="account" class="nav-element">About</a>
                 </li>
                 <li ng-class="{ active: isActive('/account')}" class="nav-element" ng-show="hasRole('hacker')">
                     <a ui-sref="account">Home</a>
@@ -46,18 +49,18 @@
                         <li><a ng-click="logout()">Sign Out</a>
                         </li>
                         <!--      <li role="separator" class="divider"></li>
-              <li><a ui-sref="account-edit">Preferences</a></li>
-              <li><a ui-sref="account">Home</a></li> -->
-          </ul>
-      </li>
-      <li ng-hide="loggedIn">
-        <a ui-sref="signup" class="nav-element">Create Account</a>
-    </li>
-    <li ng-hide="loggedIn">
-        <a ui-sref="signin" class="nav-element">Log In</a>
-    </li>
-</ul>
+                        <li><a ui-sref="account-edit">Preferences</a></li>
+                        <li><a ui-sref="account">Home</a></li> -->
+                    </ul>
+                </li>
+                <li ng-hide="loggedIn">
+                    <a ui-sref="signup" class="nav-element">Create Account</a>
+                </li>
+                <li ng-hide="loggedIn">
+                    <a ui-sref="signin" class="nav-element">Log In</a>
+                </li>
+            </ul>
 
-</div>
-</div>
+        </div>
+    </div>
 </nav>

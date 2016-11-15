@@ -14,7 +14,7 @@ $grey: #EEEEEE;
 $purple: #594269;
 $dark-purple: #2C232B;
 $black: #171519;
-$red: #FA3E2F;
+$red: #EE3E2E;
 $dark-red: #FA3E2F;
 $dark-grey: #333;
 
@@ -27,28 +27,38 @@ html, body {
   width: 100vw;
   margin: 0;
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Exo 2', sans-serif;
 }
 
 .navbar-custom {
-  background-color: $dark-purple;
   margin: 0;
-  padding: 0 20px;
-  a {
-    color: $white;
-    background: transparent !important;
-    border-bottom: 3px transparent solid;
-    &.nav-element {
-      &:hover, &:active {
-      color: $red !important;
-      border-bottom: 3px $red solid;
+  padding: 0 1.25rem;
+  height: 5rem;
+
+  .nav {
+    a {
+      color: $white;
+      background: transparent !important;
+      border-bottom: 3px transparent solid;
+      height: 5rem;
+      font-size: 1.5rem;
+      padding: 1.75rem 0;
+      margin: 0 0.625rem;
+      vertical-align: bottom;
+
+      &.nav-element {
+        &:hover, &:active {
+          color: $red !important;
+          border-bottom: 3px $red solid;
+        }
+      }
+      
     }
-    }
-    
   }
   .logo {
-    max-width: 50px;
-    margin: 5px 50px 0 0;
+    height: 2.5rem;
+    margin: 1.25rem 0.625rem;
+    // margin: 5px 50px 0 0;
   }
 }
 
@@ -64,15 +74,103 @@ html, body {
 }
 
 .container {
-  background-color: $black;
-  height: 100vh;
+  padding: 0;
+  position: absolute;
+  top: 0;
   width: 100vw;
-  background: $purple; 
-  background: -webkit-linear-gradient(top, $dark-purple 0%, $purple 51%); 
-  background: -moz-linear-gradient(top, $dark-purple 0%, $purple 51%); 
-  background: linear-gradient(to bottom, $dark-purple 0%, $purple 51%); 
   color: $white;
+
+  .hero-box {
+    margin-top: 40vh;
+    margin-left: 55vw;
+    width: 30vw;
+  }
 }
+
+.background {
+  width: 100vw;
+  height: 1600px;
+  background-color: $red;
+  position: static;
+
+  canvas {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .mountains {
+    width: 100vw;
+    height: 1600px;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+
+    img {
+      width: 100vw;
+    }
+
+    .mountains-0 {
+      position: absolute;
+      top: 10rem;
+    }
+    .mountains-1 {
+      position: absolute;
+      top: 30rem;
+    }
+    .mountains-2 {
+      position: absolute;
+      top: 50rem;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    width: 100vw;
+    height: 1600px;
+    background-color: $purple;
+    background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+  }
+}
+
+.button {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 3px;
+
+  &.button-primary {
+    background-color: $red;
+  }
+
+  &.button-default {
+    background-color: $grey;
+    color: $black;
+  }
+}
+
+.button-row {
+  .button {
+    margin-right: 0.5rem;
+  }
+}
+
+.logo-left {
+  position: relative;
+}
+.logo-left::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: -1.8em;
+  background-image: url('/assets/images/hammers-white.svg');
+  width: 1.5em;
+  height: 1em;
+  background-repeat: no-repeat;
+}
+
 
 /**
 * USER

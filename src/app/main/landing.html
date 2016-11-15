@@ -1,10 +1,72 @@
-<div ng-include="'app/components/navbar/navbar.html'"></div>
+<!-- <div ng-include="'app/components/navbar/navbar.html'"></div> -->
 
-<div class="container intro">
-  <div class="row">
-    <div class="intro-box col-md-4 col-md-offset-6">
-     ayyo river
+<script src="/assets/javascripts/particle.js"></script>
+<script src="/assets/javascripts/skrollr.js"></script>
+
+<div class="background">
+  <canvas id="starry-night"></canvas>
+  <div class="mountains">
+    <div class="mountains-0"
+         data-0="top: 10rem"
+         data-600="top: 8rem">
+      <img src="/assets/images/mountains-0.png" alt="">
+    </div>
+    <div class="mountains-1"
+         data-0="top: 30rem"
+         data-600="top: 20rem">
+      <img src="/assets/images/mountains-1.png" alt="">
+    </div>
+    <div class="mountains-2"
+         data-0="top: 50rem"
+         data-600="top: 35rem">
+      <img src="/assets/images/mountains-2.png" alt="">
     </div>
   </div>
-
+  <div class="overlay"></div>
 </div>
+
+<div class="container intro">
+  <div class="hero-box">
+    <h1 class="logo-left">BoilerMake IV</h1>
+    <p>Lorem ipsum fsdio fdsiao fdsaoienw giongre er eroiogfd we oefigo gdheroitn goga ae fdsaf.</p>
+    <div class="button-row">
+      <button class="button button-primary">Register</button>
+      <button class="button button-default">Sign In</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  Particles.init('starry-night');
+  Particles.behavior({
+    path: function(x) {
+      return (-0.5 * x) + 300;
+    },
+    speed: function() {
+      return 0.2;
+    },
+    offset: function() {
+      return (Math.random() * 6) - 3;
+    },
+    backgroundColor: '#594269',
+    color: function() {
+      var rn = Math.random();
+      if (rn < 0.2) {
+        return 'rgba(255, 255, 255, 1.0)';
+      } else if (rn < 0.4) {
+        return 'rgba(255, 255, 255, 0.6)';
+      } else if (rn < 0.6) {
+        return 'rgba(255, 255, 255, 0.4)';
+      } else if (rn < 0.8) {
+        return 'rgba(255, 255, 255, 0.2)';
+      } else {
+        return 'rgba(255, 255, 255, 0.1)';
+      }
+    },
+    size: 2,
+    count: 1000,
+    placement: 'random'
+  });
+  Particles.start();
+  var s = skrollr.init();
+</script>
