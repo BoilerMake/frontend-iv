@@ -9,6 +9,30 @@
   position: relative;
   width: 24rem;
 
+  h3 {
+    color: $black;
+    font-size: 1rem;
+    padding: 0 0.75rem;
+    height: 0;
+    margin: 0;
+    display: block;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  a {
+    position: absolute;
+    display: block;
+    height: 0;
+    text-align: center;
+    overflow: hidden;
+    bottom: 0.25rem;
+    width: 4rem;
+    right: 0.25rem;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
   .button {
     display: inline-block;
     margin: 0 !important;
@@ -48,13 +72,27 @@
 
   &.expanded {
     width: 16rem;
-    height: 12rem;
+    height: 14rem;
     transition: all 0.5s ease;
+
+    h3 {
+      height: auto;
+      margin: 1rem 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+
+    a {
+      height: 2rem;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
 
     .button {
       // top: 50%;
       // transform: translateY(-50%);
-      width: 15.5rem;
+      width: 11.25rem;
+      right: 4.5rem;
     }
 
     .floating-label {

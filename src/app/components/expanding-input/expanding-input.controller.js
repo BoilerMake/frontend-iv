@@ -25,10 +25,19 @@ angular.module('app')
     return Auth.hasRole(roleName);
   };
 
-  $scope.expandInput = function() {
-    $scope.$apply(function () {
+  $scope.expandInput = function(shouldExpand) {
+    if (shouldExpand) {
       $scope.expanded = true;
-    });
+      var emailEl = document.getElementById("emailInput_" + $scope.$id);
+      var passwordEl = document.getElementById("passwordInput_" + $scope.$id);
+      if (!emailEl.value || emailEl.value == "") {
+        emailEl.focus();
+      } else {
+        passwordEl.focus();
+      }
+    } else {
+      $scope.expanded = false;
+    }
   };
 
 });

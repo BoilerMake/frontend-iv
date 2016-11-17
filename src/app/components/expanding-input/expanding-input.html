@@ -2,13 +2,16 @@
      ng-controller="ExpandingInputCtrl"
      ng-class="{ expanded: expanded }">
 
+    <h3>Register an Account</h3>
+
     <div class="floating-label">
         <label for="email">Email</label>
-        <input class="input" name="email" placeholder="jenny@andthebets.com" type="text">
+        <input class="input" name="email" placeholder="jenny@andthebets.com" type="text" id="emailInput_{{$id}}">
     </div>
     <div class="floating-label">
         <label for="password">Password</label>
-        <input class="input hiddenInput" placeholder="Password" name="password" type="password">
+        <input class="input hiddenInput" placeholder="Password" name="password" type="password" id="passwordInput_{{$id}}">
     </div>
-    <button ng-click="expanded = true" class="button button-secondary">Join the Mission</button>
+    <button ng-click="expandInput(true)" class="button button-secondary">Join the Mission</button>
+    <a class="red-link" ng-click="expandInput(false)">Cancel</a>
 </div>

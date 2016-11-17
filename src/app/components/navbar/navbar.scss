@@ -7,11 +7,17 @@
 
   &.navbar-slim {
     background: none;
-    box-shadow: none; 
+    box-shadow: none;
+    pointer-events: none;
+
+    a {
+      pointer-events: auto;
+    }
   }
 
   &.hiddenNavbar {
     opacity: 0;
+    pointer-events: none;
     transition: all 0.25s ease;
   }
 
@@ -32,7 +38,7 @@
   }
 
   .nav {
-    a {
+    .nav-element {
       color: $white;
       background: transparent !important;
       border-bottom: 3px transparent solid;
@@ -42,18 +48,15 @@
       margin: 0 0.625rem;
       vertical-align: bottom;
 
-      &.nav-element {
-        &:hover, &:active {
-          color: $red !important;
-          border-bottom: 3px $red solid;
-        }
-      }
-      
+      &:hover, &:active {
+        color: $red !important;
+        border-bottom: 3px $red solid;
+      }      
     }
   }
   .logo {
     height: 2.5rem;
-    margin: 1.25rem 0.625rem;
+    margin: 1.25rem 1rem 1.25rem 0;
     // margin: 5px 50px 0 0;
   }
 
