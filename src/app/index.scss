@@ -15,8 +15,9 @@ $purple: #594269;
 $dark-purple: #2C232B;
 $black: #171519;
 $red: #EE3E2E;
-$dark-red: #FA3E2F;
+$dark-red: #B32F23;
 $dark-grey: #333;
+$light-red: #F58B82;
 
 
 /*
@@ -30,35 +31,34 @@ html, body {
   font-family: 'Exo 2', sans-serif;
 }
 
-.navbar-custom {
-  margin: 0;
-  padding: 0 1.25rem;
-  height: 5rem;
+a {
+  color: $red;
+  // font-weight: 700;
+  position: relative;
+  transition: all 0.125s ease;
 
-  .nav {
-    a {
-      color: $white;
-      background: transparent !important;
-      border-bottom: 3px transparent solid;
-      height: 5rem;
-      font-size: 1.5rem;
-      padding: 1.75rem 0;
-      margin: 0 0.625rem;
-      vertical-align: bottom;
+  &:hover {
+    color: $light-red;
+    text-decoration: none;
+    transition: all 0.125s ease;
 
-      &.nav-element {
-        &:hover, &:active {
-          color: $red !important;
-          border-bottom: 3px $red solid;
-        }
-      }
-      
+    &.underline::after {
+      bottom: -6px;
+      background-color: $light-red;
+      transition: all 0.125s ease;
     }
   }
-  .logo {
-    height: 2.5rem;
-    margin: 1.25rem 0.625rem;
-    // margin: 5px 50px 0 0;
+
+  &.underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    background-color: $red;
+    transition: all 0.125s ease;
+    pointer-events: none;
   }
 }
 
@@ -74,16 +74,13 @@ html, body {
 }
 
 .container {
-  padding: 0;
-  position: absolute;
-  top: 0;
   width: 100vw;
   color: $white;
 
   .hero-box {
-    margin-top: 40vh;
-    margin-left: 55vw;
-    width: 30vw;
+    margin-top: 36vh;
+    margin-left: 50vw;
+    width: 32vw;
   }
 }
 
@@ -91,7 +88,8 @@ html, body {
   width: 100vw;
   height: 1600px;
   background-color: $red;
-  position: static;
+  position: absolute;
+  z-index: -1;
 
   canvas {
     width: 100vw;
@@ -139,14 +137,34 @@ html, body {
   padding: 0.5rem 0.75rem;
   border: none;
   border-radius: 3px;
+  height: 2.5rem;
+  transition: all 0.25s ease;
 
   &.button-primary {
     background-color: $red;
+    &:hover {
+      background-color: $dark-red;
+    }
+  }
+
+  &.button-secondary {
+    background-color: $purple;
+    &:hover {
+      background-color: $dark-purple;
+    }
   }
 
   &.button-default {
     background-color: $grey;
     color: $black;
+  }
+
+  &.button-plain {
+    background-color: transparent;
+  }
+
+  &.button-dark-red-hover:hover {
+    background-color: $dark-red;
   }
 }
 
@@ -155,6 +173,36 @@ html, body {
     margin-right: 0.5rem;
   }
 }
+
+.input-button {
+  background: $white;
+  height: 3rem;
+  margin: 1rem 0;
+  border-radius: 3px;
+  padding: 0.25rem;
+  display: inline-block;
+
+  .button {
+    display: inline-block;
+    margin: 0 !important;
+  }
+  .input {
+    display: inline-block;
+    margin: 0 !important;
+  }
+}
+
+.input {
+  height: 2.5rem;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  background: $white;
+  width: 15rem;
+  padding: 0.5rem 0.75rem;
+  color: $black;
+}
+
 
 .logo-left {
   position: relative;

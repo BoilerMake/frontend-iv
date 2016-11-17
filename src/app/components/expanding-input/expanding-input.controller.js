@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.controller('NavbarCtrl', function ($scope,$location,$localStorage,Auth,$window,$timeout, $state) {
+.controller('ExpandingInputCtrl', function ($scope,$location,$localStorage,Auth,$window,$timeout, $state) {
 
   $scope.me = $localStorage.me;
   $scope.roles = Auth.getRoles();

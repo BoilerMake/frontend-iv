@@ -84,11 +84,8 @@ Particles = {
       offset *= this.height / 2;
     }
 
-    console.log(x + ", " + this.path(x));
     this.baseX = x;
     this.baseY = this.path(x);
-    // this.baseX += 1 * this.path((x/10)%10)[0];
-    // this.baseY += 1 * this.path((x/10)%10)[1];
     var baseX = this.baseX;
     var baseY = this.baseY;
         
