@@ -19,6 +19,13 @@ $dark-red: #B32F23;
 $dark-grey: #333;
 $light-red: #F58B82;
 
+/* Skrollr */
+*,:before,:after {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  -webkit-backface-visibility:hidden;
+}
 
 /*
 *  Landing page
