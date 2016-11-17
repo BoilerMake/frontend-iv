@@ -14,7 +14,7 @@ $grey: #B2B2B2;
 $purple: #594269;
 $dark-purple: #2C232B;
 $black: #171519;
-$red: #EE3E2E;
+$red: #fd3d2e;
 $dark-red: #B32F23;
 $dark-grey: #333;
 $light-red: #F58B82;
@@ -149,7 +149,7 @@ a, .red-link {
         content: "";
         position: absolute;
         top: 100%;
-        height: 5rem;
+        height: 20rem;
         width: 100%;
         background-color: $red;
       }
@@ -161,12 +161,13 @@ a, .red-link {
     #mountains-1 {
       position: absolute;
       width: 100%;
-      height: 28vw;
+      height: 34vw;
       background-image: url('/assets/images/bg-1-small.png');
       -webkit-filter: blur(10px);
       filter: blur(10px);
       background-size: auto 100%;
       background-repeat: no-repeat;
+      background-position: 4rem 0;
 
       &.loaded {
         background-image: url('/assets/images/bg-1.png');
@@ -181,10 +182,64 @@ a, .red-link {
         width: 100%;
         background-color: $red;
       }
+
+      @media (max-width: $screen-sm-max) {
+        display: none;
+      }
     }
     #mountains-2 {
       position: absolute;
-      // top: 50rem;
+      width: 100%;
+      height: 36vw;
+      background-image: url('/assets/images/bg-2-small.png');
+      -webkit-filter: blur(10px);
+      filter: blur(10px);
+      background-size: cover;
+
+      &.loaded {
+        background-image: url('/assets/images/bg-2.png');
+        animation: sharpen 1s both ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 5rem;
+        width: 100%;
+        background-color: $red;
+      }
+
+      @media (max-width: $screen-sm-max) {
+        display: none;
+      }
+    }
+    #mountains-3 {
+      position: absolute;
+      width: 100vw;
+      height: 30vw;
+      background-image: url('/assets/images/bg-3-small.png');
+      -webkit-filter: blur(10px);
+      filter: blur(10px);
+      background-size: cover;
+
+      &.loaded {
+        background-image: url('/assets/images/bg-3.png');
+        animation: sharpen 1s both ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 28rem;
+        width: 100%;
+        background-color: $red;
+      }
+
+      @media (max-width: $screen-sm-max) {
+        display: none;
+      }
     }
   }
 
