@@ -5,7 +5,7 @@ angular.module('app')
   $scope.me = $localStorage.me;
   $scope.roles = Auth.getRoles();
   $scope.loggedIn = $localStorage.me !== undefined;
-  $scope.hideNavbar = true;
+  $scope.expanded = false;
 
   $scope.logout = function() {
     Auth.logout(function() {
@@ -25,16 +25,10 @@ angular.module('app')
     return Auth.hasRole(roleName);
   };
 
-  // Hide/show navbar
-  console.log($window);
-  angular.element($window).bind("scroll", function(e) {
+  $scope.expandInput = function() {
     $scope.$apply(function () {
-      if ($window.scrollY < 500) {
-        $scope.hideNavbar = true;
-      } else {
-        $scope.hideNavbar = false;
-      }
+      $scope.expanded = true;
     });
-  }); 
+  };
 
 });

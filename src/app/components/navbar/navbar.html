@@ -71,10 +71,7 @@
                 </ul>
             </li>
             <li ng-hide="loggedIn">
-                <div class="input-button">
-                    <input class="input" placeholder="jenny@andthebets.com" type="text">
-                    <button class="button button-secondary">Join the Mission</button>
-                </div>
+                <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
             </li>
             <li ng-hide="loggedIn">
                 <button class="button button-plain button-dark-red-hover">Sign In</button>
