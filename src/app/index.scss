@@ -10,7 +10,7 @@
  * Color definitions
  */
 $white: #F9F9F9;
-$grey: #EEEEEE;
+$grey: #B2B2B2;
 $purple: #594269;
 $dark-purple: #2C232B;
 $black: #171519;
@@ -18,6 +18,7 @@ $red: #EE3E2E;
 $dark-red: #B32F23;
 $dark-grey: #333;
 $light-red: #F58B82;
+$light-purple: #833DB6;
 
 /* Skrollr */
 *,:before,:after {
@@ -43,6 +44,7 @@ a {
   // font-weight: 700;
   position: relative;
   transition: all 0.125s ease;
+  cursor: pointer;
 
   &:hover {
     color: $light-red;
@@ -69,23 +71,12 @@ a {
   }
 }
 
-.intro {
-  //padding-top: 100px;
-  .intro-box {
-    margin-top: 350px;
-    background-color: $purple;
-    min-height: 150px;
-    padding: 10px;
-    border-radius: 3px;
-  }
-}
-
 .container {
   width: 100vw;
   color: $white;
 
   .hero-box {
-    margin-top: 36vh;
+    margin-top: 24vh;
     margin-left: 50vw;
     width: 32vw;
   }
@@ -156,6 +147,7 @@ a {
 
   &.button-secondary {
     background-color: $purple;
+    color: $white;
     &:hover {
       background-color: $dark-purple;
     }
@@ -190,6 +182,11 @@ a {
   width: 15rem;
   padding: 0.5rem 0.75rem;
   color: $black;
+
+  &-outline {
+    box-shadow: 0 2px 4px $grey;
+    // box-shadow: -1px -1px 0 $grey, 1px -1px 0 $grey, -1px 1px 0 $grey, 1px 1px 0 $grey;
+  }
 }
 
 

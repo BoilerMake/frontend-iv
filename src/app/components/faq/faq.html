@@ -1,0 +1,24 @@
+<div class="row faq-ama"
+     ng-controller="FaqCtrl">
+
+  <div class="ama col-md-4 col-md-offset-1">
+    <h2>Have a Question?</h2>
+    <p>Check out some frequently asked questions to the right. Still can't find help? Use the form below to talk to one of our organizers!</p>
+    <textarea class="input input-outline" placeholder="Ask us anything!" name="questionInput" id="questionInput" rows="3"></textarea>
+    <button ng-click="submitQuestion()" class="button button-secondary">Submit</button>
+  </div>
+
+  <div class="faq col-md-4">
+    <div class="scroll-container">
+      <h2>FAQ</h2>
+
+      <div ng-repeat="question in data.questions">
+        <div class="question">
+          <h3>{{question.q}}</h3>
+          <p>{{getAnswer(question)}} <a ng-click="question.clipped = !question.clipped">{{getLinkText(question)}}</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
