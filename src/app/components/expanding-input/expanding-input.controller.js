@@ -40,4 +40,17 @@ angular.module('app')
     }
   };
 
+  if ($window.innerWidth <= 767 && $scope.expanded == false) {
+    $scope.expanded = true;
+  }
+
+  angular.element($window).bind('resize', function(){
+    console.log($window.innerWidth);
+    $scope.$apply(function () {
+      if ($window.innerWidth <= 767 && $scope.expanded == false) {
+        $scope.expanded = true;
+      }
+    });
+  });
+
 });

@@ -20,6 +20,9 @@ $dark-grey: #333;
 $light-red: #F58B82;
 $light-purple: #833DB6;
 
+
+$screen-sm-max: 767px;
+
 /* Skrollr */
 *,:before,:after {
   -moz-box-sizing:border-box;
@@ -37,6 +40,10 @@ html, body {
   margin: 0;
   font-size: 16px;
   font-family: 'Exo 2', sans-serif;
+}
+
+.angular-wrapper {
+  position: relative;
 }
 
 a, .red-link {
@@ -74,48 +81,110 @@ a, .red-link {
 .container {
   width: 100vw;
   color: $white;
+  height: 100%;
 
   .hero-box {
     margin-top: 24vh;
-    margin-left: 50vw;
-    width: 32vw;
+
+    @media (max-width: $screen-sm-max) {
+      width: 18rem;
+      margin: 0 auto;
+      margin-top: 18vh;
+    }
   }
 }
 
 .background {
   width: 100vw;
-  height: 1600px;
-  background-color: $red;
+  height: 100%;
   position: absolute;
   z-index: -1;
 
-  canvas {
+  #sky-background {
     width: 100vw;
     height: 100vh;
+    z-index: -1;
+    position: absolute;
+  }
+
+  .red-background {
+    background-color: $red;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
   }
 
   .mountains {
     width: 100vw;
-    height: 1600px;
     position: absolute;
     top: 0;
     overflow: hidden;
+    height: inherit;
+    @media (max-width: $screen-sm-max) {
+      height: 100vh;
+    }
 
     img {
       width: 100vw;
     }
 
-    .mountains-0 {
+    #mountains-0 {
       position: absolute;
-      top: 10rem;
+      width: 100%;
+      height: 42vw;
+      background-image: url('/assets/images/bg-0-small.png');
+      -webkit-filter: blur(10px);
+      filter: blur(10px);
+      background-size: cover;
+
+      &.loaded {
+        background-image: url('/assets/images/bg-0.png');
+        animation: sharpen 1s both ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 5rem;
+        width: 100%;
+        background-color: $red;
+      }
+
+      @media (max-width: $screen-sm-max) {
+        bottom: 0;
+      }
     }
-    .mountains-1 {
+    #mountains-1 {
       position: absolute;
-      top: 30rem;
+      width: 100%;
+      height: 28vw;
+      background-image: url('/assets/images/bg-1-small.png');
+      -webkit-filter: blur(10px);
+      filter: blur(10px);
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+
+      &.loaded {
+        background-image: url('/assets/images/bg-1.png');
+        animation: sharpen 1s both ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 5rem;
+        width: 100%;
+        background-color: $red;
+      }
     }
-    .mountains-2 {
+    #mountains-2 {
       position: absolute;
-      top: 50rem;
+      // top: 50rem;
     }
   }
 
@@ -123,11 +192,22 @@ a, .red-link {
     position: absolute;
     top: 0;
     left: 0;
+    height: inherit;
     opacity: 0.3;
     width: 100vw;
-    height: 1600px;
     background-color: $purple;
     background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+  }
+}
+
+@keyframes sharpen {
+  from {
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+  }
+  to {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
   }
 }
 

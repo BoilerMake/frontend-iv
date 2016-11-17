@@ -34,10 +34,10 @@ Particles = {
   },
 
   initCanvas: function(canvasId) {
-    this.canvas = document.getElementById(canvasId);
-    this.canvas.width = this.width;
-    this.canvas.height = this.height;
-    this.context = this.canvas.getContext("2d");
+      this.canvas = document.getElementById(canvasId);
+      this.canvas.width = this.width;
+      this.canvas.height = this.height;
+      this.context = this.canvas.getContext("2d");
   },
 
   behavior: function(options) {
@@ -133,12 +133,12 @@ Particles = {
     this.interval = window.setInterval(function() {
 
       Particles.context.clearRect(0, 0, Particles.width, Particles.height);
-      var grd = Particles.context.createLinearGradient(Particles.width*(3/4),0,Particles.width,Particles.height);
-      grd.addColorStop(0,"#594269");
-      grd.addColorStop(0.9,"#EE4434");
-      // grd.addColorStop(0.9,"#F6CF56")
-      Particles.context.fillStyle = grd;
-      Particles.context.fillRect(0, 0, Particles.width, Particles.height);
+      // var grd = Particles.context.createLinearGradient(Particles.width*(3/4),0,Particles.width,Particles.height);
+      // grd.addColorStop(0,"#594269");
+      // grd.addColorStop(0.9,"#EE4434");
+      // // grd.addColorStop(0.9,"#F6CF56")
+      // Particles.context.fillStyle = grd;
+      // Particles.context.fillRect(0, 0, Particles.width, Particles.height);
       
       if (Particles.pathType === 'multivariate') {
         Particles.updateMultivariate();
