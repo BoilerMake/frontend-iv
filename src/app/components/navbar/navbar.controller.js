@@ -29,7 +29,7 @@ angular.module('app')
   console.log($window);
   angular.element($window).bind("scroll", function(e) {
     $scope.$apply(function () {
-      if ($window.scrollY < 500) {
+      if ($window.scrollY < 450) {
         $scope.hideNavbar = true;
       } else {
         $scope.hideNavbar = false;
