@@ -1,5 +1,14 @@
-<div class="input-button"
-     ng-controller="ExpandingInputCtrl">
-    <input class="input" placeholder="jenny@andthebets.com" type="text">
-    <button class="button button-secondary">Join the Mission</button>
+<div class="expanding-input"
+     ng-controller="ExpandingInputCtrl"
+     ng-class="{ expanded: expanded }">
+
+    <div class="floating-label">
+        <label for="email">Email</label>
+        <input class="input" name="email" placeholder="jenny@andthebets.com" type="text">
+    </div>
+    <div class="floating-label">
+        <label for="password">Password</label>
+        <input class="input hiddenInput" placeholder="Password" name="password" type="password">
+    </div>
+    <button ng-click="expanded = true" class="button button-secondary">Join the Mission</button>
 </div>
