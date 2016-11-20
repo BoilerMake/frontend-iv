@@ -146,7 +146,7 @@
       startMobileParticles();
     } else {
       startFullscreenParticles();
-      s = skrollr.init();
+      s = skrollr.init([smoothScrolling=true]);
       $(function() {
         s.refresh()
       });
@@ -169,7 +169,7 @@
       }
       startMobileParticles();
     } else {
-      s = skrollr.init();
+      s = skrollr.init([smoothScrolling=true]);
       $(function() {
         s.refresh()
       });

@@ -5,7 +5,7 @@ Particles = {
   width: window.innerWidth,
   height: window.innerHeight,
   padding: 50,
-  refreshRate: 15,
+  refreshRate: 20,
   pArray: [],
   path: null,
   speedFunction: null,
