@@ -1,31 +1,52 @@
 'use strict';
 angular.module('app')
-  .controller('AccountDetailController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','Auth', function ($rootScope, $scope,  ApiRest,ngToast, urls, Auth) {
+.controller('AccountDetailController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','Auth', function ($rootScope, $scope,  ApiRest,ngToast, urls, Auth) {
 
-    $scope.roles = Auth.getRoles();
-    ApiRest.one('users/me').get().then(function(data) {
-      $scope.me = data;
-    });
-    $scope.updateMe = function()
-    {
+  $scope.roles = Auth.getRoles();
+  ApiRest.one('users/me').get().then(function(data) {
+    $scope.me = data;
+  });
+  $scope.updateMe = function()
+  {
       //TODO
       ApiRest.all('users/me')
-        .customPUT($scope.me)
-        .then(function(data)  {
-          console.log(data);
-          ngToast.create({
-            className: 'success',
-            content: '<a>Account details updated!</a>'
-          });
-        })
+      .customPUT($scope.me)
+      .then(function(data)  {
+        console.log(data);
+        ngToast.create({
+          className: 'success',
+          content: '<a>Account details updated!</a>'
+        });
+      })
     }
   }])
-  .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http','Upload',
-   function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http, Upload) {
-    $scope.pageLoaded = false;
-    var fetchData = function()
-    {
-      ApiRest.one('users/me').get().then(function(data) {
+.controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http','Upload',
+ function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http, Upload) {
+  $scope.pageLoaded = false;
+
+
+  /* Frontend application stuff */
+  $scope.appGenders = ['I\'d rather not provide this information', 'Male', 'Female', 'Other'];
+  $scope.appGraduations = ['2017', '2018', '2019', '2020', 'Other'];
+  $scope.appRaces = ['I\'d rather not provide this information', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'American Indian or Alaska Native', 'White', 'Other'];
+  $scope.placeholders = {
+    'first_name': 'First name',
+    'last_name': 'Last name',
+    'school': 'Name of school or university',
+    'gender': 'Select an option',
+    'race': 'Select an option',
+    'github': 'Username',
+    'major': 'Name of major or concentration',
+    'graduation': 'Select year of graduation'
+  };
+  
+
+
+  /* End of frontend application stuff */
+
+  var fetchData = function()
+  {
+    ApiRest.one('users/me').get().then(function(data) {
       $scope.me = data;
       ApiRest.one('users/me/application').get().then(function(data) {
         $scope.pageLoaded = true;
@@ -35,13 +56,13 @@ angular.module('app')
         $scope.validation = data.validation;
       });
     });
-    }
-    fetchData();
-    $scope.isSaved = true;
-    $scope.lastSaved = new Date();
-    var timeout = null;
+  }
+  fetchData();
+  $scope.isSaved = true;
+  $scope.lastSaved = new Date();
+  var timeout = null;
 
-     $scope.schoolSearch = function(name) {
+  $scope.schoolSearch = function(name) {
     return ApiRest.one('schools').get({filter: name}).then(function(data) {
       console.log(data);
       return data;
@@ -49,17 +70,17 @@ angular.module('app')
   };
 
 
-    var saveApplication = function(reload)
+  var saveApplication = function(reload)
+  {
+    ApiRest.all('users/me').customPUT($scope.me).then(function(data)
     {
-      ApiRest.all('users/me').customPUT($scope.me).then(function(data)
-      {
-        $scope.validation = data.validation;
-        $scope.lastSaved = new Date();
-        if(reload)
-          fetchData();
-        $scope.isSaved=true;
-      });
-    }
+      $scope.validation = data.validation;
+      $scope.lastSaved = new Date();
+      if(reload)
+        fetchData();
+      $scope.isSaved=true;
+    });
+  }
 
   var debounceSaveUpdates = function(newVal, oldVal) {
     if($scope.me===undefined)
@@ -89,6 +110,11 @@ angular.module('app')
       $scope.me.application.isTravellingFromSchool = mode;
     };
 
+    $scope.changeExperience = function(mode)
+    {
+      $scope.me.application.hasHackathonExperience = mode;
+    };
+
     $scope.updateApplication = function(reload)
     {
       saveApplication(reload);
@@ -109,30 +135,30 @@ angular.module('app')
     $scope.isUploading=false;
     $scope.upload = function (file) {
       if(file==null)
-        {
-          ngToast.create({
+      {
+        ngToast.create({
           className: 'warning',
           content: 'Error with file upload! Make sure it is a pdf!'
-          });
-          return;
-        }
-       $scope.isUploading=true;
+        });
+        return;
+      }
+      $scope.isUploading=true;
       Upload.upload({
-          url: $scope.resume_PUT,
-          data: {file: file},
-          method: 'PUT'
+        url: $scope.resume_PUT,
+        data: {file: file},
+        method: 'PUT'
       }).then(function (resp) {
-          console.log('Success');
-          $scope.me.application.resume_uploaded=true;
-          $scope.me.application.resume_filename=file.name;
-          $scope.isUploading=false;
-          saveApplication(false);
+        console.log('Success');
+        $scope.me.application.resume_uploaded=true;
+        $scope.me.application.resume_filename=file.name;
+        $scope.isUploading=false;
+        saveApplication(false);
       }, function (resp) {
-          console.log('Error status: ' + resp.status);
+        console.log('Error status: ' + resp.status);
       }, function (evt) {
-          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-          $scope.dynamic=progressPercentage;
-          console.log('progress: ' + progressPercentage + '% ');
+        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+        $scope.dynamic=progressPercentage;
+        console.log('progress: ' + progressPercentage + '% ');
       });
     };
   }]);

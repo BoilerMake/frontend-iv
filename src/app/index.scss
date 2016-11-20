@@ -351,16 +351,117 @@ h1.application-title {
   color: $white;
   text-align: center;
   font-size: 2em;
+  margin-bottom: 0;
+  padding: 0;
+}
+h3.application-subtitle {
+  color: $grey;
+  text-align: center;
+  font-size: 1em;
+  font-style: italic;
+  margin: 0;
+  padding: 15px 0 30px 0;
+  font-family: 'Open Sans', arial, sans-serif;
+}
+.bold {
+  font-weight: 600;
+  color: rgba($white, 0.85);
 }
 .application-panel {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba($white, 0.2);
   border: 0;
   border-radius: 1em;
   padding: 1em 3em;
   .panel-heading {
     background-color: transparent;
   } 
+  .form-group {
+    padding: 5px 0;
+  }
+  .btn-group {
+    padding-top: 0.6em;
+  }
+  .btn {
+    border: 0 !important;
+    &:focus {
+      background-color: $purple;
+      color: $white;
+    }
+    &.btn-primary {
+      background-color: $light-purple;
+    }
+    &.btn-default {
+      background-color: rgba($dark-purple, 0.8);
+      color: rgba($white, 0.6);
+    }
+  }
+  label.control-label {
+    color: $white;
+    font-weight: 300;
+  }
+  .input-group {
+    border-radius: 4px;
+    background-color: rgba($dark-purple, 0.8);
+    border: 1px solid rgba($white, 0.5);
+    color: rgba($white, 0.5);
+    font-family: 'Open Sans', arial, sans-serif;
+    .input-group-addon {
+      border: 0 !important;
+      color: rgba($white, 0.5);
+      background-color: transparent;
+    }
+    input, input:hover, input:focus, select, select:hover, select:focus {
+      outline: 0px !important;
+      -webkit-appearance: none !important;
+      border: 0 !important;
+      background-color: transparent;
+    }
+  }
+  input, select {
+    background-color: rgba($dark-purple, 0.8);
+    color: rgba($white, 0.5);
+    border: 1px solid rgba($white, 0.5);
+    font-family: 'Open Sans', arial, sans-serif;
+    &.half {
+      float: right;
+      width: 47%;
+      &.half-first {
+        float: left;
+      }
+    }
+    &:focus {
+      color: $white;
+    }
+  }
+  input, input:hover, input:focus, select, select:hover, select:focus {
+    outline: 0px !important;
+    -webkit-appearance: none !important;
+    border: 1px solid rgba($white, 0.5);
+  }
+  input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0 !important;
+    display: none; //Weird but works
+  }
+
+  .schools {
+    ul {
+      background-color: rgba($dark-purple, 0.8);
+      li {
+        a {
+          color: $white;
+        }
+        &.active {
+          a {
+            background-color: $light-purple;
+          }
+        }
+      }
+    }
+  }
 }
+
 /**
  * EXEC
  */

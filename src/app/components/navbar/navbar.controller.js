@@ -29,10 +29,10 @@ angular.module('app')
   // Set navbar initial state
   angular.element(document).ready(function () {
     $scope.url = $location.url().split('?')[0];
-    if ($scope.url != '/') {
-      $scope.hideNavbar = false;
-    } else {
+    if ($scope.url == '/') {
       $scope.hideNavbar = true;
+    } else {
+      $scope.hideNavbar = false;
     }
   });
 
