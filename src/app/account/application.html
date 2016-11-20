@@ -62,11 +62,11 @@
             <label class="col-sm-4 control-label">Will you need travel reimbursement?</label>
             <div class="col-sm-8">
               <div class="btn-group">
-                <label class="btn" ng-class="me.application.isTravellingFromSchool==1 ? 'btn-primary' : 'btn-default'">
-                  <input type="radio" name="options" value="option1" ng-click="changeTravellingFrom(1)"> Yes
+                <label class="btn" ng-class="me.application.needsTravelReimbursement==1 ? 'btn-primary' : 'btn-default'">
+                  <input type="radio" name="options" value="option1" ng-click="changeNeedsTravelReimbursement(1)"> Yes
                 </label>
-                <label class="btn" ng-class="me.application.isTravellingFromSchool==0 ? 'btn-primary' : 'btn-default'">
-                  <input type="radio" name="options" value="option2" ng-click="changeTravellingFrom(0)"> No
+                <label class="btn" ng-class="me.application.needsTravelReimbursement==0 ? 'btn-primary' : 'btn-default'">
+                  <input type="radio" name="options" value="option2" ng-click="changeNeedsTravelReimbursement(0)"> No
                 </label>
               </div>
             </div>
@@ -120,10 +120,10 @@
             <label class="col-sm-4 control-label">Will this be your first hackathon?</label>
             <div class="col-sm-8">
               <div class="btn-group">
-                <label class="btn" ng-class="me.application.hasHackathonExperience==0 ? 'btn-primary' : 'btn-default'">
+                <label class="btn" ng-class="me.application.isFirstHackathon==0 ? 'btn-primary' : 'btn-default'">
                   <input type="radio" name="options" value="yes" ng-click="changeExperience(0)"> Yes
                 </label>
-                <label class="btn" ng-class="me.application.hasHackathonExperience==1 ? 'btn-primary' : 'btn-default'">
+                <label class="btn" ng-class="me.application.isFirstHackathon==1 ? 'btn-primary' : 'btn-default'">
                   <input type="radio" name="options" value="no" ng-click="changeExperience(1)"> No
                 </label>
               </div>

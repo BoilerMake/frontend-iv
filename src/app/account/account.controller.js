@@ -106,14 +106,14 @@ angular.module('app')
   $scope.$watch('me', debounceSaveUpdates, true);
 
     //$scope.me.application.isTravellingFromSchool =1;
-    $scope.changeTravellingFrom = function(mode)
+    $scope.changeNeedsTravelReimbursement = function(mode)
     {
-      $scope.me.application.isTravellingFromSchool = mode;
+      $scope.me.application.needsTravelReimbursement = mode;
     };
 
     $scope.changeExperience = function(mode)
     {
-      $scope.me.application.hasHackathonExperience = mode;
+      $scope.me.application.isFirstHackathon = mode;
     };
 
     $scope.updateApplication = function(reload)
