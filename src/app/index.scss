@@ -347,11 +347,17 @@ a, .red-link {
 .application-view-container {
   padding-top: 100px;
 }
+h2.emoji {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  padding: 0;
+}
 h1.application-title {
   color: $white;
   text-align: center;
   font-size: 2em;
-  margin-bottom: 0;
+  margin: 0;
   padding: 0;
 }
 h3.application-subtitle {
@@ -445,6 +451,17 @@ h3.application-subtitle {
     display: none; //Weird but works
   }
 
+  .upload-progress {
+    color: $white;
+    white-space: nowrap;
+  }
+  .progress-bar {
+    background-color: $light-purple;
+  }
+  .progress-indicate {
+    margin-top: 10px;
+  }
+
   .schools {
     ul {
       background-color: rgba($dark-purple, 0.8);
@@ -459,6 +476,21 @@ h3.application-subtitle {
         }
       }
     }
+  }
+}
+
+ul.validation-errors {
+  list-style: none;
+  margin: 5px 10px;
+  li.err {
+    color: rgba($white, 0.8);;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 0.8em;
+    background-color: rgba($light-red, 0.4);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    text-align: center;
   }
 }
 

@@ -75,6 +75,7 @@ angular.module('app')
     ApiRest.all('users/me').customPUT($scope.me).then(function(data)
     {
       $scope.validation = data.validation;
+      console.log($scope.validation.reasons);
       $scope.lastSaved = new Date();
       if(reload)
         fetchData();
