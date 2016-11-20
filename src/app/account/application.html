@@ -4,7 +4,7 @@
 
 <div class="background">
   <canvas id="sky-background-fixed"></canvas>
-  <canvas id="starry-night"></canvas>
+  <canvas id="starry-night-app"></canvas>
   <div class="overlay full-height"></div>
 </div>
 
@@ -23,34 +23,34 @@
 
             <!-- Name -->
             <div class="form-group">
-              <label class="col-sm-4 control-label">Name</label>
+              <label for="firstName" class="col-sm-4 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" ng-model="me.first_name" class="form-control half half-first" placeholder="{{placeholders['first_name']}}">
-                <input type="text" ng-model="me.last_name" class="form-control half" placeholder="{{placeholders['last_name']}}">
+                <input id="firstName" type="text" ng-model="me.first_name" class="form-control half half-first" placeholder="{{placeholders['first_name']}}">
+                <input id="lastName" type="text" ng-model="me.last_name" class="form-control half" placeholder="{{placeholders['last_name']}}">
               </div>
             </div>
 
             <!-- School -->
             <div class="form-group">
-              <label class="col-sm-4 control-label">School</label>
+              <label for="school" class="col-sm-4 control-label">School</label>
               <div class="col-sm-8 schools">
-               <input type="text" ng-model="me.application.school" typeahead="school as school.name for school in schoolSearch($viewValue)" class="form-control" placeholder="{{placeholders['school']}}">
+               <input id="school" type="text" ng-model="me.application.school" typeahead="school as school.name for school in schoolSearch($viewValue)" class="form-control" placeholder="{{placeholders['school']}}">
              </div>
            </div>
 
            <!-- Major -->
            <div class="form-group">
-            <label class="col-sm-4 control-label">Major</label>
+            <label for="major" class="col-sm-4 control-label">Major</label>
             <div class="col-sm-8">
-              <input type="text" ng-model="me.application.major" class="form-control" placeholder="{{placeholders['major']}}">
+              <input id="major" type="text" ng-model="me.application.major" class="form-control" placeholder="{{placeholders['major']}}">
             </div>
           </div>
 
           <!-- Graduation Year -->
           <div class="form-group">
-            <label class="col-sm-4 control-label">Graduation Year</label>
+            <label for="gradYear" class="col-sm-4 control-label">Graduation Year</label>
             <div class="col-sm-8">
-              <select name="graduationSelect" ng-model="me.application.grad_year" class="form-control">
+              <select id="gradYear" name="graduationSelect" ng-model="me.application.grad_year" class="form-control">
                 <option value="" disabled selected>{{placeholders['graduation']}}</option>
                 <option ng-repeat="year in appGraduations" value="{{year}}">{{year}}</option>
               </select>
@@ -74,9 +74,9 @@
 
           <!-- Gender -->
           <div class="form-group">
-            <label class="col-sm-4 control-label">Gender</label>
+            <label for="gender" class="col-sm-4 control-label">Gender</label>
             <div class="col-sm-8">
-              <select name="genderSelect" ng-model="me.application.gender" class="form-control" >
+              <select id="gender" name="genderSelect" ng-model="me.application.gender" class="form-control" >
                 <option value="" disabled selected>{{placeholders['gender']}}</option>
                 <option ng-repeat="gender in appGenders" value="{{gender}}">{{gender}}</option>
               </select>
@@ -85,9 +85,9 @@
 
           <!-- Race -->
           <div class="form-group">
-            <label class="col-sm-4 control-label">Race</label>
+            <label for="race" class="col-sm-4 control-label">Race</label>
             <div class="col-sm-8">
-              <select name="raceSelect" ng-model="me.application.race" class="form-control" >
+              <select id="race" name="raceSelect" ng-model="me.application.race" class="form-control" >
                 <option value="" disabled selected>{{placeholders['race']}}</option>
                 <option ng-repeat="race in appRaces" value="{{race}}">{{race}}</option>
               </select>
@@ -96,11 +96,11 @@
 
           <!-- Github -->
           <div class="form-group">
-            <label class="col-sm-4 control-label">GitHub Username</label>
+            <label for="github" class="col-sm-4 control-label">GitHub Username</label>
             <div class="col-sm-8">
               <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="text" ng-model="me.application.github" class="form-control" placeholder="{{placeholders['github']}}">
+                <input id="github" type="text" ng-model="me.application.github" class="form-control" placeholder="{{placeholders['github']}}">
               </div>
             </div>
           </div>
@@ -144,28 +144,20 @@
 </div>
 
 <script>
-  var s;
 
   var isMobile = true;
   if (window.innerWidth > 767) isMobile = false;
 
-  var startFullscreenParticles = function() {
-    Particles.init('starry-night', {
+  var startAppParticles = function() {
+    Particles.stop();
+    Particles.init('starry-night-app', {
       width: window.innerWidth,
       height: window.innerHeight
     });
-    startParticles();
+    startAllParticles();
   };
 
-  var startMobileParticles = function() {
-    Particles.init('starry-night', {
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-    startParticles();
-  };
-
-  var startParticles = function() {
+  var startAllParticles = function() {
     Particles.behavior({
       path: function(x) {
         return (-0.5 * x) + 300;
@@ -201,23 +193,19 @@
 
 
   // Load background gradient
-  var grdCanvas = document.getElementById("sky-background-fixed");
-  var grdCtx = grdCanvas.getContext("2d");
-  // grdCanvas.width = window.innerWidth;
-  // grdCanvas.height = window.innerHeight;
-  var grd = grdCtx.createLinearGradient(grdCanvas.width*(3/4),0,grdCanvas.width,grdCanvas.height);
-  grd.addColorStop(0,"#594269");
-  grd.addColorStop(0.9,"#EE4434");
-  // grd.addColorStop(0.9,"#F6CF56")
-  grdCtx.fillStyle = grd;
-  grdCtx.fillRect(0, 0, grdCanvas.width, grdCanvas.height);
+  var gradientCanvas = document.getElementById("sky-background-fixed");
+  var gradientCtx = gradientCanvas.getContext("2d");
+
+
+  var gradient = gradientCtx.createLinearGradient(gradientCanvas.width*(3/4),0,gradientCanvas.width,gradientCanvas.height);
+  gradient.addColorStop(0,"#594269");
+  gradient.addColorStop(0.9,"#EE4434");
+  // gradient.addColorStop(0.9,"#F6CF56")
+  gradientCtx.fillStyle = gradient;
+  gradientCtx.fillRect(0, 0, gradientCanvas.width, gradientCanvas.height);
 
   $(window).load(function() {
-    if (isMobile) {
-      startMobileParticles();
-    } else {
-      startFullscreenParticles();
-    }
+    startAppParticles();
   });
 
   $(window).resize(function() {
@@ -227,12 +215,8 @@
     // var changed = isMobile != isMobileTemp;
     isMobile = isMobileTemp;
 
-    Particles.stop();
+    //Particles.stop();
 
-    if (isMobile) {
-      startMobileParticles();
-    } else {
-      startFullscreenParticles();
-    }
+    startAppParticles();
   });
 </script>
