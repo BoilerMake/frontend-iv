@@ -3,16 +3,12 @@
 <script src="/assets/javascripts/particle.js"></script>
 
 <div class="background">
-  <div class="red-background"></div>
-  <canvas id="sky-background"></canvas>
+  <canvas id="sky-background-fixed"></canvas>
   <canvas id="starry-night"></canvas>
   <div class="overlay full-height"></div>
 </div>
 
-
-
 <div class="container application-view-container">
-
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
@@ -144,6 +140,7 @@
     </ul>
   </div>
 </div>
+<div ng-include="'app/components/footer/footer.html'"></div>
 </div>
 
 <script>
@@ -204,7 +201,7 @@
 
 
   // Load background gradient
-  var grdCanvas = document.getElementById("sky-background");
+  var grdCanvas = document.getElementById("sky-background-fixed");
   var grdCtx = grdCanvas.getContext("2d");
   // grdCanvas.width = window.innerWidth;
   // grdCanvas.height = window.innerHeight;

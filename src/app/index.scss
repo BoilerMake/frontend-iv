@@ -107,6 +107,15 @@ a, .red-link {
     position: absolute;
   }
 
+  #sky-background-fixed {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
   .red-background {
     background-color: $red;
     width: 100vw;
