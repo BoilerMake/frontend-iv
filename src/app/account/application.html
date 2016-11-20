@@ -1,63 +1,51 @@
 <!-- applicaiton.html -->
 <div ng-include="'app/components/navbar/navbar.html'"></div>
+<script src="/assets/javascripts/particle.js"></script>
+<div class="background">
+  <div class="red-background"></div>
+  <canvas id="sky-background"></canvas>
+  <canvas id="starry-night"></canvas>
+  <div class="overlay full-height"></div>
+</div>
 <div class="container application-view-container">
-	<div class="row">
+  <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">My Application</h3>
-        </div>
+      <h1 class="application-title">My Application</h1>
+      <div class="panel panel-default application-panel">
         <div class="panel-body">
           <form class="form-horizontal">
             <div class="form-group">
-              <label class="col-sm-4 control-label">First Name</label>
+              <label class="col-sm-4 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" ng-model="me.first_name" class="form-control">
+                <input type="text" ng-model="me.first_name" class="form-control"> <input type="text" ng-model="me.last_name" class="form-control">
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Last Name</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.last_name" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Email</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.email" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Phone</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.phone" class="form-control">
-              </div>
-            </div>
-            <div id="phase2" ng-show="phase >= 2">
-            <hr />
             <div class="form-group">
               <label class="col-sm-4 control-label">School</label>
               <div class="col-sm-8">
                  <input type="text" ng-model="me.application.school" typeahead="school as school.name for school in schoolSearch($viewValue)" class="form-control">
               </div>
             </div>
-            <div class="form-group" ng-if="me.application.school.id">
-              <label class="col-sm-8 control-label">Will you be travelling from {{me.application.school.name}}?</label>
-              <div class="col-sm-4">
-                 <div class="btn-group btn-toggle" data-toggle="buttons">
-                  <label class="btn" ng-class="me.application.isTravellingFromSchool==1 ? 'btn-primary' : 'btn-default'">
+            <div id="phase2" ng-show="phase >= 2">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Do you need travel reimbursement?</label>
+              <div class="col-sm-8">
+                <label class="btn" ng-class="me.application.isTravellingFromSchool==1 ? 'btn-primary' : 'btn-default'">
                     <input type="radio" name="options" value="option1" ng-click="changeTravellingFrom(1)"> Yes
                   </label>
                   <label class="btn" ng-class="me.application.isTravellingFromSchool==0 ? 'btn-primary' : 'btn-default'">
                     <input type="radio" name="options" value="option2" ng-click="changeTravellingFrom(0)"> No
                   </label>
-                </div>
               </div>
             </div>
-            <div class="form-group" ng-if="me.application.isTravellingFromSchool==0 && me.application.school.id">
-              <label class="col-sm-4 control-label">Where will you be travelling from?</label>
+             <div class="form-group">
+              <label class="col-sm-4 control-label">Gender</label>
               <div class="col-sm-8">
-                <input type="text" ng-model="me.application.travellingFrom" class="form-control" placeholder="The moon">
+                <select ng-model="me.application.gender" class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other / Prefer not to disclose</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -78,18 +66,6 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-4 control-label">Essay 1</label>
-              <div class="col-sm-8">
-                <textarea ng-model="me.application.essay1" class="form-control" rows="6"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Essay 2</label>
-              <div class="col-sm-8">
-                <textarea ng-model="me.application.essay2" class="form-control" rows="6"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
               <label class="col-sm-4 control-label">Age</label>
               <div class="col-sm-8">
                 <input type="text" ng-model="me.application.age" class="form-control">
@@ -107,16 +83,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Gender</label>
-              <div class="col-sm-8">
-                <select ng-model="me.application.gender" class="form-control">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other / Prefer not to disclose</option>
-                </select>
-              </div>
-            </div>
+           
             <div class="form-group">
               <label class="col-sm-4 control-label">Major</label>
               <div class="col-sm-8">
@@ -171,8 +138,8 @@
         </div>
       </div>
 
-
-      <div class="panel panel-default" ng-show="(phase >= 2) && (teamsEnabled)">
+<!-- 
+      <div class="panel panel-default application-panel" ng-show="(phase >= 2) && (teamsEnabled)">
         <div class="panel-heading">
           <h3 class="panel-title">My Team</h3>
         </div>
@@ -201,9 +168,103 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
 
 </div>
+
+<script>
+  var s;
+
+  var isMobile = true;
+  if (window.innerWidth > 767) isMobile = false;
+
+  var startFullscreenParticles = function() {
+    Particles.init('starry-night', {
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    startParticles();
+  };
+
+  var startMobileParticles = function() {
+    Particles.init('starry-night', {
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    startParticles();
+  };
+
+  var startParticles = function() {
+    Particles.behavior({
+      path: function(x) {
+        return (-0.5 * x) + 300;
+      },
+      speed: function() {
+        return 0.2;
+      },
+      offset: function() {
+        return (Math.random() * 6) - 3;
+      },
+      backgroundColor: '#594269',
+      color: function() {
+        var rn = Math.random();
+        if (rn < 0.2) {
+          return 'rgba(255, 255, 255, 1.0)';
+        } else if (rn < 0.4) {
+          return 'rgba(255, 255, 255, 0.6)';
+        } else if (rn < 0.6) {
+          return 'rgba(255, 255, 255, 0.4)';
+        } else if (rn < 0.8) {
+          return 'rgba(255, 255, 255, 0.2)';
+        } else {
+          return 'rgba(255, 255, 255, 0.1)';
+        }
+      },
+      size: 2,
+      count: 1000,
+      placement: 'random'
+    });
+    Particles.start();
+  };
+
+
+
+  // Load background gradient
+  var grdCanvas = document.getElementById("sky-background");
+  var grdCtx = grdCanvas.getContext("2d");
+  // grdCanvas.width = window.innerWidth;
+  // grdCanvas.height = window.innerHeight;
+  var grd = grdCtx.createLinearGradient(grdCanvas.width*(3/4),0,grdCanvas.width,grdCanvas.height);
+  grd.addColorStop(0,"#594269");
+  grd.addColorStop(0.9,"#EE4434");
+  // grd.addColorStop(0.9,"#F6CF56")
+  grdCtx.fillStyle = grd;
+  grdCtx.fillRect(0, 0, grdCanvas.width, grdCanvas.height);
+
+  $(window).load(function() {
+    if (isMobile) {
+      startMobileParticles();
+    } else {
+      startFullscreenParticles();
+    }
+  });
+
+  $(window).resize(function() {
+    var isMobileTemp = true;
+    if (window.innerWidth > 767) isMobileTemp = false;
+
+    // var changed = isMobile != isMobileTemp;
+    isMobile = isMobileTemp;
+
+    Particles.stop();
+
+    if (isMobile) {
+      startMobileParticles();
+    } else {
+      startFullscreenParticles();
+    }
+  });
+</script>
