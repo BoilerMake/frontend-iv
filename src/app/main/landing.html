@@ -57,7 +57,6 @@
   if (window.innerWidth > 767) isMobile = false;
 
   var startFullscreenParticles = function() {
-    Particles.stop();
     var mountains0Height = document.getElementById("mountains-0").offsetHeight;
     Particles.init('starry-night', {
       width: window.innerWidth,
@@ -67,7 +66,6 @@
   };
 
   var startMobileParticles = function() {
-    Particles.stop();
     Particles.init('starry-night', {
       width: window.innerWidth,
       height: window.innerHeight
@@ -107,24 +105,21 @@
     });
     Particles.start();
   };
-
   // Load background gradient
-    var grdCanvas = document.getElementById("sky-background");
-    var grdCtx = grdCanvas.getContext("2d");
-    //grdCanvas.width = window.innerWidth;
-    //grdCanvas.height = window.innerHeight;
-    var grd = grdCtx.createLinearGradient(grdCanvas.width*(3/4),0,grdCanvas.width,grdCanvas.height);
-    grd.addColorStop(0,"#594269");
-    grd.addColorStop(0.9,"#EE4434");
-    // grd.addColorStop(0.9,"#F6CF56")
-    grdCtx.fillStyle = grd;
-    grdCtx.fillRect(0, 0, grdCanvas.width, grdCanvas.height);
+  var grdCanvas = document.getElementById("sky-background");
+  var grdCtx = grdCanvas.getContext("2d");
+  //grdCanvas.width = window.innerWidth;
+  //grdCanvas.height = window.innerHeight;
+  var grd = grdCtx.createLinearGradient(grdCanvas.width*(3/4),0,grdCanvas.width,grdCanvas.height);
+  grd.addColorStop(0,"#594269");
+  grd.addColorStop(0.9,"#EE4434");
+  // grd.addColorStop(0.9,"#F6CF56")
+  grdCtx.fillStyle = grd;
+  grdCtx.fillRect(0, 0, grdCanvas.width, grdCanvas.height);
 
 
 
-  $(window).load(function() {
-
-    
+  $(function() {
     // Progressive image loading
     var mtnImg0 = new Image();
     var mtnImg1 = new Image();
@@ -156,7 +151,6 @@
         s.refresh()
       });
     }
-
   });
 
   $(window).resize(function() {

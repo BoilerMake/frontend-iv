@@ -149,7 +149,6 @@
   if (window.innerWidth > 767) isMobile = false;
 
   var startAppParticles = function() {
-    Particles.stop();
     Particles.init('starry-night-app', {
       width: window.innerWidth,
       height: window.innerHeight
@@ -204,7 +203,7 @@
   gradientCtx.fillStyle = gradient;
   gradientCtx.fillRect(0, 0, gradientCanvas.width, gradientCanvas.height);
 
-  $(window).load(function() {
+  $(function() {
     startAppParticles();
   });
 
@@ -215,7 +214,7 @@
     // var changed = isMobile != isMobileTemp;
     isMobile = isMobileTemp;
 
-    //Particles.stop();
+    Particles.stop();
 
     startAppParticles();
   });
