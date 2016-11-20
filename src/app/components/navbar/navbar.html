@@ -62,18 +62,15 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li ng-class="{ active: isActive('/account')}" ng-show="loggedIn" class="dropdown" dropdown>
-                <a href="" class="dropdown-toggle nav-element" dropdown-toggle>Hello, {{ me.first_name }}!</a>
-                <ul class="dropdown-menu" dropdown-menu style="margin-right:5px">
-                    <li><a ng-click="logout()">Sign Out</a>
-                    </li>
-                </ul>
+            <li ng-show="loggedIn">
+                <button ng-click="logout()" class="button button-plain button-dark-red-hover">Sign Out</button>
             </li>
+            
             <li ng-hide="loggedIn">
                 <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
             </li>
             <li ng-hide="loggedIn">
-                <button class="button button-plain button-dark-red-hover">Sign In</button>
+                <button ui-sref="signin" class="button button-plain button-dark-red-hover">Sign In</button>
             </li>
         </ul>
 
