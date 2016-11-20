@@ -5,9 +5,10 @@
   border-radius: 3px;
   padding: 0.25rem;
   display: inline-block;
-  transition: all 0.5s ease;
   position: relative;
   width: 24rem;
+  -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+  transition: width 0.5s, height 0.5s, transform 0.5s;
 
   h3 {
     color: $black;
@@ -17,7 +18,9 @@
     margin: 0;
     display: block;
     opacity: 0;
-    transition: all 0.5s ease;
+    -webkit-transition: opacity 0.8s, margin 0.8s, -webkit-transform 0.8s;
+    transition: opacity 0.8s, margin 0.8s, transform 0.8s;
+
   }
 
   a {
@@ -30,7 +33,8 @@
     width: 4rem;
     right: 0.25rem;
     opacity: 0;
-    transition: all 0.5s ease;
+    -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
+    transition: opacity 0.8s, transform 0.8s;
   }
 
   .button {
@@ -47,6 +51,7 @@
 
   label {
     color: $purple;
+    
   }
 
   .floating-label {
@@ -67,25 +72,28 @@
       text-transform: uppercase;
       font-size: 0.7rem;
       letter-spacing: 2px;
+      -webkit-transition: opacity 0.8s, margin 0.8s, -webkit-transform 0.8s;
+      transition: opacity 0.8s, margin 0.8s, transform 0.8s;
     }
   }
 
   &.expanded {
     width: 16rem;
     height: 14rem;
-    transition: all 0.5s ease;
 
     h3 {
       height: auto;
       margin: 1rem 0;
       opacity: 1;
-      transition: all 0.5s ease;
+      -webkit-transition: none;
+      transition: none;
     }
 
     a {
       height: 2rem;
       opacity: 1;
-      transition: all 0.5s ease;
+      -webkit-transition: none;
+      transition: none;
     }
 
     .button {
@@ -107,7 +115,8 @@
         opacity: 1;
         height: 1rem;
         margin-top: 0.65rem;
-        transition: all 0.5s ease;
+        -webkit-transition: none;
+        transition: none;
       }
     }
   }
