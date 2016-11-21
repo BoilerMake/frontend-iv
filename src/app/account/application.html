@@ -1,209 +1,147 @@
 <!-- applicaiton.html -->
 <div ng-include="'app/components/navbar/navbar.html'"></div>
+<script src="/assets/javascripts/particle.js"></script>
+
+<div class="background">
+  <canvas id="sky-background-fixed"></canvas>
+  <canvas id="starry-night-app"></canvas>
+  <div class="overlay-fixed full-height"></div>
+</div>
+
 <div class="container application-view-container">
-	<div class="row">
+  <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">My Application</h3>
-        </div>
+
+      <!-- Header -->
+      <h2 class="emoji" ng-show="validation.valid">✅</h2><h2 class="emoji" ng-hide="validation.valid || !pageLoaded">❌</h2>
+      <h1 class="application-title">Your application is <span ng-hide="validation.valid || !pageLoaded">not</span> complete</h1>
+      <h3 class="application-subtitle"><span ng-if="isSaved">There are no unsaved changes.</span><span ng-hide="isSaved">Changes will be saved automatically.</span> Last saved <span class="bold" am-time-ago="lastSaved"></span>.</h3>
+      <div class="panel panel-default application-panel">
         <div class="panel-body">
           <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-sm-4 control-label">First Name</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.first_name" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Last Name</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.last_name" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Email</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.email" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Phone</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.phone" class="form-control">
-              </div>
-            </div>
-            <div id="phase2" ng-show="phase >= 2">
-            <hr />
-            <div class="form-group">
-              <label class="col-sm-4 control-label">School</label>
-              <div class="col-sm-8">
-                 <input type="text" ng-model="me.application.school" typeahead="school as school.name for school in schoolSearch($viewValue)" class="form-control">
-              </div>
-            </div>
-            <div class="form-group" ng-if="me.application.school.id">
-              <label class="col-sm-8 control-label">Will you be travelling from {{me.application.school.name}}?</label>
-              <div class="col-sm-4">
-                 <div class="btn-group btn-toggle" data-toggle="buttons">
-                  <label class="btn" ng-class="me.application.isTravellingFromSchool==1 ? 'btn-primary' : 'btn-default'">
-                    <input type="radio" name="options" value="option1" ng-click="changeTravellingFrom(1)"> Yes
-                  </label>
-                  <label class="btn" ng-class="me.application.isTravellingFromSchool==0 ? 'btn-primary' : 'btn-default'">
-                    <input type="radio" name="options" value="option2" ng-click="changeTravellingFrom(0)"> No
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group" ng-if="me.application.isTravellingFromSchool==0 && me.application.school.id">
-              <label class="col-sm-4 control-label">Where will you be travelling from?</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.application.travellingFrom" class="form-control" placeholder="The moon">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Résumé</label>
-              <div class="col-sm-2">
-                <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'">Upload </div>
-              </div>
-              <div class="col-sm-6">
-               <progressbar ng-if="isUploading" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}}%</span></progressbar>
-               <br>
-               <p ng-if="me.application.resume_uploaded">succesfully uploaded: <b>{{me.application.resume_filename}}</b></p>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">github username</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.application.github" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Essay 1</label>
-              <div class="col-sm-8">
-                <textarea ng-model="me.application.essay1" class="form-control" rows="6"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Essay 2</label>
-              <div class="col-sm-8">
-                <textarea ng-model="me.application.essay2" class="form-control" rows="6"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Age</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.application.age" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Graduation Year</label>
-              <div class="col-sm-8">
-                <select ng-model="me.application.grad_year" class="form-control">
-                  <option value="2017">2017</option>
-                  <option value="2018">2018</option>
-                  <option value="2019">2019</option>
-                  <option value="2020">2020</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Gender</label>
-              <div class="col-sm-8">
-                <select ng-model="me.application.gender" class="form-control">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other / Prefer not to disclose</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Major</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.application.major" class="form-control">
-              </div>
-            </div>
-          </div><!--end phase 2 div-->
-          <div id="phase3" ng-show="phase >= 3">
-            <hr>
-            [we should ask the following after we accept hackers]
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Diet</label>
-              <div class="col-sm-8">
-                <select ng-model="me.application.diet" class="form-control">
-                  <option value="omnivore">Omnivore</option>
-                  <option value="vegetarian">Vegetarian</option>
-                  <option value="vegan">Vegan</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Other Restrictions</label>
-              <div class="col-sm-8">
-                <input type="text" ng-model="me.application.diet_restrictions" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">T-Shirt Size</label>
-              <div class="col-sm-8">
-                <select ng-model="me.application.tshirt" class="form-control">
-                  <option value="XS">XS</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                </select>
-              </div>
-            </div>
-          </div><!--end phase 3 div-->
-            <hr>
+            <!-- Application start -->
 
-            <div class="alert alert-danger" ng-hide="validation.valid || !pageLoaded" role="alert">
-              <p>Your application is not complete! :(</p>
-              <li ng-repeat="reason in validation.reasons">{{reason}}</li>
-            </div>
-            <p ng-show="validation.valid">Your application is complete! yay!</p>
-
-            <p>Changes are automatically saved; last saved <span am-time-ago="lastSaved"></span>.</p>
-            <p ng-if="isSaved">No unsaved changes.</p>
-            <br>
-          </form>
-        </div>
-      </div>
-
-
-      <div class="panel panel-default" ng-show="(phase >= 2) && (teamsEnabled)">
-        <div class="panel-heading">
-          <h3 class="panel-title">My Team</h3>
-        </div>
-        <div class="panel-body">
-          <form class="form-horizontal">
-             <b>Your team code is: {{me.application.team.code}}</b>
-
+            <!-- Name -->
             <div class="form-group">
-              <div class="col-md-6">
-                 <p>Team members:</p>
-                  <li ng-repeat="h in me.application.team.hackers">{{h.email}}</li>
-              </div>
-                <div class="col-md-6">
-                  <input type="text" ng-model="me.application.team_code" class="form-control" placeholder="enter a code">
-                  <br>
-                  <button ng-click="leaveTeam()" class="btn btn-primary pull-right">Leave Current Team</button>
-                <button ng-click="updateApplication(true)" class="btn btn-primary pull-right">Join Team</button>
-                </div>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-
+              <label for="firstName" class="col-sm-4 control-label">Name</label>
+              <div class="col-sm-8">
+                <input id="firstName" type="text" ng-model="me.first_name" class="form-control half half-first" placeholder="{{placeholders['first_name']}}">
+                <input id="lastName" type="text" ng-model="me.last_name" class="form-control half" placeholder="{{placeholders['last_name']}}">
               </div>
             </div>
-          </form>
-        </div>
+
+            <!-- School -->
+            <div class="form-group">
+              <label for="school" class="col-sm-4 control-label">School</label>
+              <div class="col-sm-8 schools">
+               <input id="school" type="text" ng-model="me.application.school" typeahead="school as school.name for school in schoolSearch($viewValue)" class="form-control" placeholder="{{placeholders['school']}}">
+             </div>
+           </div>
+
+           <!-- Major -->
+           <div class="form-group">
+            <label for="major" class="col-sm-4 control-label">Major</label>
+            <div class="col-sm-8">
+              <input id="major" type="text" ng-model="me.application.major" class="form-control" placeholder="{{placeholders['major']}}">
+            </div>
+          </div>
+
+          <!-- Graduation Year -->
+          <div class="form-group">
+            <label for="gradYear" class="col-sm-4 control-label">Graduation Year</label>
+            <div class="col-sm-8">
+              <select id="gradYear" name="graduationSelect" ng-model="me.application.grad_year" class="form-control">
+                <option value="" disabled selected>{{placeholders['graduation']}}</option>
+                <option ng-repeat="year in appGraduations" value="{{year}}">{{year}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Transportation -->
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Will you need travel reimbursement?</label>
+            <div class="col-sm-8">
+              <div class="btn-group">
+                <label class="btn" ng-class="me.application.needsTravelReimbursement==1 ? 'btn-primary' : 'btn-default'">
+                  <input type="radio" name="options" value="option1" ng-click="changeNeedsTravelReimbursement(1)"> Yes
+                </label>
+                <label class="btn" ng-class="me.application.needsTravelReimbursement==0 ? 'btn-primary' : 'btn-default'">
+                  <input type="radio" name="options" value="option2" ng-click="changeNeedsTravelReimbursement(0)"> No
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label for="gender" class="col-sm-4 control-label">Gender</label>
+            <div class="col-sm-8">
+              <select id="gender" name="genderSelect" ng-model="me.application.gender" class="form-control" >
+                <option value="" disabled selected>{{placeholders['gender']}}</option>
+                <option ng-repeat="gender in appGenders" value="{{gender}}">{{gender}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Race -->
+          <div class="form-group">
+            <label for="race" class="col-sm-4 control-label">Race</label>
+            <div class="col-sm-8">
+              <select id="race" name="raceSelect" ng-model="me.application.race" class="form-control" >
+                <option value="" disabled selected>{{placeholders['race']}}</option>
+                <option ng-repeat="race in appRaces" value="{{race}}">{{race}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Github -->
+          <div class="form-group">
+            <label for="github" class="col-sm-4 control-label">GitHub Username</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input id="github" type="text" ng-model="me.application.github" class="form-control" placeholder="{{placeholders['github']}}">
+              </div>
+            </div>
+          </div>
+
+          <!-- Resume -->
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Resume</label>
+            <div class="col-sm-8">
+              <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'" ng-show="!me.application.resume_uploaded"><i class="fa fa-paperclip" aria-hidden="true"></i> Upload Resume</div>
+              <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'" ng-show="me.application.resume_uploaded"><i class="fa fa-paperclip" aria-hidden="true"></i> {{me.application.resume_filename}}</div>
+              <progressbar class="progress-indicate" ng-if="isUploading" value="dynamic"><span class="upload-progress">{{dynamic}}%</span></progressbar>
+              <p><a ng-show="me.application.resume_uploaded" target="_blank" ng-href="{{resume_view_url}}">View your uploaded resume.</a></p>
+            </div>
+          </div>
+
+          <!-- Hackathon experience -->
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Will this be your first hackathon?</label>
+            <div class="col-sm-8">
+              <div class="btn-group">
+                <label class="btn" ng-class="me.application.isFirstHackathon==1 ? 'btn-primary' : 'btn-default'">
+                  <input type="radio" name="options" value="yes" ng-click="changeExperience(1)"> Yes
+                </label>
+                <label class="btn" ng-class="me.application.isFirstHackathon==0 ? 'btn-primary' : 'btn-default'">
+                  <input type="radio" name="options" value="no" ng-click="changeExperience(0)"> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 
-
+  <div class="col-md-3">
+    <ul ng-show="isSaved" class="validation-errors">
+      <li class="err" ng-repeat="reason in validation.reasons track by $index">{{reason}}</li>
+    </ul>
+  </div>
 </div>
+<div ng-include="'app/components/footer/footer.html'"></div>
+</div>
+
+<div ng-include="'app/components/starrybg.html'"></div>

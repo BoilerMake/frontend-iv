@@ -1,0 +1,94 @@
+$green: #6DCF31;
+$blue: #4B31CF;
+
+.faq-ama {
+  margin: 0 2rem;
+  margin-top: 32rem;
+
+  @media (max-width: $screen-sm-max) {
+    margin-top: 12rem;
+
+    .ama {
+      border-radius: 1rem 1rem 0 0;
+      height: auto;
+    }
+
+    .faq {
+      border-radius: 0 0 1rem 1rem;
+    }
+  }
+}
+
+.ama {
+  background-color: $white;
+  padding: 3rem 3rem;
+  height: 24rem;
+  min-height: 24rem;
+  border-radius: 1rem 0 0 1rem;
+  color: $black;
+  text-align: center;
+  
+  .input {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.faq {
+  background-color: rgba($dark-purple, 0.8);
+  padding: 3rem;
+  border-radius: 0 1rem 1rem 0;
+  max-height: 24rem;
+
+  .scroll-container {
+    overflow-y: scroll;
+    height: 18rem;
+    padding-right: 1rem;
+
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(255 ,255 ,255 , 0.25);
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,0);
+    }
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .question {
+    font-family: 'Source Code Pro', monospace;
+    margin-bottom: 2rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      color: $white;
+      font-size: 0.8rem;
+
+      &::before {
+        content: "> "
+      }
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: $grey;
+
+      a {
+        color: $light-purple;
+        &::after {
+          background-color: $light-purple;
+        }
+      }
+    }
+  }  
+}

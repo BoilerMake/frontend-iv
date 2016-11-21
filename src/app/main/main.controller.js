@@ -5,6 +5,8 @@ angular.module('app')
 .controller('HomeController', ['$rootScope', '$scope', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
 	function($rootScope, $scope, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
 
+		$scope.loggedIn = $localStorage.me !== undefined;
+
 		function successAuth(res) {
 			console.log(res);
 			if(!res.token) {
@@ -28,7 +30,7 @@ angular.module('app')
 			Restangular.one('users/me').get().then(function(data) {
 				console.log(data);
 				$localStorage.me = data;
-				$location.path('account');
+				$location.path('dashboard');
 			});
 
 		}
@@ -63,6 +65,7 @@ angular.module('app')
 		$scope.logout = function() {
 			Auth.logout(function() {
 				window.location = '/';
+				$scope.loggedIn = false;
 			});
 		};
 		$scope.token = $localStorage.token;

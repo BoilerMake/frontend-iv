@@ -1,0 +1,72 @@
+.navbar {
+  margin: 0;
+  height: 5rem;
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  // position: relative;
+
+  &.navbar-slim {
+    background: none;
+    box-shadow: none;
+    pointer-events: none;
+
+    a {
+      pointer-events: auto;
+    }
+  }
+
+  &.hiddenNavbar {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .nav-background {
+    z-index: -1;
+    width: 100%;
+    height: 5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.9;
+    background: $red; /* Old browsers */
+    background: -moz-linear-gradient(right, $red 0%,  $purple 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(right, $red 0%, $purple 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to left, $red 0%, $purple 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+
+  .nav {
+    .nav-element {
+      color: $white;
+      background: transparent !important;
+      border-bottom: 3px transparent solid;
+      height: 5rem;
+      font-size: 1.5rem;
+      padding: 1.75rem 0;
+      margin: 0 0.75rem;
+      vertical-align: bottom;
+
+      &:hover, &:active {
+        color: $red !important;
+        border-bottom: 3px $red solid;
+      }      
+    }
+  }
+  .logo {
+    height: 2.5rem;
+    margin: 1.25rem 1rem 1.25rem 0;
+    // margin: 5px 50px 0 0;
+  }
+
+  .button {
+    color: $white;
+    height: 2.5rem;
+    margin: 1.25rem 0.625rem;
+  }
+
+  .navbar-right {
+    margin-right: 0;
+  }
+}

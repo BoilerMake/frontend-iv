@@ -1,32 +1,7 @@
 /**
 *  Overrides for the boostrap navbar
 */
-.navbar-custom {
-  background-color: white; }
-
 .navbar-custom .navbar-nav > li > a {
-  color: $dark-grey;
   padding-left: 20px;
-  padding-right: 20px; }
-
-.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus, .navbar-nav > .active > li.active {
-  color: white;
-  background-color: transparent; }
-
-.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
-  text-decoration: none;
-  background-color: $dark-grey;
-  color:white;}
-
-.navbar-custom .navbar-brand {
-  color: $dark-grey; }
-
-.navbar-custom .navbar-toggle {
-  background-color: white; }
-
-.navbar-custom .icon-bar {
-  background-color: white; }
-
-.navbar-custom .navbar-nav > .active > a, .navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a:hover, .navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a:hover, .navbar-custom .navbar-nav > .open > a:focus {
-  background-color: $dark-grey;
-	color:white; }
+  padding-right: 20px; 
+}

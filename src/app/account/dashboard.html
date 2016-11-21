@@ -1,0 +1,28 @@
+<!-- account.html -->
+<!-- signin.html -->
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<script src="/assets/javascripts/particle.js"></script>
+
+<div class="background">
+  <canvas id="sky-background-fixed"></canvas>
+  <canvas id="starry-night-app"></canvas>
+  <div class="overlay-fixed full-height"></div>
+</div>
+
+<div class="container application-view-container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1 class="signin">Hey, {{short_name}}!</h1>
+      <div class="panel panel-default application-panel">
+        <div class="panel-body">
+          <h2 class="emoji" ng-show="validation.valid">✅</h2><h2 class="emoji" ng-hide="validation.valid || !pageLoaded">❌</h2>
+          <h1 class="dashboard-title">Your application is <span ng-show="validation.valid">complete</span><span ng-hide="validation.valid">incomplete</span></h2>
+          <button type="submit" class="btn btn-primary btn-block viewapp" ui-sref="application"><span ng-hide="validation.valid">Finish</span><span ng-show="validation.valid">View</span> your application</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-include="'app/components/footer/footer.html'"></div>
+</div>
+
+<div ng-include="'app/components/starrybg.html'"></div>

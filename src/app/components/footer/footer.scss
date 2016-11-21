@@ -1,0 +1,25 @@
+.footer {
+  margin-top: 4rem;
+  padding: 2rem;
+
+  &-left {
+    float: left;
+  }
+  &-right {
+    float: right;
+  }
+
+  a {
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+  .fa {
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+  }
+}

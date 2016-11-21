@@ -1,34 +1,180 @@
-<div class="column-container">
-  <div class="column col-1">
-    <div class="v-center a-right">
-      <img class="non-selectable" id="spaceblob" src="assets/images/spaceblob.svg" alt="planet blob">
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+<script src="/assets/javascripts/particle.js"></script>
+<script src="/assets/javascripts/skrollr.js"></script>
+
+<div class="background full-height">
+  <div class="red-background"></div>
+  <canvas id="sky-background"></canvas>
+  <canvas id="starry-night"></canvas>
+  <div class="mountains full-height">
+    <div id="mountains-0"
+         data-0="top: 13rem"
+         data-600="top: 8rem">
+      <!-- <img src="/assets/images/mountains-0-small.png" alt=""> -->
+      <!-- <img src="/assets/images/mountains-0.png" alt=""> -->
+    </div>
+    <div id="mountains-1"
+         data-0="top: 33rem"
+         data-600="top: 21rem">
+      <!-- <img src="/assets/images/mountains-1.png" alt=""> -->
+    </div>
+    <div id="mountains-2"
+         data-0="top: 43rem"
+         data-600="top: 24rem">
+      <!-- <img src="/assets/images/mountains-2.png" alt=""> -->
+    </div>
+    <div id="mountains-3"
+         data-0="top: 48rem"
+         data-600="top: 20rem">
+      <!-- <img src="/assets/images/mountains-2.png" alt=""> -->
     </div>
   </div>
-  <div class="column col-2">
-    <div class="v-center">
-      <h1>
-        BoilerMake
-      </h1>
-      <p class="subtitle">
-        A <span class="strikethrough">fall</span> <span class="highlight">spring</span> hackathon
-      </p>
-      <p class="info">
-        Come back here on <span class="highlight">November 18</span> for more information or sign up below to be one of the first to know!
-      </p>
+  <div class="overlay full-height"></div>
+</div>
 
-      <div class="input-button">
-        <input onClick="this.focus();this.select();" type="email"  ng-model="email" id="emailSignup" placeholder="pete@purdue.edu">
-        <button ng-click="subscribe()"><i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i></button>
-      </div>
+<div class="container" id="mainContent">
 
-      <div class="contact-links">
-      <a href="mailto:team@boilermake.org">team@boilermake.org</a>
-      <a href="mailto:sponsorship@boilermake.org">sponsorship@boilermake.org</a>
-    </div>
+  <div class="row">
+    <div class="hero-box col-sm-4 col-sm-offset-6">
+      <h1>BoilerMake IV</h1>
+      <p>Journey with us as we launch into an interplanetary hackathon, where the possibilities of any project are boundless.</p>
+      <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
+      <p ng-hide="loggedIn">Alredy have an account?&nbsp;&nbsp;&nbsp;<a class="underline" ui-sref="signin">Sign in</a></p>
+      <p ng-show="loggedIn">Are you looking for <a class="underline" ui-sref="application">your application</a>?</p>
     </div>
   </div>
+
+  <div ng-include="'app/components/faq/faq.html'"></div>
+
+  <div ng-include="'app/components/footer/footer.html'"></div>
+
 </div>
 
-<div class="logomark">
-  <img class="non-selectable" src="assets/images/hammers-purple.svg" alt="BoilerMake Logo">
-</div>
+<script>
+  var s;
+
+  var isMobile = true;
+  if (window.innerWidth > 767) isMobile = false;
+
+  var startFullscreenParticles = function() {
+    var mountains0Height = document.getElementById("mountains-0").offsetHeight;
+    Particles.init('starry-night', {
+      width: window.innerWidth,
+      height: (8 * 16) + mountains0Height
+    });
+    startParticles();
+  };
+
+  var startMobileParticles = function() {
+    Particles.init('starry-night', {
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    startParticles();
+  };
+
+  var startParticles = function() {
+    Particles.behavior({
+      path: function(x) {
+        return (-0.5 * x) + 300;
+      },
+      speed: function() {
+        return 0.2;
+      },
+      offset: function() {
+        return (Math.random() * 6) - 3;
+      },
+      backgroundColor: '#594269',
+      color: function() {
+        var rn = Math.random();
+        if (rn < 0.2) {
+          return 'rgba(255, 255, 255, 1.0)';
+        } else if (rn < 0.4) {
+          return 'rgba(255, 255, 255, 0.6)';
+        } else if (rn < 0.6) {
+          return 'rgba(255, 255, 255, 0.4)';
+        } else if (rn < 0.8) {
+          return 'rgba(255, 255, 255, 0.2)';
+        } else {
+          return 'rgba(255, 255, 255, 0.1)';
+        }
+      },
+      size: 2,
+      count: 1000,
+      placement: 'random'
+    });
+    Particles.start();
+  };
+  // Load background gradient
+  var grdCanvas = document.getElementById("sky-background");
+  var grdCtx = grdCanvas.getContext("2d");
+  //grdCanvas.width = window.innerWidth;
+  //grdCanvas.height = window.innerHeight;
+  var grd = grdCtx.createLinearGradient(grdCanvas.width*(3/4),0,grdCanvas.width,grdCanvas.height);
+  grd.addColorStop(0,"#594269");
+  grd.addColorStop(0.9,"#EE4434");
+  // grd.addColorStop(0.9,"#F6CF56")
+  grdCtx.fillStyle = grd;
+  grdCtx.fillRect(0, 0, grdCanvas.width, grdCanvas.height);
+
+
+
+  $(function() {
+    // Progressive image loading
+    var mtnImg0 = new Image();
+    var mtnImg1 = new Image();
+    var mtnImg2 = new Image();
+    var mtnImg3 = new Image();
+    mtnImg0.onload = function() {
+      $("#mountains-0").addClass("loaded");
+    };
+    mtnImg1.onload = function() {
+      $("#mountains-1").addClass("loaded");
+    };
+    mtnImg2.onload = function() {
+      $("#mountains-2").addClass("loaded");
+    };
+    mtnImg3.onload = function() {
+      $("#mountains-3").addClass("loaded");
+    };
+    mtnImg0.src = "/assets/images/bg-0.png";
+    mtnImg1.src = "/assets/images/bg-1.png";
+    mtnImg2.src = "/assets/images/bg-2.png";
+    mtnImg3.src = "/assets/images/bg-3.png";
+
+    if (isMobile) {
+      startMobileParticles();
+    } else {
+      startFullscreenParticles();
+      s = skrollr.init([smoothScrolling=true]);
+      $(function() {
+        s.refresh()
+      });
+    }
+  });
+
+  $(window).resize(function() {
+    var isMobileTemp = true;
+    if (window.innerWidth > 767) isMobileTemp = false;
+
+    // var changed = isMobile != isMobileTemp;
+    isMobile = isMobileTemp;
+
+    Particles.stop();
+
+    if (isMobile) {
+      if (s) {
+        s.destroy();
+        document.getElementById("mountains-0").style.top = null;
+      }
+      startMobileParticles();
+    } else {
+      s = skrollr.init([smoothScrolling=true]);
+      $(function() {
+        s.refresh()
+      });
+      startFullscreenParticles();
+    }
+  });
+</script>
