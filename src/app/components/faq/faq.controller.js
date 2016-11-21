@@ -5,28 +5,33 @@ angular.module('app')
   $scope.data = {
     questions: [
       {
-        q: "What is a good question to ask?",
-        a: "Here lies an answer for the question that was asked immediately before here. Let's see what happens, get ready to have fun!",
+        q: "What is a BoilerMake?",
+        a: "BoilerMake is Purdue’s official 36 hour hackathon, a weekend for students across the country to come together and create, bringing ideas to life with technology.",
         clipped: true
       },
       {
-        q: "What is a good question to ask?",
-        a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        q: "Who can attend BoilerMake?",
+        a: "Anyone over 18 can come!",
         clipped: true
       },
       {
-        q: "What is a good question to ask?",
-        a: "Here lies an answer for the question that was asked immediately before here. Let's see what happens, get ready to have fun!",
+        q: "Will travel costs be reimbursed?",
+        a: "Travel reimbursement is free for all schools that receive a bus provided by BoilerMake.",
         clipped: true
       },
       {
-        q: "What is a good question to ask?",
-        a: "Here lies an answer for the question that was asked immediately before here. Let's see what happens, get ready to have fun!",
+        q: "Will travel costs be reimbursed?",
+        a: "Travel reimbursement is free for all schools that receive a bus provided by BoilerMake.",
         clipped: true
       },
       {
-        q: "What is a good question to ask?",
-        a: "Here lies an answer for the question that was asked immediately before here. Let's see what happens, get ready to have fun!",
+        q: "What do we need to bring?",
+        a: "Just your laptop, any additional specific hardware you think you’d need, valid ID, sleeping bag, and your passion to hack!",
+        clipped: true
+      },
+      {
+        q: "Do you have to be a CS major?",
+        a: "No! All majors are welcome.",
         clipped: true
       },
       {
@@ -34,7 +39,7 @@ angular.module('app')
         a: "Here lies an answer for the question that was asked immediately before here. Let's see what happens, get ready to have fun!",
         clipped: true
       }
-    ]  
+    ]
   };
 
   $scope.getAnswer = function(question) {
