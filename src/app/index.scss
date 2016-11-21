@@ -507,6 +507,37 @@ h3.application-subtitle {
   }
 }
 
+.signin-group {
+  input {
+    margin-bottom: 1.5rem;
+    &:focus {
+      color: $white;
+    }
+    &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+      color: rgba($white, 0.5);
+    }
+  }
+  button.signin {
+    background-color: rgba($light-purple, 0.7) !important;
+    &:hover {
+      background-color: $light-purple !important;
+    }
+  }
+
+  p {
+    padding-top: 1rem;
+    text-align: right;
+    a {
+      color: rgba($white, 0.7);
+      font-size: 0.85rem;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+}
+
 ul.validation-errors {
   list-style: none;
   margin: 5px 10px;
