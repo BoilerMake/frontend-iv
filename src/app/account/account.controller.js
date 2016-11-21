@@ -3,8 +3,14 @@ angular.module('app')
 .controller('AccountDetailController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','Auth', function ($rootScope, $scope,  ApiRest,ngToast, urls, Auth) {
 
   $scope.roles = Auth.getRoles();
+
   ApiRest.one('users/me').get().then(function(data) {
     $scope.me = data;
+    $scope.short_name = data.first_name ? data.first_name : 'Hacker';
+    ApiRest.one('users/me/application').get().then(function(data) {
+        $scope.pageLoaded = true;
+        $scope.validation = data.validation;
+    });
   });
   $scope.updateMe = function()
   {

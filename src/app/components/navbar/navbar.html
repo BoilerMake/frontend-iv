@@ -34,8 +34,13 @@
             </li>
             <li ng-class="{ active: isActive('/account')}" 
                 
-                ng-show="hasRole('hacker')">
+                ng-show="!hasRole('hacker')">
                 <a ui-sref="account" class="nav-element">Profile</a>
+            </li>
+            <li ng-class="{ active: isActive('/dashboard')}" 
+                
+                ng-show="hasRole('hacker')">
+                <a ui-sref="dashboard" class="nav-element">Dashboard</a>
             </li>
             <li ng-class="{ active: isActive('/application')}"
                 ng-show="hasRole('hacker')">
