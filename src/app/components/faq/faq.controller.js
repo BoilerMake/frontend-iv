@@ -20,11 +20,6 @@ angular.module('app')
         clipped: true
       },
       {
-        q: "Will travel costs be reimbursed?",
-        a: "Travel reimbursement is free for all schools that receive a bus provided by BoilerMake.",
-        clipped: true
-      },
-      {
         q: "What do we need to bring?",
         a: "Just your laptop, any additional specific hardware you think you’d need, valid ID, sleeping bag, and your passion to hack!",
         clipped: true
@@ -35,8 +30,23 @@ angular.module('app')
         clipped: true
       },
       {
-        q: "What is a good question to ask?",
-        a: "Here lies an answer for the question that was asked immediately before here. Let's see what happens, get ready to have fun!",
+        q: "Policy on Past projects?",
+        a: "We believe in a new space experience for everyone. Please don’t hinder the experience for others by bringing old projects or code you’ve already begun to write.",
+        clipped: true
+      },
+      {
+        q: "Is experience required?",
+        a: "No! We plan on accepting everyone of all hackathon experiences, beginners to veterans alike. We’re also planning on having an exciting team of mentor and mentorship opportunities to benefit from during the event.",
+        clipped: true
+      },
+      {
+        q: "Do we have to have a team?",
+        a: "No, but you are welcome to bring a team if you’d like.",
+        clipped: true
+      },
+      {
+        q: "How will projects be judged?",
+        a: "Judging will follow the HackMIT judging system.",
         clipped: true
       }
     ]
