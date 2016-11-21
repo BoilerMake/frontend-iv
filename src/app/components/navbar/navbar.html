@@ -25,14 +25,14 @@
         </div>
 
         <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/about')}"
+            <!-- <li ng-class="{ active: isActive('/about')}"
                 ng-hide="isMobile"
                 >
                 <a ui-sref="account"
                    class="nav-element">
                    About
                 </a>
-            </li>
+            </li> -->
             <li ng-class="{ active: isActive('/account')}" 
                 ng-show="hasRole('exec')">
                 <a ui-sref="account" class="nav-element">Profile</a>
@@ -74,7 +74,7 @@
             <li ng-hide="loggedIn || isMobile">
                 <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
             </li>
-            <li ng-hide="loggedIn">
+            <li ng-hide="loggedIn || !isMobile">
                 <button ng-click="scrollToForm()" class="button button-plain button-dark-red-hover">Join the Mission</button>
             </li>
             <li ng-hide="loggedIn">

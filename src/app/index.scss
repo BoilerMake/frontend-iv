@@ -85,6 +85,7 @@ a, .red-link {
 
   .hero-box {
     margin-top: 24vh;
+    height: 28rem;
 
     @media (max-width: $screen-sm-max) {
       width: 18rem;
@@ -157,7 +158,7 @@ a, .red-link {
       &::after {
         content: "";
         position: absolute;
-        top: 100%;
+        top: 99%;
         height: 20rem;
         width: 100%;
         background-color: $red;
@@ -240,7 +241,7 @@ a, .red-link {
       &::after {
         content: "";
         position: absolute;
-        top: 100%;
+        top: 99%;
         height: 28rem;
         width: 100%;
         background-color: $red;
@@ -262,6 +263,7 @@ a, .red-link {
     background-color: $purple;
     background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
   }
+
   .overlay-fixed {
     position: fixed;
     top: 0;

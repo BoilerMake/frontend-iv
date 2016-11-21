@@ -2,10 +2,16 @@
 
 angular.module('app')
 
-.controller('HomeController', ['$rootScope', '$scope', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
-	function($rootScope, $scope, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
+.controller('HomeController', ['$rootScope', '$scope', '$window', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
+	function($rootScope, $scope, $window, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
 
 		$scope.loggedIn = $localStorage.me !== undefined;
+
+
+    angular.element($window).bind('resize', function(){
+      document.getElementById("bodyId").style.height = document.getElementById("angularWrapper").offsetHeight;
+    });
+
 
 		function successAuth(res) {
 			console.log(res);
