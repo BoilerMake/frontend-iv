@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.controller('ExpandingInputCtrl', function ($scope,$location,$localStorage,Auth,$window,$timeout, $state) {
+.controller('ExpandingInputCtrl', function ($scope,$location,$localStorage,Auth,$window,Restangular,ApiRest,$timeout, ngToast, $state) {
 
   $scope.me = $localStorage.me;
   $scope.roles = Auth.getRoles();
@@ -9,7 +9,46 @@ angular.module('app')
 
   $scope.logout = function() {
     Auth.logout(function() {
-       $location.path('/');
+     $location.path('/');
+   });
+  };
+
+  function successAuth(res) {
+      console.log(res);
+      if(!res.token) {
+        ngToast.create({
+          className: 'danger',
+          content: '<span>Uh oh! '+res.error+'</span>'
+        });
+        return;
+      }
+
+      $localStorage.token = res.token;
+      Restangular.setBaseUrl(urls.BASE_API);
+      var auth_header = 'Bearer ' + res.token;
+      Restangular.setDefaultHeaders({
+        Authorization: auth_header
+      });
+      ApiRest.setDefaultHeaders({
+        Authorization: auth_header
+      });
+
+      Restangular.one('users/me').get().then(function(data) {
+        console.log(data);
+        $localStorage.me = data;
+        $location.path('dashboard');
+      });
+
+    }
+
+  $scope.signup = function() {
+    var formData = {
+      email: $scope.email,
+      password: $scope.password
+    };
+
+    Auth.signup(formData, successAuth, function() {
+      $rootScope.error = 'Failed to signup';
     });
   };
 
@@ -26,6 +65,7 @@ angular.module('app')
   };
 
   $scope.expandInput = function(shouldExpand) {
+    if ($scope.expanded) $scope.signup();
     if (shouldExpand) {
       $scope.expanded = true;
       var emailEl = document.getElementById("emailInput_" + $scope.$id);
