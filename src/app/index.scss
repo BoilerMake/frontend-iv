@@ -53,7 +53,7 @@ a, .red-link {
   transition: all 0.125s ease;
   cursor: pointer;
 
-  &:hover {
+  &:hover, &:active {
     color: $light-red;
     text-decoration: none;
     transition: all 0.125s ease;
@@ -450,7 +450,7 @@ h3.application-subtitle {
   }
   input, select {
     background-color: rgba($dark-purple, 0.8);
-    color: rgba($white, 0.5);
+    color: rgba($white, 0.8);
     border: 1px solid rgba($white, 0.5);
     font-family: 'Open Sans', arial, sans-serif;
     &.half {
@@ -462,6 +462,9 @@ h3.application-subtitle {
     }
     &:focus {
       color: $white;
+    }
+    &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+      color: rgba($white, 0.5);
     }
   }
   input, input:hover, input:focus, select, select:hover, select:focus {
