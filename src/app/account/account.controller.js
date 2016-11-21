@@ -60,6 +60,7 @@ angular.module('app')
         $scope.phase= data.phase;
         $scope.teamsEnabled= data.teamsEnabled;
         $scope.validation = data.validation;
+        $scope.resume_view_url = data.resume_view_url;
       });
     });
   }
@@ -159,7 +160,7 @@ angular.module('app')
         $scope.me.application.resume_uploaded=true;
         $scope.me.application.resume_filename=file.name;
         $scope.isUploading=false;
-        saveApplication(false);
+        saveApplication(true);
       }, function (resp) {
         console.log('Error status: ' + resp.status);
       }, function (evt) {
