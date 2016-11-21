@@ -49,10 +49,6 @@ angular.module('app')
   };
   
 
-  $scope.toggleErrors = function(val) {
-    $scope.showErrors = val;
-  };
-
   /* End of frontend application stuff */
 
   var fetchData = function()
