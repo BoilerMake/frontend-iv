@@ -1,4 +1,15 @@
-<div class="container">
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+<script src="/assets/javascripts/particle.js"></script>
+
+<div class="background">
+  <canvas id="sky-background-fixed"></canvas>
+  <canvas id="starry-night-app"></canvas>
+  <div class="overlay-fixed full-height"></div>
+</div>
+<div class="container application-view-container">
 	<h1>About BoilerMake</h1>
   <a href="http://www.nicky.photos/Events/BoilerMake/i-dntZB2F/A"><img src="https://photos.smugmug.com/Events/BoilerMake/i-dntZB2F/0/XL/DSC_4887-2-XL.jpg" alt=""></a>
+  <p>Boilermake is an organization run by students at Purdue University that brings 500 students from all over to Purdue to compete in a 36 hour hackathon. We partner and we work with sponsors to create the optimal hacking space and recruiting space for the attendees. Our vision is to support the hacking culture to help create an innovative future.</p>
 </div>
+<div ng-include="'app/components/starrybg.html'"></div>

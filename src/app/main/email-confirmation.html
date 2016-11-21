@@ -10,9 +10,12 @@
 
 <div class="container application-view-container">
 	<div class="row">
-		<h1 class="signin">Oops, this page doesn't exist</h1>
-		<h1 class="homelink"><a ui-sref="home">Go home?</a></h1>
+		<h1 ng-show="confirmed" class="signin">You've confirmed your email</h1>
+		<h1 ng-hide="confirmed" class="signin">Email confirmation link not valid</h1>
+		<h1 ng-show="confirmed" class="homelink"><a ui-sref="dashboard">Go to dashboard?</a></h1>
+		<h1 ng-hide="confirmed" class="homelink"><a ui-sref="home">Go back?</a></h1>
 	</div>
 	<div ng-include="'app/components/footer/footer.html'"></div>
 </div>
+
 <div ng-include="'app/components/starrybg.html'"></div>

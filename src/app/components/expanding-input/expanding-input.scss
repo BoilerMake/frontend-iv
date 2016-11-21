@@ -1,0 +1,131 @@
+.expanding-input {
+  background: $white;
+  height: 3rem;
+  margin: 1rem 0;
+  border-radius: 3px;
+  padding: 0.25rem;
+  display: inline-block;
+  position: relative;
+  width: 24rem;
+  -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+  transition: width 0.5s, height 0.5s, transform 0.5s;
+
+  h3 {
+    color: $black;
+    font-size: 1rem;
+    padding: 0 0.75rem;
+    height: 0;
+    margin: 0;
+    display: block;
+    opacity: 0;
+    -webkit-transition: opacity 0.8s, margin 0.8s, -webkit-transform 0.8s;
+    transition: opacity 0.8s, margin 0.8s, transform 0.8s;
+
+  }
+
+  a {
+    position: absolute;
+    display: block;
+    height: 0;
+    text-align: center;
+    overflow: hidden;
+    bottom: 0.25rem;
+    width: 4rem;
+    right: 0.25rem;
+    opacity: 0;
+    -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
+    transition: opacity 0.8s, transform 0.8s;
+  }
+
+  .button {
+    display: inline-block;
+    margin: 0 !important;
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.25rem;
+  }
+  .input {
+    display: inline-block;
+    margin: 0 !important;
+  }
+
+  label {
+    color: $purple;
+    
+  }
+
+  .floating-label {
+    display: block;
+    .input, label {
+      display: block;
+    }
+    .hiddenInput {
+      height: 0;
+      display: block;
+      padding: 0 0.75rem;
+    }
+    label {
+      opacity: 0;
+      height: 0;
+      margin: 0;
+      padding: 0 0.75rem;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      -webkit-transition: opacity 0.8s, margin 0.8s, -webkit-transform 0.8s;
+      transition: opacity 0.8s, margin 0.8s, transform 0.8s;
+    }
+  }
+
+  &.expanded {
+    width: 16rem;
+    height: 14rem;
+
+    h3 {
+      height: auto;
+      margin: 1rem 0;
+      opacity: 1;
+      -webkit-transition: none;
+      transition: none;
+    }
+
+    a {
+      height: 2rem;
+      opacity: 1;
+      -webkit-transition: none;
+      transition: none;
+    }
+
+    .button {
+      // top: 50%;
+      // transform: translateY(-50%);
+      width: 11.25rem;
+      right: 4.5rem;
+    }
+
+    .floating-label {
+      display: block;
+      .input {
+        display: block;
+      }
+      .hiddenInput {
+        height: 2.5rem;
+      }
+      label {
+        opacity: 1;
+        height: 1rem;
+        margin-top: 0.65rem;
+        -webkit-transition: none;
+        transition: none;
+      }
+    }
+  }
+
+  &.mobile {
+    .button {
+      width: 15.5rem;
+      right: 0.25rem;
+    }
+  }
+}
+

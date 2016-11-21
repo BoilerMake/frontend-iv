@@ -1,6 +1,7 @@
 angular.module('app')
 .controller('LandingController', ['$rootScope', '$scope', '$location', 'ApiRest','ngToast',
-	function($rootScope, $scope, $location, ApiRest, ngToast) {
+	function($rootScope, $scope, $location, ApiRest, $localStorage, ngToast) {
+		
 		$scope.subscribe = function()
 		{
 			console.log($scope.email);

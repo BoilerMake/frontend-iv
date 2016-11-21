@@ -1,36 +1,40 @@
-
+<!-- signin.html -->
 <div ng-include="'app/components/navbar/navbar.html'"></div>
+<script src="/assets/javascripts/particle.js"></script>
 
-<div class="container">
-	<div class="row" style="margin-top:40px;">
+<div class="background">
+	<canvas id="sky-background-fixed"></canvas>
+	<canvas id="starry-night-app"></canvas>
+	<div class="overlay-fixed full-height"></div>
+</div>
+
+<div class="container application-view-container">
+	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-default">
-
-				<div class="panel-body" style="padding-left:25px;padding-right:25px;padding-bottom:0px;padding-top:12px">
+			<h1 class="signin">Sign In</h1>
+			<div class="panel panel-default application-panel">
+				<div class="panel-body">
 					<form class="form-horizontal">
-					  <div class="form-group">
-				      <input type="text"
-                            class="form-control"
-                         ng-model="email"
-                      placeholder="Email">
-					  </div>
-					  <div class="form-group">
-							<input type="password"
-                                  class="form-control"
-                               ng-model="password"
-                            placeholder="Password">
-					  </div>
+						<div class="form-group signin-group">
+							<input type="text"
+							class="form-control"
+							ng-model="email"
+							placeholder="Email">
 
-					  <div class="form-group">
-					    <div class="col-sm-12" style="padding-left:0px;padding-right:0px;margin-bottom:-2px">
-					      <button type="submit" class="btn btn-primary btn-block" ng-click="signin()">Log In</button>
-                <p class="text-center" style="padding-top:20px"><a ui-sref="forgot-password">Forgot Password?</a></p>
-					    </div>
-					  </div>
-				</form>
+							<input type="password"
+							class="form-control"
+							ng-model="password"
+							placeholder="Password">
+
+							<button type="submit" class="btn btn-primary btn-block signin" ng-click="signin()">Sign In</button>
+							
+							<p><a ui-sref="forgot-password">Forgot Password?</a></p>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<div ng-include="'app/components/footer/footer.html'"></div>
 </div>
+<div ng-include="'app/components/starrybg.html'"></div>

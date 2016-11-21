@@ -61,6 +61,12 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
             controller: 'AccountDetailController',
         data: {roles: 'users'}
       }).
+      state('dashboard', {
+            url: '/dashboard',
+            templateUrl: 'app/account/dashboard.html',
+            controller: 'AccountDetailController',
+        data: {roles: 'hacker'}
+      }).
       state('application', {
             url: '/application',
             templateUrl: 'app/account/application.html',
@@ -76,6 +82,11 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         url:'/pwr',
         templateUrl:'app/main/password-reset.html',
         controller:'PasswordResetController'
+      }).
+      state('email-confirm', {
+        url:'/confirm',
+        templateUrl:'app/main/email-confirmation.html',
+        controller:'EmailConfirmController'
       }).
     /**
      * SPONSOR SECTION
