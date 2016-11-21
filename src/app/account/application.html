@@ -15,7 +15,8 @@
       <!-- Header -->
       <h2 class="emoji" ng-show="validation.valid">✅</h2><h2 class="emoji" ng-hide="validation.valid || !pageLoaded">❌</h2>
       <h1 class="application-title">Your application is <span ng-hide="validation.valid || !pageLoaded">not</span> complete</h1>
-      <h3 class="application-subtitle"><span ng-if="isSaved">There are no unsaved changes.</span><span ng-hide="isSaved">Changes will be saved automatically.</span> Last saved <span class="bold" am-time-ago="lastSaved"></span>.</h3>
+      <h3 ng-hide="validation.valid" class="application-subtitle"><span ng-if="isSaved">There are no unsaved changes.</span><span ng-hide="isSaved">Changes will be saved automatically.</span> Last saved <span class="bold" am-time-ago="lastSaved"></span>.</h3>
+      <h3 ng-show="validation.valid" class="application-subtitle">Completed applications are automatically submitted. You can still update your application at any time.</h3>
       <div class="panel panel-default application-panel">
         <div class="panel-body">
           <form class="form-horizontal">
