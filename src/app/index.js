@@ -83,6 +83,11 @@ app.config(['$httpProvider','$locationProvider','$urlRouterProvider','$stateProv
         templateUrl:'app/main/password-reset.html',
         controller:'PasswordResetController'
       }).
+      state('email-confirm', {
+        url:'/confirm',
+        templateUrl:'app/main/email-confirmation.html',
+        controller:'EmailConfirmController'
+      }).
     /**
      * SPONSOR SECTION
      */
