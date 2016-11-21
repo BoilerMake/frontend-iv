@@ -1,10 +1,9 @@
 'use strict';
 angular.module('app')
-.controller('NavbarCtrl', function ($scope,$location,$localStorage,Auth,$window,$timeout, $state) {
+.controller('NavbarCtrl', function ($rootScope,$scope,$location,$localStorage,Auth,$window,$timeout, $state) {
 
   $scope.me = $localStorage.me;
   $scope.roles = Auth.getRoles();
-  $scope.loggedIn = $localStorage.me !== undefined;
   $scope.hideNavbar;
   $scope.url;
 
@@ -13,6 +12,7 @@ angular.module('app')
   $scope.logout = function() {
     Auth.logout(function() {
        $location.path('/');
+       $rootScope.loggedIn = false;
     });
   };
 
