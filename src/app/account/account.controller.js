@@ -67,6 +67,7 @@ angular.module('app')
   }
   fetchData();
   $scope.isSaved = true;
+  $scope.showErrors = false;
 
   $scope.lastSaved = new Date();
   var timeout = null;
@@ -75,6 +76,10 @@ angular.module('app')
     return ApiRest.one('schools').get({filter: name}).then(function(data) {
       return data;
     });
+  };
+
+  $scope.toggleErrors = function(val) {
+    $scope.showErrors = val;
   };
 
 
