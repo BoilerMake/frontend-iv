@@ -95,7 +95,7 @@ angular.module('app')
 }])
 .controller('EmailConfirmController', ['$scope', '$state', 'ApiRest', '$location', function($scope, $state, ApiRest, $location) {
 
-	var confirmPath = 'v1/users/verify/' + $location.search().tok;
+	var confirmPath = 'users/verify/' + $location.search().tok;
 	$scope.confirmed = false;
 
 
