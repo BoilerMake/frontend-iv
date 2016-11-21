@@ -18,4 +18,8 @@
     cursor: pointer;
     font-size: 2rem;
   }
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+  }
 }

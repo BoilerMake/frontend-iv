@@ -59,7 +59,13 @@
   gradientCtx.fillRect(0, 0, gradientCanvas.width, gradientCanvas.height);
 
   $(function() {
-    $('body').css('height', '');
+    if (!isMobile) {
+      $('body').css('height', '');
+      if ($('.footer').offset().top < window.innerHeight) {
+        $('.footer').addClass('fixed');
+      }
+    }
+    
     startAppParticles();
   });
 
