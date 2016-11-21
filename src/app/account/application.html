@@ -137,8 +137,8 @@
 
   <div class="col-md-3">
     <ul ng-show="isSaved && !validation.valid" class="validation-errors">
-      <li class="err active" ng-hide="showErrors" ng-click="toggleErrors(true)">Show application errors <i class="fa fa-caret-down" aria-hidden="true"></i></li>
-      <li class="err active" ng-show="showErrors" ng-click="toggleErrors(false)">Hide application errors <i class="fa fa-caret-up" aria-hidden="true"></i></li>
+      <li class="err active" ng-hide="showErrors" ng-click="toggleErrors(true)">Show {{validation.reasons.length}} application errors <i class="fa fa-caret-down" aria-hidden="true"></i></li>
+      <li class="err active" ng-show="showErrors" ng-click="toggleErrors(false)">Hide {{validation.reasons.length}} application errors <i class="fa fa-caret-up" aria-hidden="true"></i></li>
       <li class="err" ng-show="showErrors" ng-repeat="reason in validation.reasons track by $index">{{reason}}</li>
     </ul>
   </div>
