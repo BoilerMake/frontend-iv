@@ -94,16 +94,14 @@ a, .red-link {
     }
   }
 }
-.row {
-  div {
-    h3 {
-      color: $red;
-      text-transform: uppercase;
-      font-size: 15px;
-      margin: 6px 0px;
-    }
-  }
+
+.date {
+  color: $red;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin: 6px 0px;
 }
+
 .background {
   width: 100vw;
   height: 100%;

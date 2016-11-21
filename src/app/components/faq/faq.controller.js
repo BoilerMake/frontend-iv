@@ -10,6 +10,11 @@ angular.module('app')
         clipped: true
       },
       {
+        q: "Where is BoilerMake?",
+        a: "BoilerMake will be held in the France A. Córdova Recreational Sports Center at Purdue University on January 20-22.",
+        clipped: true
+      },
+      {
         q: "Who can attend BoilerMake?",
         a: "Anyone over 18 can come!",
         clipped: true
