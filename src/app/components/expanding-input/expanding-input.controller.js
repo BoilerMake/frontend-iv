@@ -90,16 +90,9 @@ angular.module('app')
     });
   };
 
-  if ($window.innerWidth <= 767 && $scope.expanded == false) {
-    // $scope.expanded = true;
-  }
-
   angular.element($window).bind('resize', function(){
     $scope.$apply(function () {
       $scope.isMobile = $window.innerWidth <= 767;
-      if ($window.innerWidth <= 767 && $scope.expanded == false) {
-        // $scope.expanded = true;
-      }
     });
   });
 
