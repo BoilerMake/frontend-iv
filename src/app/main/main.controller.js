@@ -65,7 +65,7 @@ angular.module('app')
 		$scope.logout = function() {
 			Auth.logout(function() {
 				window.location = '/';
-				$window.location.reload();
+				$scope.loggedIn = false;
 			});
 		};
 		$scope.token = $localStorage.token;
