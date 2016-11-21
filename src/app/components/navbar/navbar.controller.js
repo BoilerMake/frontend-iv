@@ -8,6 +8,8 @@ angular.module('app')
   $scope.hideNavbar;
   $scope.url;
 
+  $scope.isMobile = $window.innerWidth < 768;
+
   $scope.logout = function() {
     Auth.logout(function() {
        $location.path('/');
@@ -24,6 +26,10 @@ angular.module('app')
 
   $scope.hasRole = function(roleName) {
     return Auth.hasRole(roleName);
+  };
+
+  $scope.scrollToForm = function() {
+    $window.scrollTo(0, 0);
   };
 
   // Set navbar initial state
@@ -46,4 +52,11 @@ angular.module('app')
       }
     });
   }); 
+
+  angular.element($window).bind('resize', function(){
+    $scope.$apply(function () {
+      $scope.isMobile = $window.innerWidth < 768;
+    });
+  });
+
 });
