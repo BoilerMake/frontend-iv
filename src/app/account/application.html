@@ -112,7 +112,7 @@
               <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'" ng-show="!me.application.resume_uploaded"><i class="fa fa-paperclip" aria-hidden="true"></i> Upload Resume</div>
               <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'" ng-show="me.application.resume_uploaded"><i class="fa fa-paperclip" aria-hidden="true"></i> {{me.application.resume_filename}}</div>
               <progressbar class="progress-indicate" ng-if="isUploading" value="dynamic"><span class="upload-progress">{{dynamic}}%</span></progressbar>
-              <p><a ng-show="me.application.resume_uploaded" target="_blank" ng-href="{{resume_view_url}}">View your uploaded resume.</a></p>
+              <p><a class="uploaded-resume" ng-show="me.application.resume_uploaded" target="_blank" ng-href="{{resume_view_url}}">View uploaded resume</a></p>
             </div>
           </div>
 

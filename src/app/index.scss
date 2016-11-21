@@ -507,6 +507,14 @@ h3.application-subtitle {
       }
     }
   }
+
+  a.uploaded-resume {
+    color: rgba($white, 0.7);
+    font-size: 0.75rem;
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 .signin-group {
