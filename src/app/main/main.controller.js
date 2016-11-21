@@ -30,7 +30,7 @@ angular.module('app')
 			Restangular.one('users/me').get().then(function(data) {
 				console.log(data);
 				$localStorage.me = data;
-				$location.path('account');
+				$location.path('dashboard');
 			});
 
 		}
