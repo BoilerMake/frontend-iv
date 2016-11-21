@@ -1,7 +1,16 @@
-<div class="container">
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+<script src="/assets/javascripts/particle.js"></script>
+
+<div class="background">
+  <canvas id="sky-background-fixed"></canvas>
+  <canvas id="starry-night-app"></canvas>
+  <div class="overlay-fixed full-height"></div>
+</div>
+<div class="container application-view-container">
 	<h1>About this site</h1>
 
-	<p>This site is currently being actively developed for use in BoilerMake 4, Spring 2017. If you are interested in using some/all of the components with your hackathon, please email <a href="mailto:dev@boilermake.org">dev@boilermake.org</a>. We are planning on releasing a complete stable beta by the begining of May.</p>
+	<p>This site is currently being actively developed for use in BoilerMake 4, Spring 2017. If you are interested in using some/all of the components with your hackathon, please email <a href="mailto:dev@boilermake.org">dev@boilermake.org</a> if you have questions/comments/concerns.</p>
 
 	<h2>repositories</h2>
 	frontend web: <a href="http://github.com/boilermake/frontend" target="_blank">boilermake/frontend</a> (AngularJS + Bootstrap)
@@ -30,3 +39,4 @@
 
 		<p>Hack on :)</p>
 </div>
+<div ng-include="'app/components/starrybg.html'"></div>
