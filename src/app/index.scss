@@ -96,10 +96,9 @@ a, .red-link {
 }
 
 .date {
-  color: $red;
-  text-transform: uppercase;
+  color: rgba($white,0.5);
   font-size: 15px;
-  margin: 6px 0px;
+  margin: 6px 0;
 }
 
 .background {
