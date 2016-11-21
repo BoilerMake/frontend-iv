@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.controller('ExpandingInputCtrl', function ($scope,$location,$localStorage,Auth,$window,Restangular,ApiRest,$timeout, ngToast, $state) {
+.controller('ExpandingInputCtrl', function ($scope,$location,$localStorage,Auth,$window,Restangular,ApiRest,$timeout, ngToast, $state, urls) {
 
   $scope.me = $localStorage.me;
   $scope.roles = Auth.getRoles();
