@@ -34,7 +34,7 @@ angular.module('app')
 
 			Restangular.one('users/me').get().then(function(data) {
 				$localStorage.me = data;
-				$rootScope.loggedIn = $localStorage.me !== undefined;
+				$rootScope.loggedIn = true;
 				$location.path('dashboard');
 			});
 
