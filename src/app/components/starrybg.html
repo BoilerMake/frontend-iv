@@ -1,0 +1,76 @@
+<script>
+
+  var isMobile = true;
+  if (window.innerWidth > 767) isMobile = false;
+
+  var startAppParticles = function() {
+    Particles.init('starry-night-app', {
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    startAllParticles();
+  };
+
+  var startAllParticles = function() {
+    Particles.behavior({
+      path: function(x) {
+        return (-0.5 * x) + 300;
+      },
+      speed: function() {
+        return 0.2;
+      },
+      offset: function() {
+        return (Math.random() * 6) - 3;
+      },
+      backgroundColor: '#594269',
+      color: function() {
+        var rn = Math.random();
+        if (rn < 0.2) {
+          return 'rgba(255, 255, 255, 1.0)';
+        } else if (rn < 0.4) {
+          return 'rgba(255, 255, 255, 0.6)';
+        } else if (rn < 0.6) {
+          return 'rgba(255, 255, 255, 0.4)';
+        } else if (rn < 0.8) {
+          return 'rgba(255, 255, 255, 0.2)';
+        } else {
+          return 'rgba(255, 255, 255, 0.1)';
+        }
+      },
+      size: 2,
+      count: 1000,
+      placement: 'random'
+    });
+    Particles.start();
+  };
+
+
+
+  // Load background gradient
+  var gradientCanvas = document.getElementById("sky-background-fixed");
+  var gradientCtx = gradientCanvas.getContext("2d");
+
+
+  var gradient = gradientCtx.createLinearGradient(gradientCanvas.width*(3/4),0,gradientCanvas.width,gradientCanvas.height);
+  gradient.addColorStop(0,"#594269");
+  gradient.addColorStop(0.9,"#EE4434");
+  // gradient.addColorStop(0.9,"#F6CF56")
+  gradientCtx.fillStyle = gradient;
+  gradientCtx.fillRect(0, 0, gradientCanvas.width, gradientCanvas.height);
+
+  $(function() {
+    startAppParticles();
+  });
+
+  $(window).resize(function() {
+    var isMobileTemp = true;
+    if (window.innerWidth > 767) isMobileTemp = false;
+
+    // var changed = isMobile != isMobileTemp;
+    isMobile = isMobileTemp;
+
+    Particles.stop();
+
+    startAppParticles();
+  });
+</script>
