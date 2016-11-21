@@ -5,6 +5,8 @@ angular.module('app')
 .controller('HomeController', ['$rootScope', '$scope', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
 	function($rootScope, $scope, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
 
+		$scope.loggedIn = $localStorage.me !== undefined;
+
 		function successAuth(res) {
 			console.log(res);
 			if(!res.token) {
