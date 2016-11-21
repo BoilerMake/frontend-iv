@@ -29,6 +29,8 @@ angular.module('app')
 .controller('ApplicationController', ['$rootScope', '$scope', 'ApiRest','ngToast', 'urls','$timeout','$http','Upload',
  function ($rootScope, $scope,  ApiRest,ngToast, urls, $timeout, $http, Upload) {
   $scope.pageLoaded = false;
+  $scope.showErrors = false;
+  $scope.isErrors = false;
 
 
   /* Frontend application stuff */
@@ -47,6 +49,9 @@ angular.module('app')
   };
   
 
+  $scope.toggleErrors = function(val) {
+    $scope.showErrors = val;
+  };
 
   /* End of frontend application stuff */
 
@@ -66,12 +71,12 @@ angular.module('app')
   }
   fetchData();
   $scope.isSaved = true;
+
   $scope.lastSaved = new Date();
   var timeout = null;
 
   $scope.schoolSearch = function(name) {
     return ApiRest.one('schools').get({filter: name}).then(function(data) {
-      console.log(data);
       return data;
     });
   };
@@ -82,13 +87,13 @@ angular.module('app')
     ApiRest.all('users/me').customPUT($scope.me).then(function(data)
     {
       $scope.validation = data.validation;
-      console.log($scope.validation.reasons);
       $scope.lastSaved = new Date();
       if(reload)
         fetchData();
       $scope.isSaved=true;
     });
   }
+
 
   var debounceSaveUpdates = function(newVal, oldVal) {
     if($scope.me===undefined)

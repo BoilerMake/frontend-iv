@@ -44,8 +44,8 @@ angular.module('app')
 
   $scope.signup = function() {
     var formData = {
-      email: $scope.email,
-      password: $scope.password
+      email: $scope.signupEmail,
+      password: $scope.signupPassword
     };
 
     Auth.signup(formData, successAuth, function() {

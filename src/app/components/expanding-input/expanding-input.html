@@ -6,11 +6,11 @@
 
     <div class="floating-label">
         <label for="email">Email</label>
-        <input class="input" name="email" ng-model="email" placeholder="jenny@andthebets.com" type="text" id="emailInput_{{$id}}"  ng-focus="maybeShouldExpand()">
+        <input class="input" name="email" ng-model="signupEmail" placeholder="pete@purdue.edu" type="text" id="emailInput_{{$id}}"  ng-focus="maybeShouldExpand()">
     </div>
     <div class="floating-label">
         <label for="password">Password</label>
-        <input class="input hiddenInput" placeholder="Password" name="password" ng-model="password" type="password" id="passwordInput_{{$id}}">
+        <input class="input hiddenInput" placeholder="Password" name="password" ng-model="signupPassword" type="password" id="passwordInput_{{$id}}">
     </div>
     <button ng-click="expandInput(true)" class="button button-secondary">Join the Mission</button>
     <a class="red-link" ng-hide="isMobile" ng-click="expandInput(false)">Cancel</a>
