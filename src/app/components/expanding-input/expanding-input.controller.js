@@ -6,6 +6,7 @@ angular.module('app')
   $scope.roles = Auth.getRoles();
   $scope.loggedIn = $localStorage.me !== undefined;
   $scope.expanded = false;
+  $scope.isMobile = $window.innerWidth <= 767;
 
   $scope.logout = function() {
     Auth.logout(function() {
@@ -65,7 +66,10 @@ angular.module('app')
   };
 
   $scope.expandInput = function(shouldExpand) {
-    if ($scope.expanded) $scope.signup();
+    if (shouldExpand && $scope.expanded) {
+      $scope.signup();
+      return;
+    }
     if (shouldExpand) {
       $scope.expanded = true;
       var emailEl = document.getElementById("emailInput_" + $scope.$id);
@@ -80,16 +84,53 @@ angular.module('app')
     }
   };
 
-  if ($window.innerWidth <= 767 && $scope.expanded == false) {
-    $scope.expanded = true;
+  $scope.maybeShouldExpand = function() {
+    if (!$scope.expanded) {
+      $scope.expanded = true;
+    }
+  };
+
+  function successAuth(res) {
+    if(!res.token) {
+      ngToast.create({
+        className: 'danger',
+        content: '<span>Uh oh! '+res.error+'</span>'
+      });
+      return;
+    }
+
+    $localStorage.token = res.token;
+    Restangular.setBaseUrl(urls.BASE_API);
+    var auth_header = 'Bearer ' + res.token;
+    Restangular.setDefaultHeaders({
+      Authorization: auth_header
+    });
+    ApiRest.setDefaultHeaders({
+      Authorization: auth_header
+    });
+
+    Restangular.one('users/me').get().then(function(data) {
+      console.log(data);
+      $localStorage.me = data;
+      $location.path('dashboard');
+    });
+
   }
 
+  $scope.signup = function() {
+    var formData = {
+      email: document.getElementById("emailInput_" + $scope.$id).value,
+      password: document.getElementById("passwordInput_" + $scope.$id).value
+    };
+
+    Auth.signup(formData, successAuth, function() {
+      $rootScope.error = 'Failed to signup';
+    });
+  };
+
   angular.element($window).bind('resize', function(){
-    console.log($window.innerWidth);
     $scope.$apply(function () {
-      if ($window.innerWidth <= 767 && $scope.expanded == false) {
-        $scope.expanded = true;
-      }
+      $scope.isMobile = $window.innerWidth <= 767;
     });
   });
 

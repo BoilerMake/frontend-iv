@@ -120,5 +120,12 @@
       }
     }
   }
+
+  &.mobile {
+    .button {
+      width: 15.5rem;
+      right: 0.25rem;
+    }
+  }
 }
 

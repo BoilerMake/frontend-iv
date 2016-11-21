@@ -57,8 +57,26 @@
   .logo {
     height: 2.5rem;
     margin: 1.25rem 1rem 1.25rem 0;
-    // margin: 5px 50px 0 0;
   }
+  
+  .navbar-nav { 
+    @media (max-width: $screen-sm-max) {
+      float: left;
+      margin: 0;
+    }
+
+    &.navbar-right {
+      @media (max-width: $screen-sm-max) {
+        float: right;
+        margin: 0;
+      }      
+    }
+
+    li {
+      display: inline-block;
+    }
+  }
+
 
   .button {
     color: $white;
