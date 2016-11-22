@@ -1,7 +1,7 @@
 <nav class="navbar navbar-slim navbar-fixed-top"
      ng-controller="NavbarCtrl">
     <div class="container-fluid">
-        
+
         <div class="nav navbar-nav">
             <a ui-sref="'home'">
                 <img class="logo" src="assets/images/hammers-white.svg"/>
@@ -13,16 +13,18 @@
 <nav class="navbar navbar navbar-fixed-top"
      ng-controller="NavbarCtrl"
      ng-class="{ hiddenNavbar: hideNavbar}">
-    
+
     <div class="nav-background"></div>
-    
+
     <div class="container-fluid">
-        
+
         <div class="nav navbar-nav">
             <a ui-sref="home">
                 <img class="logo" src="assets/images/hammers-white.svg"/>
             </a>
+
         </div>
+        <h3 class="date nav-date">January 20-22 · Purdue University</h3>
 
         <ul class="nav navbar-nav">
             <!-- <li ng-class="{ active: isActive('/about')}"
@@ -33,12 +35,12 @@
                    About
                 </a>
             </li> -->
-            <li ng-class="{ active: isActive('/account')}" 
+            <li ng-class="{ active: isActive('/account')}"
                 ng-show="hasRole('exec')">
                 <a ui-sref="account" class="nav-element">Profile</a>
             </li>
-            <li ng-class="{ active: isActive('/dashboard')}" 
-                
+            <li ng-class="{ active: isActive('/dashboard')}"
+
                 ng-show="hasRole('hacker')">
                 <a ui-sref="dashboard" class="nav-element">Dashboard</a>
             </li>
@@ -70,12 +72,12 @@
             <li ng-show="loggedIn">
                 <button ng-click="logout()" class="button button-plain button-dark-red-hover">Sign Out</button>
             </li>
-            
+
             <li ng-hide="loggedIn || isMobile">
                 <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
             </li>
             <li ng-hide="loggedIn || !isMobile">
-                <button ng-click="scrollToForm()" class="button button-plain button-dark-red-hover">Join the Mission</button>
+                <button ng-click="scrollToForm()" class="button button-plain button-dark-red-hover nav-mobile">Join the Mission</button>
             </li>
             <li ng-hide="loggedIn">
                 <button ui-sref="signin" class="button button-plain button-dark-red-hover">Sign In</button>
