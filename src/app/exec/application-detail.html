@@ -1,5 +1,11 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
-<div class="container-fluid">
+<div class="background">
+  <canvas id="sky-background-fixed"></canvas>
+  <canvas id="starry-night-app"></canvas>
+  <div class="overlay-fixed full-height"></div>
+</div>
+
+<div class="container-fluid application-view-container" style="color: black;">
     <h1>Exec Dashboard - Application Detail - #{{app_id}}</h1>
     <button type="button" class="btn btn-primary" ng-click="skipApplication()">Skip</button>
     <hr>
