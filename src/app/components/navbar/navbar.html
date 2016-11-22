@@ -45,7 +45,7 @@
                 <a ui-sref="dashboard" class="nav-element">Dashboard</a>
             </li>
             <li ng-class="{ active: isActive('/application')}"
-                ng-show="hasRole('hacker')">
+                ng-show="hasRole('hacker') && !isMobile">
                 <a ui-sref="application" class="nav-element">Application</a>
             </li>
             <li ng-class="{ active: isActive('/exec')}"
@@ -69,17 +69,17 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li ng-show="loggedIn">
+            <li ng-show="$root.loggedIn">
                 <button ng-click="logout()" class="button button-plain button-dark-red-hover">Sign Out</button>
             </li>
-
             <li ng-hide="loggedIn || isMobile">
                 <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
             </li>
             <li ng-hide="loggedIn || !isMobile">
                 <button ng-click="scrollToForm()" class="button button-plain button-dark-red-hover nav-mobile">Join the Mission</button>
+
             </li>
-            <li ng-hide="loggedIn">
+            <li ng-hide="$root.loggedIn">
                 <button ui-sref="signin" class="button button-plain button-dark-red-hover">Sign In</button>
             </li>
         </ul>
