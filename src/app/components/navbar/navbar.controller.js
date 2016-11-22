@@ -6,7 +6,7 @@ angular.module('app')
   $scope.roles = Auth.getRoles();
   $scope.hideNavbar;
   $scope.url;
-
+  
   $scope.isMobile = $window.innerWidth < 768;
 
   $scope.logout = function() {
