@@ -22,9 +22,7 @@
             <a ui-sref="home">
                 <img class="logo" src="assets/images/hammers-white.svg"/>
             </a>
-
         </div>
-        <h3 class="date nav-date">January 20-22 · Purdue University</h3>
 
         <ul class="nav navbar-nav">
             <!-- <li ng-class="{ active: isActive('/about')}"
@@ -72,12 +70,12 @@
             <li ng-show="$root.loggedIn">
                 <button ng-click="logout()" class="button button-plain button-dark-red-hover">Sign Out</button>
             </li>
-            <li ng-hide="loggedIn || isMobile">
+
+            <li ng-hide="$root.loggedIn || isMobile">
                 <div ng-include="'app/components/expanding-input/expanding-input.html'"></div>
             </li>
-            <li ng-hide="loggedIn || !isMobile">
-                <button ng-click="scrollToForm()" class="button button-plain button-dark-red-hover nav-mobile">Join the Mission</button>
-
+            <li ng-hide="$root.loggedIn || !isMobile">
+                <button ng-click="scrollToForm()" class="button button-plain button-dark-red-hover">Join the Mission</button>
             </li>
             <li ng-hide="$root.loggedIn">
                 <button ui-sref="signin" class="button button-plain button-dark-red-hover">Sign In</button>
