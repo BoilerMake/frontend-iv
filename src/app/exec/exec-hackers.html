@@ -1,11 +1,5 @@
 <div ng-include="'app/components/navbar/navbar.html'"></div>
-<div class="background">
-  <canvas id="sky-background-fixed"></canvas>
-  <canvas id="starry-night-app"></canvas>
-  <div class="overlay-fixed full-height"></div>
-</div>
-
-<div class="container application-view-container" style="color: black;">
+<div class="container-fluid">
 <h1>Exec Dashboard - Hackers</h1>
 <button type="button" class="btn btn-primary" ng-click="rateApplications()">Start Rating</button>
 <h2>Hackers</h2>
@@ -13,7 +7,7 @@
 
 <div class="row">
         <div class="col-md-7">
-<table class="table table-striped">
+<table class="table table-bordered table-striped">
     <tr>
       <th></th>
       <th>Name</th>
@@ -38,7 +32,7 @@
 <div class="col-md-5">
 
   <h3>bulk selection</h3>
-  <table class="table">
+  <table class="table table-bordered table-striped">
     <tr>
       <th></th>
       <th>Name</th>
@@ -66,7 +60,5 @@
 
 </div>
 {{test1}}
-  {{test2}}
+{{test2}}
 </div>
-</div>
-<div ng-include="'app/components/starrybg.html'"></div>

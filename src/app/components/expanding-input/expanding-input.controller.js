@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.controller('ExpandingInputCtrl', function ($rootScope,$scope,$location,$localStorage,Auth,$window,Restangular,ApiRest,$timeout, ngToast, $state, urls) {
+.controller('ExpandingInputCtrl', function ($scope,$location,$localStorage,Auth,$window,Restangular,ApiRest,$timeout, ngToast, $state) {
 
   $scope.me = $localStorage.me;
   $scope.roles = Auth.getRoles();
@@ -11,7 +11,6 @@ angular.module('app')
   $scope.logout = function() {
     Auth.logout(function() {
      $location.path('/');
-     $rootScope.loggedIn = false;
    });
   };
 
@@ -37,7 +36,6 @@ angular.module('app')
 
       Restangular.one('users/me').get().then(function(data) {
         console.log(data);
-        $rootScope.loggedIn = true;
         $localStorage.me = data;
         $location.path('dashboard');
       });
@@ -46,8 +44,8 @@ angular.module('app')
 
   $scope.signup = function() {
     var formData = {
-      email: $scope.signupEmail,
-      password: $scope.signupPassword
+      email: $scope.email,
+      password: $scope.password
     };
 
     Auth.signup(formData, successAuth, function() {
@@ -90,6 +88,44 @@ angular.module('app')
     if (!$scope.expanded) {
       $scope.expanded = true;
     }
+  };
+
+  function successAuth(res) {
+    if(!res.token) {
+      ngToast.create({
+        className: 'danger',
+        content: '<span>Uh oh! '+res.error+'</span>'
+      });
+      return;
+    }
+
+    $localStorage.token = res.token;
+    Restangular.setBaseUrl(urls.BASE_API);
+    var auth_header = 'Bearer ' + res.token;
+    Restangular.setDefaultHeaders({
+      Authorization: auth_header
+    });
+    ApiRest.setDefaultHeaders({
+      Authorization: auth_header
+    });
+
+    Restangular.one('users/me').get().then(function(data) {
+      console.log(data);
+      $localStorage.me = data;
+      $location.path('dashboard');
+    });
+
+  }
+
+  $scope.signup = function() {
+    var formData = {
+      email: document.getElementById("emailInput_" + $scope.$id).value,
+      password: document.getElementById("passwordInput_" + $scope.$id).value
+    };
+
+    Auth.signup(formData, successAuth, function() {
+      $rootScope.error = 'Failed to signup';
+    });
   };
 
   angular.element($window).bind('resize', function(){

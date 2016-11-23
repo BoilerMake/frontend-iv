@@ -13,7 +13,7 @@ angular.module('app')
     });
   };
 
-   ApiRest.one('execs/allstats').get().then(function(data) {
-     $scope.allstats = data;
+   ApiRest.one('interest').get().then(function(data) {
+     $scope.interest = data;
    });
 }]);

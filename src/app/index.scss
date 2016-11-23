@@ -99,8 +99,20 @@ a, .red-link {
   color: rgba($white,0.5);
   font-size: 15px;
   margin: 6px 0;
-}
+  &:hover {
+    color: $white;
 
+  }
+}
+.nav-date {
+  padding: 30px;
+  margin-left: 50px;
+  position: absolute;
+  @media (max-width: $screen-sm-max) {
+    display: none;
+  }
+
+}
 .background {
   width: 100vw;
   height: 100%;
@@ -597,13 +609,6 @@ ul.validation-errors {
     margin: 15px 0;
     border-radius: 4px;
     text-align: center;
-    &.active {
-      background-color: rgba($grey,0.6);
-      &:hover {
-        background-color: rgba($grey,0.9);
-        cursor: pointer;
-      }
-    }
   }
 }
 

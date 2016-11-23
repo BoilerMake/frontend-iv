@@ -5,7 +5,8 @@ angular.module('app')
 .controller('HomeController', ['$rootScope', '$scope', '$window', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
 	function($rootScope, $scope, $window, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
 
-		$rootScope.loggedIn = $localStorage.me !== undefined;
+		$scope.loggedIn = $localStorage.me !== undefined;
+
 
 		angular.element($window).bind('resize', function(){
 			document.getElementById("bodyId").style.height = document.getElementById("angularWrapper").offsetHeight;
@@ -33,8 +34,8 @@ angular.module('app')
 			});
 
 			Restangular.one('users/me').get().then(function(data) {
+				console.log(data);
 				$localStorage.me = data;
-				$rootScope.loggedIn = true;
 				$location.path('dashboard');
 			});
 
@@ -62,14 +63,13 @@ angular.module('app')
 
 			Auth.signup(formData, successAuth, function() {
 				$rootScope.error = 'Failed to signup';
-
 			});
 		};
 
 		$scope.logout = function() {
 			Auth.logout(function() {
 				window.location = '/';
-				$rootScope.loggedIn = false;
+				$scope.loggedIn = false;
 			});
 		};
 		$scope.token = $localStorage.token;
@@ -92,22 +92,6 @@ angular.module('app')
 		return $scope.state.email.length > 0;
 	};
 
-}])
-.controller('EmailConfirmController', ['$scope', '$state', 'ApiRest', '$location', function($scope, $state, ApiRest, $location) {
-
-	var confirmPath = 'users/verify/' + $location.search().tok;
-	$scope.loading = true;
-
-
-	var confirm = function() {
-		ApiRest.one(confirmPath).get().then(function(data) {
-		  $scope.loading = false;
-			if (data.success) $scope.confirmed = true;
-      if(data.error) $scope.confirmed = false;
-		});
-	};
-
-	confirm();
 }])
 .controller('PasswordResetController', ['$scope', '$state', 'ApiRest', '$location', function($scope, $state, ApiRest, $location) {
 
