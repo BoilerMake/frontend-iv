@@ -19,6 +19,12 @@
               <div class="panel-body">
                 <p>name: {{application.user.first_name}} {{application.user.last_name}}</p>
                 <p>school: {{application.school.name}}</p>
+                <p>gender: {{application.gender}}</p>
+                <p>major: {{application.major}}</p>
+                <p>grad year: {{application.grad_year}}</p>
+                <p>needs reimbursement?: {{application.needsTravelReimbursement  ? "yes": "no"}}</p>
+                <p>isFirstHackathon? : {{application.isFirstHackathon ? "yes": "no"}}</p>
+                <p>race: {{application.race}}</p>
               </div>
           </div>
           <!--panel 2-->
@@ -37,7 +43,6 @@
                 <p ng-if="!application.github_summary.success">ERROR:{{application.github_summary.message}}</p>
               </div>
           </div>
-          <pre>{{application | json}}</pre>
         </div>
         <div class="col-md-3">
           <!--panel-->
@@ -85,6 +90,7 @@
         </div>
         <!--resume-->
         <div class="col-md-6" >
+          <p><a ng-href="{{application.resumeURL}}" target="_blank">Open resume in new tab</a> </p>
             <object ng-if="application.resume_uploaded==1" ng-attr-data="{{application.resumeURL}}" width="100%" height="800px">
         </div>
     </div>
