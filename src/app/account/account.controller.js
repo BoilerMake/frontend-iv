@@ -47,7 +47,6 @@ angular.module('app')
     'major': 'Name of major or concentration',
     'graduation': 'Select year of graduation'
   };
-  
 
 
   /* End of frontend application stuff */
@@ -95,6 +94,7 @@ angular.module('app')
       $scope.isSaved=true;
     });
   }
+
 
   var debounceSaveUpdates = function(newVal, oldVal) {
     if($scope.me===undefined)

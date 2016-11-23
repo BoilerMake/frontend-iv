@@ -5,8 +5,7 @@ angular.module('app')
 .controller('HomeController', ['$rootScope', '$scope', '$window', '$location', '$localStorage', 'Auth', 'ApiRest', 'Restangular', 'urls','ngToast',
 	function($rootScope, $scope, $window, $location, $localStorage, Auth, ApiRest, Restangular, urls, ngToast) {
 
-		$scope.loggedIn = $localStorage.me !== undefined;
-
+		$rootScope.loggedIn = $localStorage.me !== undefined;
 
 		angular.element($window).bind('resize', function(){
 			document.getElementById("bodyId").style.height = document.getElementById("angularWrapper").offsetHeight;
@@ -34,8 +33,8 @@ angular.module('app')
 			});
 
 			Restangular.one('users/me').get().then(function(data) {
-				console.log(data);
 				$localStorage.me = data;
+				$rootScope.loggedIn = true;
 				$location.path('dashboard');
 			});
 
@@ -63,13 +62,14 @@ angular.module('app')
 
 			Auth.signup(formData, successAuth, function() {
 				$rootScope.error = 'Failed to signup';
+
 			});
 		};
 
 		$scope.logout = function() {
 			Auth.logout(function() {
 				window.location = '/';
-				$scope.loggedIn = false;
+				$rootScope.loggedIn = false;
 			});
 		};
 		$scope.token = $localStorage.token;
