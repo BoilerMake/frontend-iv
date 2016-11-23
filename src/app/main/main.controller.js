@@ -96,13 +96,14 @@ angular.module('app')
 .controller('EmailConfirmController', ['$scope', '$state', 'ApiRest', '$location', function($scope, $state, ApiRest, $location) {
 
 	var confirmPath = 'users/verify/' + $location.search().tok;
-	$scope.confirmed = false;
+	$scope.loading = true;
 
 
 	var confirm = function() {
 		ApiRest.one(confirmPath).get().then(function(data) {
-			if (data) $scope.confirmed = true;
-			$state.go('dashboard');
+		  $scope.loading = false;
+			if (data.success) $scope.confirmed = true;
+      if(data.error) $scope.confirmed = false;
 		});
 	};
 
