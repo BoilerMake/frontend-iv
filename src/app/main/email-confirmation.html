@@ -1,0 +1,21 @@
+<!-- signin.html -->
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+<script src="/assets/javascripts/particle.js"></script>
+
+<div class="background">
+  <canvas id="sky-background-fixed"></canvas>
+  <canvas id="starry-night-app"></canvas>
+  <div class="overlay-fixed full-height"></div>
+</div>
+
+<div class="container application-view-container">
+  <div ng-hide="loading" class="row">
+    <h1 ng-show="confirmed" class="signin">You've confirmed your email</h1>
+    <h1 ng-hide="confirmed" class="signin">Email confirmation link not valid</h1>
+    <h1 ng-show="confirmed" class="homelink"><a ui-sref="dashboard">Go to dashboard?</a></h1>
+    <h1 ng-hide="confirmed" class="homelink"><a ui-sref="home">Go back?</a></h1>
+  </div>
+  <div ng-include="'app/components/footer/footer.html'"></div>
+</div>
+
+<div ng-include="'app/components/starrybg.html'"></div>

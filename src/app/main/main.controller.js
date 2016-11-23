@@ -93,6 +93,22 @@ angular.module('app')
 	};
 
 }])
+.controller('EmailConfirmController', ['$scope', '$state', 'ApiRest', '$location', function($scope, $state, ApiRest, $location) {
+
+	var confirmPath = 'users/verify/' + $location.search().tok;
+	$scope.loading = true;
+
+
+	var confirm = function() {
+		ApiRest.one(confirmPath).get().then(function(data) {
+		  $scope.loading = false;
+			if (data.success) $scope.confirmed = true;
+      if(data.error) $scope.confirmed = false;
+		});
+	};
+
+	confirm();
+}])
 .controller('PasswordResetController', ['$scope', '$state', 'ApiRest', '$location', function($scope, $state, ApiRest, $location) {
 
 	$scope.state = {newPassword:'', newPasswordRepeat:''};
