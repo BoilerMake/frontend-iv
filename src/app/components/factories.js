@@ -167,6 +167,9 @@ angular.module('app')
 					tokenClaims = getClaimsFromToken();
 
           return tokenClaims.roles.indexOf(roleName) !== -1;
+        },
+        isAuthenticated: function() {
+          return !($localStorage.me === undefined)
         }
       };
   }
@@ -292,6 +295,11 @@ angular.module('app')
 .run(['$rootScope', '$window','Auth','$state','$location', '$localStorage','Analytics', function($rootScope, $window, Auth,$state,$location, $localStorage, Analytics) {
   $rootScope.$on('$stateChangeStart', function(e, toState) {
     //toParams, fromState, fromParams are useable
+    if(toState.name=="signin" && Auth.isAuthenticated())
+    {
+      e.preventDefault();
+      $state.go('account');
+    }
     var permissions;
     permissions = toState && toState.data ? toState.data.roles : null;
     var canAccess;
