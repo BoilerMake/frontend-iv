@@ -47,7 +47,7 @@ angular.module('app')
     'major': 'Name of major or concentration',
     'graduation': 'Select year of graduation'
   };
-  
+
 
   /* End of frontend application stuff */
 

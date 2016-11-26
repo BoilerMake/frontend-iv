@@ -52,15 +52,15 @@
       &:hover, &:active {
         color: $red !important;
         border-bottom: 3px $red solid;
-      }      
+      }
     }
   }
   .logo {
     height: 2.5rem;
     margin: 1.25rem 1rem 1.25rem 0;
   }
-  
-  .navbar-nav { 
+
+  .navbar-nav {
     @media (max-width: $screen-sm-max) {
       float: left;
       margin: 0;
@@ -70,7 +70,7 @@
       @media (max-width: $screen-sm-max) {
         float: right;
         margin: 0;
-      }      
+      }
     }
 
     li {
@@ -83,9 +83,15 @@
     color: $white;
     height: 2.5rem;
     margin: 1.25rem 0.625rem;
+    @media  (max-width: 360px) {
+      font-size: 12px;
+    }
   }
 
   .navbar-right {
     margin-right: 0;
   }
+}
+.nav-mobile {
+
 }

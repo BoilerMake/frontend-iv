@@ -4,13 +4,14 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
-    "angular-aria": "^1.5.8"
+    "angular-aria": "^1.5.8",
+    "gulp": "^3.9.1"
   },
   "scripts": {
     "test": "gulp test"
   },
   "devDependencies": {
-    "browser-sync": "~2.1.4",
+    "browser-sync": "~2.7.1",
     "browser-sync-spa": "~1.0.2",
     "chalk": "~0.5.1",
     "concat-stream": "~1.4.7",
