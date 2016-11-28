@@ -9,6 +9,8 @@ angular.module('app')
   
   $scope.isMobile = $window.innerWidth < 768;
 
+  // $rootScope.loggedIn = true;
+
   $scope.logout = function() {
     Auth.logout(function() {
        $location.path('/');
@@ -25,6 +27,7 @@ angular.module('app')
   };
 
   $scope.hasRole = function(roleName) {
+    // if (roleName == 'exec') return true;
     return Auth.hasRole(roleName);
   };
 
