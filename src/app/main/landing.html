@@ -3,7 +3,7 @@
 <script src="/assets/javascripts/particle.js"></script>
 <script src="/assets/javascripts/skrollr.js"></script>
 
-<div class="background full-height">
+<div class="background full-height" id="background">
   <div class="red-background"></div>
   <canvas id="sky-background"></canvas>
   <canvas id="starry-night"></canvas>
@@ -60,16 +60,18 @@
 
   var startFullscreenParticles = function() {
     var mountains0Height = document.getElementById("mountains-0").offsetHeight;
+    var backgroundWidth = document.getElementById("background").offsetWidth;
     Particles.init('starry-night', {
-      width: window.innerWidth,
+      width: backgroundWidth,
       height: (8 * 16) + mountains0Height
     });
     startParticles();
   };
 
   var startMobileParticles = function() {
+    var backgroundWidth = document.getElementById("background").offsetWidth;
     Particles.init('starry-night', {
-      width: window.innerWidth,
+      width: backgroundWidth,
       height: window.innerHeight
     });
     startParticles();
