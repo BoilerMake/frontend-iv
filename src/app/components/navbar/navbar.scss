@@ -57,7 +57,7 @@
   }
   .logo {
     height: 2.5rem;
-    margin: 1.25rem 1rem 1.25rem 0;
+    margin: 1.25rem 1rem;
   }
 
   .navbar-nav {
@@ -92,6 +92,89 @@
     margin-right: 0;
   }
 }
-.nav-mobile {
+.navbar-header {
+  width: 100%;
+}
 
+
+.navbar-default .navbar-toggle {
+  background: $white;
+  height: 2.5rem;
+  margin: 1.25rem 1rem;
+  border: none;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+
+  span {
+    transition: all 0.25s ease;
+    background: $red;
+  }
+
+  &:focus {
+    transition: all 0.25s ease;
+    background: $white;
+
+    span {
+      transition: all 0.25s ease;
+      background: $red;
+    }
+  }
+
+  &:active {
+    transition: all 0.25s ease;
+    background: $red;
+  }
+
+  &:hover {
+    transition: all 0.25s ease;
+    background: $dark-red;
+
+    span {
+      transition: all 0.25s ease;
+      background: $white;
+    }
+  }
+}
+
+.navbar-collapse {
+
+  @media (max-width: $screen-sm-max) {
+    width: 100%;
+    background: $white;
+    color: $black;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+
+    .navbar-nav {
+      float: none !important;
+
+      li {
+        width: 100%;
+
+        .nav-element {
+          padding: 1.75rem 1rem;
+          margin: 0;
+          border-bottom: 1px solid $grey;
+          color: $black;
+        }
+
+        .button-plain {
+          background: $red;
+        }
+      }
+
+      &.navbar-right {
+        li {
+          float: left;
+          width: auto;
+
+          &:first-of-type {
+            .button {
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
