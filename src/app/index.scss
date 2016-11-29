@@ -53,7 +53,7 @@ a, .red-link {
   transition: all 0.125s ease;
   cursor: pointer;
 
-  &:hover, &:active {
+  &:hover, &:active, &:visited, &:focus {
     color: $light-red;
     text-decoration: none;
     transition: all 0.125s ease;
