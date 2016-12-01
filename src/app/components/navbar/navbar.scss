@@ -53,6 +53,9 @@
         color: $red !important;
         border-bottom: 3px $red solid;
       }
+      &:visited {
+        color: $white;
+      }
     }
   }
   .logo {

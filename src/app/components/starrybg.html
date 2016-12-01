@@ -4,8 +4,9 @@
   if (window.innerWidth > 767) isMobile = false;
 
   var startAppParticles = function() {
+    var backgroundWidth = document.getElementById("background").offsetWidth;
     Particles.init('starry-night-app', {
-      width: window.innerWidth,
+      width: backgroundWidth,
       height: window.innerHeight
     });
     startAllParticles();
