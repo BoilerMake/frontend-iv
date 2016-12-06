@@ -18,10 +18,13 @@ angular.module('app')
   function successAuth(res) {
       console.log(res);
       if(!res.token) {
-        ngToast.create({
-          className: 'danger',
-          content: '<span>Uh oh! '+res.error+'</span>'
-        });
+        for (var i in res) {
+          ngToast.create({
+            className: 'danger',
+            content: '<span>' + res[i] +'</span>'
+          });
+        }
+        
         return;
       }
 
