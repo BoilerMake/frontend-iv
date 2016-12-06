@@ -154,6 +154,12 @@
       li {
         width: 100%;
 
+        a {
+          color: $red !important;
+          background: transparent !important;
+      border-bottom: 3px transparent solid;
+        }
+
         .nav-element {
           padding: 1.75rem 1rem;
           margin: 0;
