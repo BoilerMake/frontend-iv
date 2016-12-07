@@ -107,7 +107,7 @@
                 <a ng-Click="hasNoGithub()">I don't have one</a>
               </p>
               <div ng-show="me.application.has_no_github" style="padding-top: 7px;">
-                <p>You indicated you don't have a github. <a ng-Click="hasGithub()">I actually do have a Github!</a></p>
+                <p>You indicated you don't have a github. <a ng-Click="hasGithub()" style="color: black">I actually do have a Github!</a></p>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@
               <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'" ng-show="!me.application.resume_uploaded"><i class="fa fa-paperclip" aria-hidden="true"></i> Upload Resume</div>
               <div class="btn btn-primary" name="resumeupload" ngf-select="upload($file)" ngf-pattern="'application/pdf'" ng-show="me.application.resume_uploaded"><i class="fa fa-paperclip" aria-hidden="true"></i> {{me.application.resume_filename}}</div>
               <progressbar class="progress-indicate" ng-if="isUploading" value="dynamic"><span class="upload-progress">{{dynamic}}%</span></progressbar>
-              <p><a class="uploaded-resume" ng-show="me.application.resume_uploaded" target="_blank" ng-href="{{resume_view_url}}">View uploaded resume</a></p>
+              <p><a class="uploaded-resume" ng-show="me.application.resume_uploaded" target="_blank" style="color: black" ng-href="{{resume_view_url}}">View uploaded resume</a></p>
             </div>
           </div>
 
