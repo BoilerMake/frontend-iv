@@ -129,6 +129,12 @@ angular.module('app')
       $scope.me.application.isFirstHackathon = mode;
     };
 
+    $scope.hasNoGithub = function() {
+      $scope.me.application.has_no_github=true;
+    }
+    $scope.hasGithub = function() {
+      $scope.me.application.has_no_github=false;
+    }
     $scope.updateApplication = function(reload)
     {
       saveApplication(reload);
