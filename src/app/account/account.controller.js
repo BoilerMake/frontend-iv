@@ -131,9 +131,11 @@ angular.module('app')
 
     $scope.hasNoGithub = function() {
       $scope.me.application.has_no_github=true;
+      console.log("no");
     };
     $scope.hasGithub = function() {
       $scope.me.application.has_no_github=false;
+      console.log("yes");
     };
     $scope.updateApplication = function(reload)
     {
