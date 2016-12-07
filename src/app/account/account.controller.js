@@ -131,14 +131,14 @@ angular.module('app')
 
     $scope.hasNoGithub = function() {
       $scope.me.application.has_no_github=true;
-    }
+    };
     $scope.hasGithub = function() {
       $scope.me.application.has_no_github=false;
-    }
+    };
     $scope.updateApplication = function(reload)
     {
       saveApplication(reload);
-    }
+    };
     $scope.leaveTeam = function()
     {
       ApiRest.all('users/me/leaveteam').customPUT().then(function(data)
@@ -146,7 +146,7 @@ angular.module('app')
         console.log(data);
         saveApplication(true);
       });
-    }
+    };
 
     ApiRest.one('users/me/resumePUT').get().then(function(data) {
       $scope.resume_PUT=data;
