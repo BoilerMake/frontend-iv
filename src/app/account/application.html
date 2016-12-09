@@ -15,7 +15,7 @@
       <!-- Header -->
       <h2 class="emoji" ng-show="validation.valid">✅</h2><h2 class="emoji" ng-hide="validation.valid || !pageLoaded">❌</h2>
       <h1 class="application-title">Your application is <span ng-hide="validation.valid || !pageLoaded">not</span> complete</h1>
-      <h3 ng-hide="validation.valid" class="application-subtitle"><span ng-if="isSaved">There are no unsaved changes.</span><span ng-hide="isSaved">Changes will be saved automatically.</span> Last saved <span class="bold" am-time-ago="lastSaved"></span>.</h3>
+      <h3 class="application-subtitle"><span ng-if="isSaved">There are no unsaved changes.</span><span ng-hide="isSaved">Changes will be saved automatically.</span> Last saved <span class="bold" am-time-ago="lastSaved"></span>.</h3>
       <h3 ng-show="validation.valid" class="application-subtitle">Completed applications are automatically submitted. You can still update your application at any time.</h3>
       <div class="panel panel-default application-panel">
         <div class="panel-body">
@@ -99,17 +99,17 @@
           <div class="form-group">
             <label for="github" class="col-sm-4 control-label">GitHub Username</label>
             <div class="col-sm-8">
-              <!--<div class="input-group" ng-hide="me.application.has_no_github" >-->
-              <div class="input-group">
+              <div class="input-group" ng-hide="me.application.has_no_github" >
+              <!--<div class="input-group">-->
                 <span class="input-group-addon">@</span>
                 <input id="github" type="text" ng-model="me.application.github" class="form-control" placeholder="{{placeholders['github']}}">
               </div>
-              <!--<p ng-hide="me.application.has_no_github">-->
-                <!--<a ng-Click="hasNoGithub()">I don't have one</a>-->
-              <!--</p>-->
-              <!--<div ng-show="me.application.has_no_github" style="padding-top: 7px;">-->
-                <!--<p>You indicated you don't have a github. <a ng-Click="hasGithub()" style="color: black">I actually do have a Github!</a></p>-->
-              <!--</div>-->
+              <p ng-hide="me.application.has_no_github">
+                <a ng-Click="hasNoGithub()" style="color: black">I don't have one</a>
+              </p>
+              <div ng-show="me.application.has_no_github" style="padding-top: 7px;">
+                <p>You indicated you don't have a github. <a ng-Click="hasGithub()" style="color: black">I actually do have a Github!</a></p>
+              </div>
             </div>
           </div>
 

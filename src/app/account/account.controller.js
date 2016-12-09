@@ -141,6 +141,9 @@ angular.module('app')
     {
       saveApplication(reload);
     };
+    $scope.forceSave = function() {
+      saveApplication(true);
+    };
     $scope.leaveTeam = function()
     {
       ApiRest.all('users/me/leaveteam').customPUT().then(function(data)
