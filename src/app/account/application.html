@@ -100,15 +100,15 @@
           <div class="form-group">
             <label for="github" class="col-sm-4 control-label">GitHub Username</label>
             <div class="col-sm-8">
-              <div class="input-group" ng-hide="me.application.has_no_github" >
+              <div class="input-group" ng-hide="me.application.has_no_github == '1'" >
               <!--<div class="input-group">-->
                 <span class="input-group-addon">@</span>
                 <input id="github" type="text" ng-model="me.application.github" class="form-control" placeholder="{{placeholders['github']}}">
               </div>
-              <p ng-hide="me.application.has_no_github">
+              <p ng-hide="me.application.has_no_github == '1'">
                 <a ng-Click="hasNoGithub()" style="color: black">I don't have one</a>
               </p>
-              <div ng-show="me.application.has_no_github" style="padding-top: 7px;">
+              <div ng-show="me.application.has_no_github == '1'" style="padding-top: 7px;">
                 <p>You indicated you don't have a github. <a ng-Click="hasGithub()" style="color: black">I actually do have a Github!</a></p>
               </div>
             </div>
