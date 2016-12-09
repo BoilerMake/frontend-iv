@@ -17,6 +17,7 @@
       <h1 class="application-title">Your application is <span ng-hide="validation.valid || !pageLoaded">not</span> complete</h1>
       <h3 class="application-subtitle"><span ng-if="isSaved">There are no unsaved changes.</span><span ng-hide="isSaved">Changes will be saved automatically.</span> Last saved <span class="bold" am-time-ago="lastSaved"></span>.</h3>
       <h3 ng-show="validation.valid" class="application-subtitle">Completed applications are automatically submitted. You can still update your application at any time.</h3>
+      <h3 ng-show="me.application.school.facebook_event_id" class="application-subtitle"><span>Hey there, we see you're from {{me.application.school.name}} - we have a Facebook event for you, and you have almost enough signups to get a free bus to BoilerMake! <a href="http://facebook.com/events/{{me.application.school.facebook_event_id}}" target="_blank"> RSVP here so all your friends know about BoilerMake!</a> </span><br>🚌&nbsp;🚌&nbsp;🚌</h3>
       <div class="panel panel-default application-panel">
         <div class="panel-body">
           <form class="form-horizontal">
