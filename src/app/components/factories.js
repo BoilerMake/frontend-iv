@@ -273,7 +273,7 @@ angular.module('app')
      }
    };
 })
-  .factory('Analytics', function(ApiRest,urls,$localStorage,Auth) {
+  .factory('Analytics', function(ApiRest,urls,$localStorage,Auth,$location) {
   return {
     event: function(name, params, meta)
     {
@@ -281,9 +281,10 @@ angular.module('app')
       meta = meta || {};
       meta['referrer']= document.referrer;
       meta['client']=Auth.getClientID();
+      meta['url']= $location.absUrl();
       ApiRest.all('analytics/event').customPUT({name: name, params: params, meta: meta}).then(function(data)
       {
-        // console.log("sending analytics",{name: name, params: params, meta: meta});
+        console.log("sending analytics",{name: name, params: params, meta: meta});
       });
     }
   }
