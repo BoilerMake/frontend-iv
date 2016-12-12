@@ -281,7 +281,7 @@ angular.module('app')
       meta = meta || {};
       meta['referrer']= document.referrer;
       meta['client']=Auth.getClientID();
-      meta['url']= $location.url();
+      meta['url']= $location.absUrl();
       ApiRest.all('analytics/event').customPUT({name: name, params: params, meta: meta}).then(function(data)
       {
         console.log("sending analytics",{name: name, params: params, meta: meta});
