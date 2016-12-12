@@ -43,6 +43,10 @@ angular.module('app')
       {
         q: "How will projects be judged?",
         a: "Judging will follow the HackMIT judging system."
+      },
+      {
+        q: "What if I want to volunteer?",
+        a: "https://boilermake.org/volunteer"
       }
     ]
   };
