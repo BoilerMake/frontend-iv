@@ -273,12 +273,13 @@ angular.module('app')
      }
    };
 })
-  .factory('Analytics', function(ApiRest,urls,$localStorage,Auth,$location) {
+  .factory('Analytics', function(ApiRest,urls,$localStorage,Auth,$location,$window) {
   return {
     event: function(name, params, meta)
     {
       params = params || {};
       meta = meta || {};
+      meta['ua'] = $window.navigator.userAgent;
       meta['referrer']= document.referrer;
       meta['client']=Auth.getClientID();
       meta['url']= $location.absUrl();
