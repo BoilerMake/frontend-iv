@@ -53,7 +53,7 @@
         color: $red !important;
         border-bottom: 3px $red solid;
       }
-      &:visited {
+      &:visited, &:focus {
         color: $white;
       }
     }
