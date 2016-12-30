@@ -17,9 +17,14 @@
     a {
       max-height: 15px;
     }
-  }
 
   }
+  @media (max-width: 538px) {
+    a .mlh {
+      display: none;
+    }
+  }
+}
   img {
     display: inline;
     text-align: center;
