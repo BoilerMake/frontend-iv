@@ -7,11 +7,39 @@
   }
   &-right {
     float: right;
-  }
+    display: inline;
+    overflow: hidden;
+    .mlh {
+      max-height: 2rem;
+      cursor: pointer;
+    }
+  @media (max-width: 450px) {
+    a {
+      max-height: 15px;
+    }
 
+  }
+  @media (max-width: 538px) {
+    a .mlh {
+      display: none;
+    }
+  }
+}
+  img {
+    display: inline;
+    text-align: center;
+    width: 100px;
+    margin-top: -10px;
+  }
   a {
     cursor: pointer;
     margin-left: 1rem;
+
+  }
+  i {
+    display: inline;
+    width: 100%;
+    text-align: center;
   }
   .fa {
     color: white;
@@ -22,4 +50,5 @@
     position: fixed;
     bottom: 0;
   }
+
 }
