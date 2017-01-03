@@ -19,6 +19,8 @@
           <p><strong>User Last Changed</strong>: {{user.user.updated_at | prettyDate}}</p>
           <p><strong>Roles</strong>: {{user.roles.join(', ')}}
           <hr>
+          <p ng-if="user.isHacker"><a ui-sref="exec-application-detail({id: user.application.id})">View Application</a></p>
+          <p ng-if="user.isHacker"><strong>Application Complete?</strong>: {{user.application.completed  ? "yes": "no"}}</p>
           <p ng-if="user.isHacker"><strong>Application Last Changed</strong>: {{user.application.updated_at | prettyDate}}</p>
           <p ng-if="user.isHacker"><strong>Application Decision</strong>: {{user.application.decision  | decision}}</p>
           <p ng-if="user.isHacker"><strong>School</strong>: {{user.application.school.name || "not set"}}</p>

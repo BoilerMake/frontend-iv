@@ -17,6 +17,7 @@
                   <h3 class="panel-title">Basic Info</h3>
               </div>
               <div class="panel-body">
+                <p><a ui-sref="exec-user-detail({id: application.user.id})">View User</a></p>
                 <p>name: {{application.user.first_name}} {{application.user.last_name}}</p>
                 <p>school: {{application.school.name}}</p>
                 <p>gender: {{application.gender}}</p>
@@ -78,6 +79,17 @@
             </div>
           </div>
           <!--panel-->
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Validation</h3>
+            </div>
+            <div class="panel-body">
+              <pre>{{application.validation | json}}</pre>
+            </div>
+          </div>
+
+
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Team</h3>
