@@ -32,8 +32,10 @@ angular.module('app')
   $scope.showErrors = false;
   $scope.isErrors = false;
 
+  $rootScope.skills = ['java'];
+  $rootScope.availableSkills = ['python','js','obj-c','php','swift','css','html','ruby','C','android','java','design','ios','go','hardware','mobile','webdev'];
 
-  /* Frontend application stuff */
+   /* Frontend application stuff */
   $scope.appGenders = ['I\'d rather not provide this information', 'Male', 'Female', 'Other'];
   $scope.appGraduations = ['2017', '2018', '2019', '2020', 'Other'];
   $scope.appRaces = ['I\'d rather not provide this information', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'American Indian or Alaska Native', 'White', 'Other'];
@@ -58,6 +60,7 @@ angular.module('app')
       ApiRest.one('users/me/application').get().then(function(data) {
         $scope.pageLoaded = true;
         $scope.me.application = data.application;
+        $rootScope.skills = data.application.skills;
         $scope.phase= data.phase;
         $scope.teamsEnabled= data.teamsEnabled;
         $scope.validation = data.validation;
@@ -85,6 +88,9 @@ angular.module('app')
 
   var saveApplication = function(reload)
   {
+    console.log("aa",$rootScope.skills);
+    $scope.me.application.skills = angular.copy($rootScope.skills);
+
     ApiRest.all('users/me').customPUT($scope.me).then(function(data)
     {
       $scope.validation = data.validation;
@@ -116,7 +122,23 @@ angular.module('app')
       }, 1000);  // 1000 = 1 second
     }
   };
+   var debounceSaveUpdates2 = function(newVal, oldVal) {
+     if($scope.me===undefined)
+       return;
+     if($scope.me.application===undefined)
+       return;
+     $scope.isSaved=false;
+     if (newVal != oldVal) {
+       if (timeout) {
+         $timeout.cancel(timeout)
+       }
+       timeout = $timeout(function () {
+           saveApplication(false);
+       }, 1000);  // 1000 = 1 second
+     }
+   };
   $scope.$watch('me', debounceSaveUpdates, true);
+  $rootScope.$watch('skills', debounceSaveUpdates2, true);
 
     //$scope.me.application.isTravellingFromSchool =1;
     $scope.changeNeedsTravelReimbursement = function(mode)
@@ -141,6 +163,10 @@ angular.module('app')
     {
       saveApplication(reload);
     };
+    $scope.rsvp = function (resp) {
+      $scope.me.application.rsvp = resp;
+      saveApplication(false);
+    }
     $scope.forceSave = function() {
       saveApplication(true);
     };
