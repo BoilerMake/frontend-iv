@@ -159,6 +159,14 @@ angular.module('app')
       $scope.me.application.has_no_github=false;
       console.log("yes");
     };
+   $scope.hasNoLinkedIn = function() {
+     $scope.me.application.has_no_linkedin=true;
+     console.log("no");
+   };
+   $scope.hasLinkedIn = function() {
+     $scope.me.application.has_no_linkedin=false;
+     console.log("yes");
+   };
     $scope.updateApplication = function(reload)
     {
       saveApplication(reload);
