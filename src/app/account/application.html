@@ -199,9 +199,6 @@
                 </ui-select-choices>
               </ui-select>
 
-              <!--<div ng-repeat="(key, value) in skills"> {{key}}-{{value}}</div>-->
-
-
             </form>
             <hr/>
             <p ng-show="me.application.school.transit_method=='bus'">
@@ -209,15 +206,15 @@
               <br/><br/>
               Stay tuned for more details to come &nbsp; 🚀
               <br/><br/>
-              Make sure to follow <a href="http://facebook.com/events/{{me.application.school.facebook_event_id}}" target="_blank" style="color: purple">this Facebook event </a>to get any last minute info!
+              Make sure to follow <a href="http://facebook.com/events/{{me.application.school.facebook_event_id}}" target="_blank" style="color: purple">the {{me.application.school.name}} BoilerMake Facebook event </a>to get any last minute info!
             </p>
             <p ng-show="me.application.school.transit_method=='car'">
-              Sadly we didn't have enough applicants from your school to justify a bus  to {{me.application.school.name}} :(
+              Sadly we didn't have enough applicants from your school to justify a bus to {{me.application.school.name}}
               <br/><br/>
-              That being said, we'd love to have you at BoilerMake if you're willing to drive to Purdue!
+              That being said, we'd love to have you at BoilerMake if you're willing to drive to Purdue. We'll reimburse gas too!
             </p>
             <br/><br/>
-            <!--<button class="btn btn-primary" ng-click="updateApplication(false)">Save my RSVP!</button>-->
+            <button class="btn btn-primary" ng-click="updateApplication(false)">Save my RSVP!</button>
             <p>Last saved <span class="bold" am-time-ago="lastSaved"></span>.</p>
           </div><!--end rsvp-area-->
           If you have any questions, shoot us an email: team@boilermake.org
