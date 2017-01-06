@@ -142,6 +142,86 @@
         </form>
       </div>
     </div>
+
+      <div id="rsvp" class="panel panel-default application-panel" ng-show="me.application.decision == 3">
+        <div class="panel-body">
+          <h1 class="application-title">RSVP to BoilerMake</h1>
+          Yay you're in!
+          <br/>
+          <button class="btn btn-primary" ng-disabled="me.application.rsvp==1" ng-click="rsvp(true)">I'll be there!</button>
+          <button class="btn btn-primary" ng-disabled="me.application.rsvp==0" ng-click="rsvp(false)">I can't make it :(</button>
+
+          <div ng-show="me.application.rsvp==0">
+            sad
+          </div>
+          <div class="rsvp-area" ng-show="me.application.rsvp">
+            We'll need a few more details from you first. If you want to provide us with an updated Resume for our sponsors, feel free to do so above.
+            <form class="form-horizontal">
+              <!-- RSVP start -->
+              <!-- Name -->
+              <div class="form-group">
+                <label for="github" class="col-sm-4 control-label">LinkedIn Profile</label>
+                <div class="col-sm-8">
+                  <div ng-hide="me.application.has_no_linkedin == '1'" >
+                    <input id="linkedin" type="text" ng-model="me.application.linkedin" class="form-control" placeholder="LinkedIn URL">
+                  </div>
+                  <p ng-hide="me.application.has_no_linkedin == '1'">
+                    <a ng-Click="hasNoLinkedIn()" style="color: black">I don't have one</a>
+                  </p>
+                  <div ng-show="me.application.has_no_linkedin == '1'" style="padding-top: 7px;">
+                    <p>You indicated you don't have a linkedin. <a ng-Click="hasLinkedIn()" style="color: black">I actually do have a LinkedIn!</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="firstName" class="col-sm-4 control-label">Dietary restrictions</label>
+                <div class="col-sm-8">
+                  <input id="diet_restrictions" type="text" ng-model="me.application.diet_restrictions" class="form-control" placeholder="Any Allergies?">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="firstName" class="col-sm-4 control-label">Phone #</label>
+                <div class="col-sm-8">
+                  <input id="phone" type="text" ng-model="me.phone" class="form-control" placeholder="We'll send important updates during BoilerMake">
+                </div>
+              </div>
+
+
+              <p>We're going to have Personal lanyards with 'access cards' on them this year, and you here you can pick skills that will be displayed on them.
+                This will let other hackers start a conversation, if they are seeking help with something that you're skilled in. Let us know if something should be added to the list!
+              <br/>
+              Pick your top 5, please.
+              </p>
+              <ui-select multiple ng-model="$root.skills" theme="bootstrap" close-on-select="false" style="width: 500px;" title="Type to see skills to pick">
+                <ui-select-match placeholder="Select skills...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="skill in availableSkills | filter:$select.search">
+                  {{skill}}
+                </ui-select-choices>
+              </ui-select>
+
+            </form>
+            <hr/>
+            <p ng-show="me.application.school.transit_method=='bus'">
+              Good news! {{me.application.school.name}} has a bus coming! 🚌&nbsp;🚌&nbsp;🚌
+              <br/><br/>
+              Stay tuned for more details to come &nbsp; 🚀
+              <br/><br/>
+              Make sure to follow <a href="http://facebook.com/events/{{me.application.school.facebook_event_id}}" target="_blank" style="color: purple">the {{me.application.school.name}} BoilerMake Facebook event </a>to get any last minute info!
+            </p>
+            <p ng-show="me.application.school.transit_method=='car'">
+              Sadly we didn't have enough applicants from your school to justify a bus to {{me.application.school.name}}
+              <br/><br/>
+              That being said, we'd love to have you at BoilerMake if you're willing to drive to Purdue. We'll reimburse gas too!
+            </p>
+            <br/><br/>
+            <button class="btn btn-primary" ng-click="updateApplication(false)">Save my RSVP!</button>
+            <p>Last saved <span class="bold" am-time-ago="lastSaved"></span>.</p>
+          </div><!--end rsvp-area-->
+          If you have any questions, shoot us an email: team@boilermake.org
+
+
+        </div>
+      </div>
   </div>
 
   <div class="col-md-3">
