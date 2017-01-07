@@ -23,6 +23,15 @@ hr {
       <h3 ng-show="validation.valid" class="application-subtitle">Completed applications are automatically submitted. You can still update your application at any time.</h3>
       <h3 ng-show="me.application.school.facebook_event_id" class="application-subtitle"><span>Hey there, we see you're from {{me.application.school.name}} - we have a Facebook event for you, and you have almost enough signups to get a free bus to BoilerMake! <a href="http://facebook.com/events/{{me.application.school.facebook_event_id}}" target="_blank"> RSVP here so all your friends know about BoilerMake!</a> </span><br>🚌&nbsp;🚌&nbsp;🚌</h3>
 
+      <div id="status" class="panel panel-default application-panel" ng-show="me.application.decision != 3">
+      	<h1 class="application-title">BoilerMake Application Status</h1>
+        <hr/>
+        <div ng-show="me.application.decision == null">Your application is still pending review. You will receive an email when a decision has been reached!</div>
+        <div ng-show="me.application.decision == 1">Unfortunately, your application as been denied. We encourage you to apply to future events.</div>
+        <div ng-show="me.application.decision == 2">Your application has been waitlisted! As spots to BoilerMake open up, we will move people from waitlisted to accepted. This happens <i>very</i> frequently, so be patient!</div>
+        <div ng-show="me.application.decision == 4">Your RSVP offer has expired! If you believe this is a mistake, or if you are now able to attend BoilerMake, please reach out to us at team@boilermake.org</div>
+      </div>
+
         <div id="rsvp" class="panel panel-default application-panel" ng-show="me.application.decision == 3">
         <div class="panel-body">
           <h1 class="application-title">RSVP to BoilerMake</h1>
