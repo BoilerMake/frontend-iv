@@ -73,7 +73,7 @@ hr {
               	<br/><br/>
               	Pick up to 3 skills to display:<br/>
               </p>
-              <ui-select multiple ng-model="$root.skills" theme="bootstrap" close-on-select="false" style="width: 500px;" title="Type to see skills to pick">
+              <ui-select multiple ng-model="$root.skills" theme="bootstrap" close-on-select="false" style="width: 500px;" title="Type to see skills to pick" limit=3>
                 <ui-select-match placeholder="Select skills...">{{$item}}</ui-select-match>
                 <ui-select-choices repeat="skill in availableSkills | filter:$select.search">
                   {{skill}}
