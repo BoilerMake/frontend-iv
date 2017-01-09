@@ -5,6 +5,9 @@
 hr {
 	border-top: 1px solid #c7c7c7
 }
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+	color: #fff !important;
+}
 </style>
 <div class="background" id="background">
   <canvas id="sky-background-fixed"></canvas>
@@ -100,7 +103,7 @@ hr {
             <p ng-show="me.application.school.transit_method=='car'">
               Sadly, we did not have enough applicants from your school to send a bus to {{me.application.school.name}}
               <br/><br/>
-              That being said, we'd love to have you at BoilerMake if you're willing to drive to Purdue. We will reimburse for gas, up to a certain amount. If you plan on driving, please get in touch with us ASAP with a gas quote. We have a <a href="http://invite.boilermake.org/" style="color: #ffafaf">Slack Channel</a> for carpooling, if you would like to travel with other hackers.
+              That being said, we'd love to have you at BoilerMake if you're willing to drive to Purdue. Unfortunately, we cannot reimburse for plane tickets, bus tickets, or gas. We have a <a href="http://invite.boilermake.org/" style="color: #ffafaf">Slack Channel</a> for carpooling, if you would like to travel with other hackers.
             </p>
             <br/>
             <button class="btn btn-primary" ng-click="updateApplication(false)">Save my RSVP!</button>

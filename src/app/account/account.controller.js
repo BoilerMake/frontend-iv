@@ -33,7 +33,7 @@ angular.module('app')
   $scope.isErrors = false;
 
   $rootScope.skills = ['java'];
-  $rootScope.availableSkills = ['python','js','obj-c','php','swift','css','html','ruby','C','android','java','design','ios','go','hardware','mobile','webdev'];
+  $rootScope.availableSkills = ['python','js','obj-c','php','swift','css','html','ruby','C','android','java','design','ios','go','hardware','mobile','webdev','nodejs'];
 
    /* Frontend application stuff */
   $scope.appGenders = ['I\'d rather not provide this information', 'Male', 'Female', 'Other'];
