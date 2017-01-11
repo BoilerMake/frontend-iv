@@ -1,0 +1,53 @@
+.sponsors {
+  margin-top: 8rem;
+  text-align: center;
+
+  > div {
+    background-color: $white;
+    border-radius: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .row {
+    margin-top: 4rem;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    color: $black;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .logo-row {
+    text-align: center;
+    margin-top: 2rem;
+
+    .medium {
+      display: inline-block;
+      width: 30%;
+
+      &:first-of-type {
+        margin-right: 10%;
+      }
+    }
+
+    .small {
+      display: inline-block;
+      width: 20%;
+      margin-left: 10%;
+
+      &.extra {
+        width: 10%;
+      }
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+    }
+  }
+}
