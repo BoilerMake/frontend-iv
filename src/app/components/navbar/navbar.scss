@@ -187,3 +187,22 @@
     }
   }
 }
+
+.live-updates {
+  color: $white;
+  opacity: 0.85;
+  font-size: 1.5em;
+  @media (max-width: $screen-sm-max) {
+    font-size: 0.65em !important;
+  }
+  a {
+    color: $red;
+    padding: 3px 9px;
+    font-weight: 700;
+    border-radius: 3px !important;
+    &:hover {
+      color: $white;
+      background-color: $red;
+    }
+  }
+}
